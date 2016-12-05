@@ -1,0 +1,179 @@
+  <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+
+    <?php if ( $this->options->themetype =='0' ) : ?>
+  <aside id="aside" class="app-aside hidden-xs bg-black">
+    <?php elseif ( $this->options->themetype =='1' ) : ?>
+  <aside id="aside" class="app-aside hidden-xs bg-dark">
+    <?php elseif ( $this->options->themetype =='2' ) : ?>
+  <aside id="aside" class="app-aside hidden-xs bg-black">
+    <?php elseif ( $this->options->themetype =='3' ) : ?>
+  <aside id="aside" class="app-aside hidden-xs bg-dark">
+    <?php elseif ( $this->options->themetype =='4' ) : ?>
+      <aside id="aside" class="app-aside hidden-xs bg-black">
+    <?php elseif ( $this->options->themetype =='5' ) : ?>
+      <aside id="aside" class="app-aside hidden-xs bg-dark">
+    <?php elseif ( $this->options->themetype =='6' ) : ?>
+      <aside id="aside" class="app-aside hidden-xs bg-dark">
+    <?php elseif ( $this->options->themetype =='7' ) : ?>
+      <aside id="aside" class="app-aside hidden-xs bg-white b-r">
+    <?php elseif ( $this->options->themetype =='8' ) : ?>
+      <aside id="aside" class="app-aside hidden-xs bg-light">
+    <?php elseif ( $this->options->themetype =='9' ) : ?>
+      <aside id="aside" class="app-aside hidden-xs bg-light dker b-r">
+    <?php elseif ( $this->options->themetype =='10' ) : ?>
+      <aside id="aside" class="app-aside hidden-xs bg-dark">
+    <?php elseif ( $this->options->themetype =='11' ) : ?>
+      <aside id="aside" class="app-aside hidden-xs bg-black">
+    <?php elseif ( $this->options->themetype =='12' ) : ?>
+      <aside id="aside" class="app-aside hidden-xs bg-dark">
+    <?php elseif ( $this->options->themetype =='13' ) : ?>
+      <aside id="aside" class="app-aside hidden-xs bg-dark">
+      <?php endif; ?>
+      <div class="aside-wrap">
+        <div class="navi-wrap">
+          <!-- user --><!--默认隐藏，点击按钮后触发显示-->
+          <div class="clearfix hidden-xs text-center hide show" id="aside-user">
+            <div class="dropdown wrapper">
+              <a href="<?php Helper::options()->siteUrl()?>cross.html">
+                <span class="thumb-lg w-auto-folded avatar m-t-sm">
+                  <img src="<?php $this->options->BlogPic() ?>" class="img-full" alt="...">
+                </span>
+              </a>
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
+                <span class="clear">
+                  <span class="block m-t-sm">
+                    <strong class="font-bold text-lt"><?php $this->options->BlogName(); ?></strong> 
+                    <b class="caret"></b>
+                  </span>
+                  <span class="text-muted text-xs block"><?php $this->options->BlogJob() ?></span>
+                </span>
+              </a>
+              <!-- dropdown -->
+              <ul class="dropdown-menu animated fadeInRight w hidden-folded">
+              </li>
+              <!--文章RSS订阅-->
+              <li>
+                <a href="<?php $this->options->feedUrl(); ?>">
+                  <i style="position: relative;width: 30px;margin: -11px -10px;margin-right: 0px;overflow: hidden;line-height: 30px;text-align: center;" class="iconfont icon-rss"></i><span>文章RSS</span>
+                </a>
+              </li>
+              <!--评论RSS订阅-->
+              <li>
+                <a href="<?php $this->options->commentsFeedUrl(); ?>"><i style="position: relative;width: 30px;margin: -11px -10px;margin-right: 0px;overflow: hidden;line-height: 30px;text-align: center;" class="iconfont icon-rss1"></i><span>评论RSS</span></a>
+              </li>
+
+              <li class="divider"></li>
+              <?php if($this->user->hasLogin()): ?>
+              <!--后台管理-->
+              <li>
+                <a data-no-instant target="_blank" href="<?php $this->options->adminUrl(); ?>"><i style="position: relative;width: 30px;margin: -11px -10px;margin-right: 0px;overflow: hidden;line-height: 30px;text-align: center;" class="iconfont icon-xitongguanli1"></i><span>后台管理</span></a>
+              </li>
+              <?php else: ?>
+              <li>
+                <a data-no-instant href="<?php $this->options->loginUrl(); ?>">登录</a>
+              </li>
+              <?php endif; ?>
+              </ul>
+              <!-- / dropdown -->
+            </div>
+            <div class="line dk hidden-folded"></div>
+          </div>
+          <!-- / user -->
+
+          <!-- nav -->
+          <nav ui-nav class="navi clearfix">
+            <ul class="nav">
+             <!--index-->
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span>导航</span>
+              </li>
+              <!--主页-->
+              <li>
+                <a href="<?php $this->options->siteUrl(); ?>" class="auto">      
+                  <i class="iconfont icon-shouye icon text-md"></i>
+                  <span>主页</span>
+                </a>
+              </li>
+              <!-- /主页 -->
+              <!--lucky try-->
+
+              <!-- /lucky try-->
+              <li class="line dk"></li>
+			<!--Components-->
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span>组成</span>
+              </li>
+              <!--分类category-->
+              <li>
+                <a data-no-instant class="auto">      
+                  <span class="pull-right text-muted">
+                    <i class="iconfont icon-fw icon-angleright text"></i>
+                    <i class="iconfont icon-fw icon-angledown text-active"></i>
+                  </span>
+                  <i class="iconfont icon-c-classification"></i>
+                  <span>分类</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="nav-sub-header">
+                    <a data-no-instant>
+                      <span>分类</span>
+                    </a>
+                  </li><!--不会显示出来-->
+                  <!--循环输出分类-->
+                <?php $this->widget('Widget_Metas_Category_List')
+               ->parse('<li><a href="{permalink}"><span>{name}</span></a></li>'); ?>   
+                </ul>
+              </li>
+              <!--独立页面pages-->
+              <li>
+                <a data-no-instant class="auto">
+                  <span class="pull-right text-muted">
+                    <i class="iconfont icon-fw icon-angleright text"></i>
+                    <i class="iconfont icon-fw icon-angledown text-active"></i>
+                  </span>
+                  <i class="iconfont icon-176pages"></i>
+                  <span>页面</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="nav-sub-header">
+                    <a data-no-instant>
+                      <span>页面</span>
+                    </a>
+                  </li><!--这个字段不会被显示出来-->
+                  <!--循环输出独立页面-->
+                  <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
+                   <?php while($pages->next()): ?>
+                    <li><a href="<?php $pages->permalink(); ?>"><span><?php $pages->title(); ?></span></a></li>
+                   <?php endwhile; ?>
+                </ul>
+              </li>
+              <!--友情链接-->
+              <li>
+                <a data-no-instant class="auto">
+                  <span class="pull-right text-muted">
+                    <i class="iconfont icon-fw icon-angleright text"></i>
+                    <i class="iconfont icon-fw icon-angledown text-active"></i>
+                  </span>
+                  <i class="iconfont icon-pengyouquan"></i>
+                  <span>友链</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="nav-sub-header">
+                    <a data-no-instant>
+                      <span>友链</span>
+                    </a>
+                  </li>
+                  <!--使用links插件，输出全站友链-->
+                 <?php $mypattern1 = "<li><a href=\"{url}\" target=\"_blank\" title=\"{title}\"><span>{name}</span></a></li>";
+                  Links_Plugin::output($mypattern1, 0, "ten");?>
+                </ul>
+              </li>
+            
+            </ul>
+          </nav>
+          <!-- nav -->
+
+
+        </div>
+      </div>
+  </aside>
