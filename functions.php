@@ -220,7 +220,7 @@ input[type=text], textarea {
     <span style="display: block;
     margin-bottom: 10px;
     margin-top: 10px;
-    font-size: 16px;">感谢您使用 handsome主题&emsp;<span style="color:#df3827;">版本：1.0.0</span> </span>
+    font-size: 16px;">感谢您使用 handsome主题&emsp; </span>
     <span style="margin-bottom:10px;display:block">点击这里 <a href="https://github.com/ihewro/typecho-theme-handsome" target="_blank" style="color:#3384da;font-weight:bold;text-decoration:underline">typecho-theme-handsome</a> 以获得
     <span style="color:#df3827;font-weight:bold;">最新版本支持</span>
     </span>
