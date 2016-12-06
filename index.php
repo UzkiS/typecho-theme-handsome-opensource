@@ -1,10 +1,10 @@
 <?php
 /**
- * 完美的扁平化设计。如同少年，迎风而立。
+ * 扁平化设计。如同少年，迎风而立。
  * 
  * @package handsome 
  * @author 友人C
- * @version 1.1.2
+ * @version 1.1.3
  * @link http://www.ihewro.com
  */
 
