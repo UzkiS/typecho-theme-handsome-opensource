@@ -64,7 +64,7 @@ $(document).ready(function(){
 <script data-no-instant type="text/javascript">
     //Add target="_blank" to a tags
     $(document).bind('DOMNodeInserted', function(event) {
-        $('.comment-body a[href^="http"],#postpage a[href^="http"]').each(
+        $('.comment-author a,#postpage a[href^="http"]').each(
             function() {
                 if (!$(this).attr('target')) {
                     $(this).attr('target', '_blank')
