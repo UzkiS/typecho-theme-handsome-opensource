@@ -8,9 +8,7 @@ function themeConfig($form) {
 .row {
     margin: 0px;
 }
-body{
-    font-family: Source Sans Pro,Hiragino Sans GB,Microsoft Yahei,SimSun,Helvetica,Arial,Sans-serif;
-}
+
 #use-intro {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
     background-color: #fff;
@@ -19,41 +17,65 @@ body{
     padding-left: 20px;
     margin-bottom: 40px;
 }
+.message{
+    background-color:#20af42 !important;
+    color:#fff;
+}
+.success{
+    background-color:#20af42;
+    color:#fff;
+}
+
 #typecho-nav-list{display:none;}
-.typecho-head-nav {padding: 0 10px; background: #fff;}
-.typecho-head-nav .operate a{border:none;color: #58666e;padding-top: 8px;padding-bottom: 8px;}
+.typecho-head-nav {
+    padding: 0 10px; 
+    background: #20af42;
+}
+.typecho-head-nav .operate a{border:none;color: #fff;padding-top: 8px;padding-bottom: 8px;}
 .typecho-head-nav .operate a:hover {
 	background-color: rgba(0, 0, 0, 0.05);
-    color: #455965;
+    color: #fff;
 }	
+ul.typecho-option-tabs.fix-tabs.clearfix {
+    background: #1a9c39;
+}
+.col-mb-12 {
+    padding: 0px!important;
+}
 .typecho-page-title {
     margin:0;
-	height: 150px;
-	background: url(http://localhost/wp/wp-content/uploads/2015/07/m44.jpg) center center;
+	height: 70px;
+	background: #20af42;
     background-size: cover;
     padding: 30px;
 }
 .typecho-page-title h2{
-	margin: 42px 0 10px;
+	margin: 0px;
     font-size: 3.28571em;
+    color: #fff;
 }
 .typecho-option-tabs{
-	padding: 15px;
+	padding: 0px;
 	background: #fff;
 }
 .typecho-option-tabs a:hover{
-    background-color: #E9E9E6;
-    color: #666;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: rgba(255,255,255,.8);
 }
 .typecho-option-tabs a{
-	border:none;
-	height:auto;
-	padding: 6px 12px;
-    border-radius: 4px!important;
+    border: none;
+    height: auto;
+    color: rgba(255,255,255,.6);
+    padding: 15px;
+}
+li.current {
+    background-color: #FFF;
+    height: 4px;
+    padding: 0 !important;
+    bottom: 0px;
 }
 .typecho-option-tabs li.current a, .typecho-option-tabs li.active a{
-    color: #fff !important;
-    background-color: #23b7e5;
+    background:none;
 }
 .container{
 	margin:0;
@@ -114,6 +136,12 @@ input[type=text], textarea {
     right: 32px;
     bottom: 32px;
 }
+@media screen and (max-width: 480px){  
+.typecho-option {
+    width: 94% !important;
+    margin-bottom: 20px !important;
+}
+}
 #typecho-option-item-indexsetup-0 {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
     background-color: #fff;
@@ -170,7 +198,21 @@ input[type=text], textarea {
     padding: 8px 2%;
     width: 60%;
 }
+#typecho-option-item-analysis-19 {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    background-color: #fff;
+    margin: 8px 1%;
+    padding: 8px 2%;
+    width: 94%;
+}
 
+#typecho-option-item-favicon-20, #typecho-option-item-titleintro-21 {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    background-color: #fff;
+    margin: 0 1%;
+    padding: 8px 2%;
+    width: 44%;
+}
 </style>
 
 	";
@@ -178,12 +220,15 @@ input[type=text], textarea {
     <span style="display: block;
     margin-bottom: 10px;
     margin-top: 10px;
-    font-size: 16px;">感谢您使用 handsome 主题(后台css风格来自<a href="https://github.com/viosey/typecho-theme-material">material主题</a>)</span>
+    font-size: 16px;">感谢您使用 handsome主题&emsp;<span style="color:#df3827;">版本：1.0.0</span> </span>
     <span style="margin-bottom:10px;display:block">点击这里 <a href="https://github.com/ihewro/typecho-theme-handsome" target="_blank" style="color:#3384da;font-weight:bold;text-decoration:underline">typecho-theme-handsome</a> 以获得
     <span style="color:#df3827;font-weight:bold;">最新版本支持</span>
     </span>
-    <a href="mailto:ihewro@163.com" >帮助&支持</a> &nbsp;
+    <span style="margin-bottom:10px;display:block">
+    <a href="//www.ihewro.com/archives/489/" >帮助&支持</a> &nbsp;
     <a href="https://github.com/ihewro/typecho-theme-handsome/issues" target="_blank">建议&反馈</a>
+    </span>
+    <span style="margin-bottom:10px;display:block"> 后台设置主题风格来自 material 主题</span>
     </p>';
 
     //设置开关
@@ -194,28 +239,29 @@ input[type=text], textarea {
     'aside-folded' => _t('折叠导航'),
     'aside-dock' => _t('置顶导航'),
     'container-box' => _t('盒子模型'),
+    'atargetblank' => _t('文章和评论区链接以新标签页形式打开')
     ),
-    array('header-fix', 'aside-fix'), _t('全站设置开关'));
+    array('header-fix', 'aside-fix','atargetblank'), _t('全站设置开关'));
     
     $form->addInput($indexsetup->multiMode());
 
     //主题色调选择
     $themetype = new Typecho_Widget_Helper_Form_Element_Radio('themetype',
         array(
-            '0' => _t('black-white-black&emsp;&emsp;'),
-            '1' => _t('dark-white-dark&emsp;&emsp;'),
-            '2' => _t('white-white-black&emsp;&emsp;'),
-            '3' => _t('primary-white-dark&emsp;&emsp;'),
-            '4' => _t('info-white-black&emsp;&emsp;'),
-            '5' => _t('success-white-dark&emsp;&emsp;'),
-            '6' => _t('danger-white-dark&emsp;&emsp;'),
-            '7' => _t('black-black-white&emsp;&emsp;'),
-            '8' => _t('dark-dark-light&emsp;&emsp;'),                        
-            '9' => _t('info-info-light&emsp;&emsp;'),
-            '10' => _t('primary-primary-dark&emsp;&emsp;'),
-            '11' => _t('info-info-black&emsp;&emsp;'),
-            '12' => _t('success-success-dark&emsp;&emsp;'),
-            '13' => _t('danger-danger-dark&emsp;&emsp;')
+            '0' => _t('black-white-black &emsp;&emsp;'),
+            '1' => _t('dark-white-dark &emsp;&emsp;'),
+            '2' => _t('white-white-black &emsp;&emsp;'),
+            '3' => _t('primary-white-dark &emsp;&emsp;'),
+            '4' => _t('info-white-black &emsp;&emsp;'),
+            '5' => _t('success-white-dark &emsp;&emsp;'),
+            '6' => _t('danger-white-dark &emsp;&emsp;'),
+            '7' => _t('black-black-white &emsp;&emsp;'),
+            '8' => _t('dark-dark-light &emsp;&emsp;'),                        
+            '9' => _t('info-info-light &emsp;&emsp;'),
+            '10' => _t('primary-primary-dark &emsp;&emsp;'),
+            '11' => _t('info-info-black &emsp;&emsp;'),
+            '12' => _t('success-success-dark &emsp;&emsp;'),
+            '13' => _t('danger-danger-dark &emsp;&emsp;')
         ),
 
         //Default choose
@@ -231,11 +277,11 @@ input[type=text], textarea {
         ),
 
         //Default choose
-        '0',_t('盒子模型中背景样式选择'),_t("如果你没有选中“盒子模型”，请忽略该项。选择背景方案, 对应填写下方的 '<b>背景颜色 / 图片</b>' 或选择 '<b>渐变样式</b>', 这里默认使用纯色背景.")
+        '0',_t('盒子模型中背景样式选择'),_t("<b>如果你没有选中“盒子模型”，请忽略该项。</b>选择背景方案, 对应填写下方的 '<b>背景颜色 / 图片</b>' 或选择 '<b>渐变样式</b>', 这里默认使用纯色背景.")
     );
     $form->addInput($BGtype);
     //盒子模型种背景颜色/图片填写
-    $bgcolor = new Typecho_Widget_Helper_Form_Element_Text('bgcolor', NULL, NULL, _t('背景颜色 / 图片'), _t('如果你没有选中“盒子模型”，请忽略该项。<br />背景设置如果选择纯色背景, 这里就填写颜色代码; <br />背景设置如果选择图片背景, 这里就填写图片地址;<br />
+    $bgcolor = new Typecho_Widget_Helper_Form_Element_Text('bgcolor', NULL, NULL, _t('背景颜色 / 图片'), _t('<b>如果你没有选中“盒子模型”，请忽略该项。</b><br />背景设置如果选择纯色背景, 这里就填写颜色代码; <br />背景设置如果选择图片背景, 这里就填写图片地址;<br />
     不填写则默认显示 #F5F5F5 或主题文件夹下的 /img/bg.jpg'));
     $form->addInput($bgcolor);
 
@@ -254,7 +300,7 @@ input[type=text], textarea {
             '9' => _t('Virgin <br />'),
         ),
 
-        '0', _t('渐变样式'), _t("如果你没有选中“盒子模型”，请忽略该项。<br />如果选择渐变背景, 在这里选择想要的渐变样式.")
+        '0', _t('渐变样式'), _t("<b>如果你没有选中“盒子模型”，请忽略该项。</b><br />如果选择渐变背景, 在这里选择想要的渐变样式.")
     );
     $form->addInput($GradientType);
 
@@ -271,10 +317,10 @@ input[type=text], textarea {
     $form->addInput($BlogPic);
 
     //博主职业
-    $BlogJob = new Typecho_Widget_Helper_Form_Element_Text('BlogJob', NULL, 'A student', _t('博主的介绍'), _t('输入你的简介，在侧边栏的名称下面显示'));
+    $BlogJob = new Typecho_Widget_Helper_Form_Element_Text('BlogJob', NULL, 'A student', _t('博主的介绍'), _t('输入你的简介，在侧边栏的名称下面和时光机页面显示'));
     $form->addInput($BlogJob);
     //首页文字：将会在首页博客名称下面和404.php页面调用此字段
-    $Indexwords = new Typecho_Widget_Helper_Form_Element_Text('Indexwords', NULL, '迷失的人迷失了，相逢的人会再相逢', _t('首页一行文字介绍'), _t('输入你喜欢的一行文字吧，不要太长哦，否则就不好看啦'));
+    $Indexwords = new Typecho_Widget_Helper_Form_Element_Text('Indexwords', NULL, '迷失的人迷失了，相逢的人会再相逢', _t('首页一行文字介绍'), _t('输入你喜欢的一行文字吧，在首页博客名称下面显示'));
     $form->addInput($Indexwords);
 
     //twitter
@@ -307,11 +353,19 @@ input[type=text], textarea {
     $about = new Typecho_Widget_Helper_Form_Element_Textarea('about', NULL, '来自南部的一个小城市，个性不张扬，讨厌随波逐流。', _t('输入关于我的内容'), _t('输入关于我的内容，将会在时光机的关于我栏目中显示'));
     $form->addInput($about);
 
-
   /*  //gravatar镜像源
     $CDNURL = new Typecho_Widget_Helper_Form_Element_Text('gravatar镜像源地址', NULL, 'https://secure.gravatar.com', _t('CDN 地址'), _t("gravatar由于国内被墙，推荐使用国内镜像源替代。默认为https://secure.gravatar.com (默认不要加斜杠)"));
     $form->addInput($CDNURL);*/
 
+    //网站统计代码
+    $analysis = new Typecho_Widget_Helper_Form_Element_Textarea('analysis', NULL, NULL, _t('网站统计代码'), _t('填入如 CNZZ或者Google Analysis 的第三方统计代码'));
+    $form->addInput($analysis);
+    //favicon图标
+    $favicon = new Typecho_Widget_Helper_Form_Element_Text('favicon', NULL, NULL, _t('favicon 地址'), _t('填入博客 favicon 的地址, 不填则显示主机根目录下的favicon.ico文件'));
+    $form->addInput($favicon);
+    //首页标题后缀
+    $titleintro = new Typecho_Widget_Helper_Form_Element_Text('titleintro', NULL, '相逢的人会再相逢', _t('首页标题后缀'), _t('你的博客标题栏博客名称后面的副标题'));
+    $form->addInput($titleintro);
 }
 
 // 首页文章缩略图

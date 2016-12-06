@@ -83,7 +83,7 @@ echo $commentClass;
 
    <?php $this->comments()->to($comments); ?>
    <?php if ($comments->have()): ?>
-    <h4 style="display: none" class="comments-title m-t-lg m-b"><?php $this->commentsNum('居然没有评论', '只有一条评论啊', '%d 条评论'); ?></h4>
+    <h4 style="display: none" class="comments-title m-t-lg m-b"><?php $this->commentsNum(_t(' 暂无评论'), _t(' 1 条评论'), _t(' %d 条评论')); ?></h4>
     <?php $comments->listComments(); ?>
 </div>
     <?php //if (($this->options->commentsPageBreak)): ?><!--如何后台评论设置启用了分页，则显示分页-->

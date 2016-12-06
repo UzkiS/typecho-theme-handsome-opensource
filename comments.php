@@ -32,7 +32,7 @@ echo $commentClass;
             $avatar = $host . $url . $hash . '?s=' . $size . '&r=' . $rating . '&d=';
         ?>
 
-        <a href="" class="pull-left thumb-sm">
+        <a class="pull-left thumb-sm">
           <img alt="" src="<?php echo $avatar ?>" class="avatar-40 photo img-circle" height="40" width="40"></a>
         <div class="m-b m-l-xxl">
           <div class="comment-meta">
@@ -69,7 +69,7 @@ echo $commentClass;
 <div id="comments">
    <?php $this->comments()->to($comments); ?>
    <?php if ($comments->have()): ?>
-    <h4 class="comments-title m-t-lg m-b"><?php $this->commentsNum('居然没有评论', '只有一条评论啊', '%d 条评论'); ?></h4>
+    <h4 class="comments-title m-t-lg m-b"><?php $this->commentsNum(_t(' 暂无评论'), _t(' 1 条评论'), _t(' %d 条评论')); ?></h4>
     <?php $comments->listComments(); ?>
     <?php //if (($this->options->commentsPageBreak)): ?><!--如何后台评论设置启用了分页，则显示分页-->
     <nav class="text-center m-t-lg m-b-lg" role="navigation">

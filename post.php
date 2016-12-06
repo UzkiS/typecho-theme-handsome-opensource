@@ -24,7 +24,7 @@
         <!--浏览数-->
         <li class="meta-views"> <i class="iconfont icon-eye" aria-hidden="true"></i> <span class="meta-value"><?php get_post_view($this) ?>次浏览</span></li>
         <!--评论数-->
-        <li class="meta-comments"> <i class="iconfont icon-comments" aria-hidden="true"></i> <?php $this->commentsNum('%d 条评论'); ?></li>
+        <li class="meta-comments"> <i class="iconfont icon-comments" aria-hidden="true"></i><?php $this->commentsNum(_t(' 暂无评论'), _t(' 1 条评论'), _t(' %d 条评论')); ?></li>
         <!--标签-->        
         <li class="meta-tags"> <i class="iconfont icon-tags" aria-hidden="true"></i> <span class="sr-only">标签：</span> <span class="meta-value"><?php $this->tags(' ', true, 'none'); ?></span></li>
        </ul>

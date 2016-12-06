@@ -52,7 +52,25 @@ $(document).ready(function(){
 });
 <?php endif; ?>
 </script>
+<!--网站统计代码-->
+<script data-no-instant type="text/javascript">
+  <?php $this->options->analysis(); ?>
+</script>>
 
+<?php if( !empty($this->options->indexsetup) && in_array('atargetblank',$this->options->indexsetup) ): ?>
+<script>
+    //Add target="_blank" to a tags
+    $(document).bind('DOMNodeInserted', function(event) {
+        $('#comments a[href^="http"],.blog-post a[href^="http"]').each(
+            function() {
+                if (!$(this).attr('target')) {
+                    $(this).attr('target', '_blank')
+                }
+            }
+        );
+    });
+</script>
+<?php endif; ?>
 <?php $this->footer(); ?>
 
 </body><!--#body end-->

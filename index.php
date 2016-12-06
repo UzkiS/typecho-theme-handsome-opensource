@@ -4,7 +4,7 @@
  * 
  * @package handsome 
  * @author 友人C
- * @version 1.0.0
+ * @version 1.1.0
  * @link http://www.ihewro.com
  */
 
@@ -53,9 +53,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             </p>
             <div class="line line-lg b-b b-light"></div>
             <div class="text-muted">
-              <i class="iconfont icon-user1 text-muted"></i> by <a href class="m-r-sm"><?php $this->author(); ?> </a>
+              <i class="iconfont icon-user1 text-muted"></i> <a href class="m-r-sm"><?php $this->author(); ?> </a>
               <i class="iconfont icon-weibiaoti5 text-muted"></i> <?php $this->date('F j, Y'); ?>
-              <a href="<?php $this->permalink() ?>#comments" class="m-l-sm"><i class="iconfont icon-comments text-muted"></i> <?php $this->commentsNum('%d Comments'); ?></a>
+              <a href="<?php $this->permalink() ?>#comments" class="m-l-sm"><i class="iconfont icon-comments text-muted"></i> <?php $this->commentsNum(_t(' 暂无评论'), _t(' 1 条评论'), _t(' %d 条评论')); ?></a>
             </div>
           </div>
         </div>
