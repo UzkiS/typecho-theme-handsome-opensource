@@ -2,9 +2,16 @@
 
   <footer id="footer" class="app-footer" role="footer">
     <div class="wrapper b-t bg-light">
-      <span class="pull-right hidden-xs">Power by <a data-no-instant target="blank" href="http://www.typecho.org">Typecho</a> | Theme <a data-no-instant target="blank" href="http://www.ihewro.com">handsome</a> <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+      <span class="pull-right hidden-xs">Power by <a data-no-instant target="blank" href="http://www.typecho.org">Typecho</a> | Theme <a data-no-instant target="blank" href="http://www.ihewro.com">handsome</a> <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a>
+  <!--网站统计代码-->
+<script data-no-instant type="text/javascript">
+  <?php $this->options->analysis(); ?>
+</script>
+      </span>
       &copy; <?php echo date("Y");?> Copyright.
     </div>
+
+
   </footer>
   </div><!--end of .app app-header-fixed-->
 
@@ -51,10 +58,6 @@ $(document).ready(function(){
     $('#alllayout').addClass("container");
 });
 <?php endif; ?>
-</script>
-<!--网站统计代码-->
-<script data-no-instant type="text/javascript">
-  <?php $this->options->analysis(); ?>
 </script>
 
 <?php if( !empty($this->options->indexsetup) && in_array('atargetblank',$this->options->indexsetup) ): ?>
