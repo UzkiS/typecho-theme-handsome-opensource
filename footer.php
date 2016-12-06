@@ -58,10 +58,10 @@ $(document).ready(function(){
 </script>>
 
 <?php if( !empty($this->options->indexsetup) && in_array('atargetblank',$this->options->indexsetup) ): ?>
-<script>
+<script data-no-instant type="text/javascript">
     //Add target="_blank" to a tags
     $(document).bind('DOMNodeInserted', function(event) {
-        $('#comments a[href^="http"],.blog-post a[href^="http"]').each(
+        $('#comments a[href^="http"],#postpage a[href^="http"]').each(
             function() {
                 if (!$(this).attr('target')) {
                     $(this).attr('target', '_blank')

@@ -36,7 +36,7 @@
         <li class="active">正文</li>
        </ol>
        <!--博客文章样式 begin with .blog-post-->
-       <div class="blog-post">
+       <div id="postpage" class="blog-post">
         <article class="panel post-2529 post type-post status-publish format-standard has-post-thumbnail hentry category-develop tag-javascript-api tag-148">
         <!--文章页面的头图-->
          <div class="entry-thumbnail" aria-hidden="true"> 
