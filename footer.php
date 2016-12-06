@@ -19,7 +19,7 @@
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" data-no-instant></script>
 <script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js" data-no-instant></script>
 <script data-no-instant src="http://apps.bdimg.com/libs/instantclick/3.0.1/instantclick.min.js"></script>
-<script data-no-instant>InstantClick.init();</script>
+<script data-no-instant>InstantClick.init('mousedown');</script>
 <!--develope本地版本-->
 <!--<script data-no-instant src="<?php $this->options->themeUrl('js/develope/ui-nav.js') ?>"></script>
 <script data-no-instant src="<?php $this->options->themeUrl('js/develope/ui-toggle.js') ?>"></script>
@@ -64,7 +64,7 @@ $(document).ready(function(){
 <script data-no-instant type="text/javascript">
     //Add target="_blank" to a tags
     $(document).bind('DOMNodeInserted', function(event) {
-        $('#comments a[href^="http"],#postpage a[href^="http"]').each(
+        $('.comment-body a[href^="http"],#postpage a[href^="http"]').each(
             function() {
                 if (!$(this).attr('target')) {
                     $(this).attr('target', '_blank')

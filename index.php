@@ -4,7 +4,7 @@
  * 
  * @package handsome 
  * @author 友人C
- * @version 1.1.4
+ * @version 1.1.5
  * @link http://www.ihewro.com
  */
 

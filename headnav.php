@@ -185,13 +185,13 @@
               </li>
               <!--文章RSS订阅-->
               <li>
-                <a href="<?php $this->options->feedUrl(); ?>">
+                <a data-no-instant target="_blank" href="<?php $this->options->feedUrl(); ?>">
                   <i style="position: relative;width: 30px;margin: -11px -10px;margin-right: 0px;overflow: hidden;line-height: 30px;text-align: center;" class="iconfont icon-rss"></i><span>文章RSS</span>
                 </a>
               </li>
               <!--评论RSS订阅-->
               <li>
-                <a href="<?php $this->options->commentsFeedUrl(); ?>"><i style="position: relative;width: 30px;margin: -11px -10px;margin-right: 0px;overflow: hidden;line-height: 30px;text-align: center;" class="iconfont icon-rss1"></i><span>评论RSS</span></a>
+                <a data-no-instant target="_blank" href="<?php $this->options->commentsFeedUrl(); ?>"><i style="position: relative;width: 30px;margin: -11px -10px;margin-right: 0px;overflow: hidden;line-height: 30px;text-align: center;" class="iconfont icon-rss1"></i><span>评论RSS</span></a>
               </li>
               <!--后台管理(登录时候才会显示)-->
               <?php if($this->user->hasLogin()): ?>
@@ -203,7 +203,7 @@
               
               <li class="divider"></li>
               <li>
-                <a href="<?php $this->options->logoutUrl(); ?>">退出</a>
+                <a data-no-instant href="<?php $this->options->logoutUrl(); ?>">退出</a>
               </li>
             </ul>
             <!-- / dropdown(已经登录) -->
