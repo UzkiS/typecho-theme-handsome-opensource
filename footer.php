@@ -55,7 +55,7 @@ $(document).ready(function(){
 <!--网站统计代码-->
 <script data-no-instant type="text/javascript">
   <?php $this->options->analysis(); ?>
-</script>>
+</script>
 
 <?php if( !empty($this->options->indexsetup) && in_array('atargetblank',$this->options->indexsetup) ): ?>
 <script data-no-instant type="text/javascript">
