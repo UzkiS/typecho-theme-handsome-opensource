@@ -43,21 +43,21 @@
   </div>
   <div class="list-group bg-info auto m-b-sm m-b-lg">
     <a href="<?php $this->options->siteUrl(); ?>" class="list-group-item">
-      <i class="fa fa-chevron-right text-muted"></i>
-      <i class="fa fa-fw fa-mail-forward m-r-xs"></i> 回到首页
+      <i class="iconfont icon-chevron text-muted"></i>
+      <i class="iconfont icon-mailforward  icon-fw m-r-xs"></i> 回到首页
     </a>
     <a href="<?php $this->options->siteUrl(); ?>admin/login.php" ui-sref="access.signin" class="list-group-item">
-      <i class="fa fa-chevron-right text-muted"></i>
-      <i class="fa fa-fw fa-sign-in m-r-xs"></i> 登录
+      <i class="iconfont icon-chevron text-muted"></i>
+      <i class="iconfont icon-fw icon-signin m-r-xs"></i> 登录
     </a>
     <a href="<?php $this->options->siteUrl(); ?>register.php" ui-sref="access.signup" class="list-group-item">
-      <i class="fa fa-chevron-right text-muted"></i>
-      <i class="fa fa-fw fa-unlock-alt m-r-xs"></i> 注册
+      <i class="iconfont icon-chevron text-muted"></i>
+      <i class="iconfont icon-fw icon-unlockalt m-r-xs"></i> 注册
     </a>
   </div>
   <div class="text-center" ng-include="'tpl/blocks/page_footer.html'">
     <p>
-  <small class="text-muted">Web app framework base on Bootstrap and AngularJS<br>&copy; 2014</small>
+  <small class="text-muted"><?php $this->options->Indexwords(); ?><br>&copy; <?php echo date("Y");?></small>
 </p>
   </div>
 </div>

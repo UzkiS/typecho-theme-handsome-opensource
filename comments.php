@@ -94,7 +94,7 @@ echo $commentClass;
       </div>
       <!--判断是否登录-->
     <?php if($this->user->hasLogin()): ?>
-    <p>欢迎 <a href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a> 归来！ <a href="<?php $this->options->logoutUrl(); ?>" title="Logout">退出&raquo;</a></p>
+    <p>欢迎 <a data-no-intant target="blank" href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a> 归来！ <a data-no-instant href="<?php $this->options->logoutUrl(); ?>" title="Logout">退出&raquo;</a></p>
     <?php else: ?>
       <div class="row row-sm">
 

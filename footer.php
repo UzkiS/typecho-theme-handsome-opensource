@@ -19,7 +19,16 @@
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" data-no-instant></script>
 <script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js" data-no-instant></script>
 <script data-no-instant src="http://apps.bdimg.com/libs/instantclick/3.0.1/instantclick.min.js"></script>
-<script data-no-instant>InstantClick.init('mousedown');</script>
+
+<script data-no-instant>
+<?php if ( $this->options->preload =='0' ) : ?>
+InstantClick.init('mouseover');
+<?php elseif ( $this->options->preload =='1' ) : ?>
+InstantClick.init('mousedown');
+<?php elseif ( $this->options->preload =='2' ) : ?>
+InstantClick.init('<?php $this->options->delaytime(); ?>');
+<?php endif; ?>
+</script>
 <!--develope本地版本-->
 <!--<script data-no-instant src="<?php $this->options->themeUrl('js/develope/ui-nav.js') ?>"></script>
 <script data-no-instant src="<?php $this->options->themeUrl('js/develope/ui-toggle.js') ?>"></script>

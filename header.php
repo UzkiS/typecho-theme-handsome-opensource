@@ -20,7 +20,7 @@
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- 本地develope版本 -->
-    <!-- 
+  <!--
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/animate.css') ?>" type="text/css" />
   <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('css/iconfont.css') ?>">
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/font.css') ?>" type="text/css" />

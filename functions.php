@@ -213,6 +213,23 @@ input[type=text], textarea {
     padding: 8px 2%;
     width: 44%;
 }
+
+#typecho-option-item-preload-22{
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    background-color: #fff;
+    margin: 8px 1%;
+    padding: 8px 2%;
+    width: 50%;
+    margin-bottom: 40px;
+}
+#typecho-option-item-delaytime-23{
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    background-color: #fff;
+    margin: 8px 1%;
+    padding: 8px 2%;
+    width: 34%;
+    margin-bottom: 40px;
+}
 </style>
 
 	";
@@ -366,6 +383,21 @@ input[type=text], textarea {
     //首页标题后缀
     $titleintro = new Typecho_Widget_Helper_Form_Element_Text('titleintro', NULL, '相逢的人会再相逢', _t('首页标题后缀'), _t('你的博客标题栏博客名称后面的副标题'));
     $form->addInput($titleintro);
+    //instantclick预加载模式
+   $preload = new Typecho_Widget_Helper_Form_Element_Radio('preload',
+        array(
+            '0' => _t('mouseover &emsp;'),
+            '1' => _t('mousedown &emsp;'),
+            '2' => _t('on-mouseover-with-a-delay &emsp;')
+        ),
+
+        //Default choose
+        '2',_t('instantclick预加载模式选择'),_t("<b>mouseover</b>:鼠标悬停在链接上，就开始预加载。<b>mousedown</b>:鼠标点击链接的同时才开始预加载。 <b>on-mouseover-with-a-delay</b>:鼠标悬停在链接上并有一定延迟时间才开始预加载，选中此项，必须设置下面的延迟时间项。")
+    );
+    $form->addInput($preload);
+    //instantclick延迟时间设置
+    $delaytime = new Typecho_Widget_Helper_Form_Element_Text('delaytime', NULL, '70', _t('instantclick延迟时间设置'), _t('只有当你instantclick选择<b>on-mouseover-with-a-delay</b>,才需要配置此项。默认70，官方推荐在50——100之间的整数。'));
+    $form->addInput($delaytime);
 }
 
 // 首页文章缩略图

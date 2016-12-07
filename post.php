@@ -14,13 +14,17 @@
      <div class="col">
     <!--标题下的一排功能信息图标：作者/时间/浏览次数/评论数/分类-->
       <header class="bg-light lter b-b wrapper-md">
-       <h1 class="entry-title m-n font-thin h3 text-black l-h"><?php $this->title() ?></h1>
+       <h1 class="entry-title m-n font-thin h3 text-black l-h"><?php $this->title() ?>
+            <?php if($this->user->hasLogin()):?>
+                <a class="superscript" href="<?php Helper::options()->adminUrl()?>write-post.php?cid=<?=$this->cid ?>" target="_blank"><i class="iconfont icon-pencilsquareo" aria-hidden="true"></i></a>
+            <?php endif?>
+       </h1>
        <!--文章标题下面的小部件-->
        <ul class="entry-meta text-muted list-inline m-b-none small">
        <!--作者-->
         <li class="meta-author"> <i class="iconfont icon-user1" aria-hidden="true"></i> <span class="sr-only">作者：</span> <a class="meta-value" href="<?php $this->author->permalink(); ?>" rel="author"> <?php $this->author(); ?> </a></li>
         <!--发布时间-->
-        <li class="meta-date"> <i class="iconfont icon-weibiaoti5" aria-hidden="true"></i> <span class="sr-only">发布时间：</span> <time class="meta-value" datetime="2016-07-16T17:27:59+00:00"> <?php $this->date('F j, Y'); ?>  </time></li>
+        <li class="meta-date"> <i class="iconfont icon-clocko" aria-hidden="true"></i> <span class="sr-only">发布时间：</span> <time class="meta-value" datetime="2016-07-16T17:27:59+00:00"> <?php $this->date('F j, Y'); ?>  </time></li>
         <!--浏览数-->
         <li class="meta-views"> <i class="iconfont icon-eye" aria-hidden="true"></i> <span class="meta-value"><?php get_post_view($this) ?>次浏览</span></li>
         <!--评论数-->

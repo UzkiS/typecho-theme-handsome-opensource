@@ -24,7 +24,7 @@
                 </a>
                 <div class="clear">
                     <h4 class="h5 l-h"> <a href="<?php $hot->permalink(); ?>" title="<?php $hot->title(); ?>"> <?php $hot->title(); ?> </a></h4>
-                    <small class="text-muted"> <span class="meta-date"> <i class="iconfont icon-weibiaoti5" aria-hidden="true"></i> <span class="sr-only">发布时间：</span> <time class="meta-value" datetime="<?php $hot->date('c'); ?>" itemprop="datePublished"> <?php $hot->date('F j, Y'); ?></time> </span>  </small></div>
+                    <small class="text-muted"> <span class="meta-date"> <i class="iconfont icon-clocko" aria-hidden="true"></i> <span class="sr-only">发布时间：</span> <time class="meta-value" datetime="<?php $hot->date('c'); ?>" itemprop="datePublished"> <?php $hot->date('F j, Y'); ?></time> </span>  </small></div>
             </li>
             <?php endwhile; ?>
          </ul>
@@ -75,7 +75,7 @@
                 </a>
                 <div class="clear">
                     <h4 class="h5 l-h"> <a href="<?php $randomShow->permalink(); ?>" title="<?php $randomShow->title(); ?>"> <?php $randomShow->title(); ?> </a></h4>
-                    <small class="text-muted"> <span class="meta-date"> <i class="iconfont icon-weibiaoti5" aria-hidden="true"></i> <span class="sr-only">发布时间：</span> <time class="meta-value" datetime="<?php $randomShow->date('c'); ?>" itemprop="datePublished"> <?php $randomShow->date('F j, Y'); ?></time> </span>  </small></div>
+                    <small class="text-muted"> <span class="meta-date"> <i class="iconfont icon-clocko" aria-hidden="true"></i> <span class="sr-only">发布时间：</span> <time class="meta-value" datetime="<?php $randomShow->date('c'); ?>" itemprop="datePublished"> <?php $randomShow->date('F j, Y'); ?></time> </span>  </small></div>
             </li>
             <?php endwhile; ?>
          </ul>

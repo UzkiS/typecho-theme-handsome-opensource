@@ -14,7 +14,11 @@
      <div class="col">
     <!--标题下的一排功能信息图标：作者/时间/浏览次数/评论数/分类-->
       <header class="bg-light lter b-b wrapper-md">
-       <h1 class="entry-title m-n font-thin h3 text-black l-h"><?php $this->title() ?></h1>
+       <h1 class="entry-title m-n font-thin h3 text-black l-h"><?php $this->title() ?>
+            <?php if($this->user->hasLogin()):?>
+                <a class="superscript" href="<?php Helper::options()->adminUrl()?>write-page.php?cid=<?=$this->cid ?>" target="_blank"><i class="iconfont icon-pencilsquareo" aria-hidden="true"></i></a>
+            <?php endif?>
+       </h1>
       </header>
       <div class="wrapper-md">
        <ol class="breadcrumb bg-white b-a" itemscope="" itemtype="http://schema.org/WebPage">
