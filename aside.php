@@ -31,8 +31,12 @@
       <?php endif; ?>
       <div class="aside-wrap">
         <div class="navi-wrap">
-          <!-- user --><!--默认隐藏，点击按钮后触发显示-->
+          <!-- user -->
+        <?php if (!empty($this->options->indexsetup) && in_array('show-avatar', $this->options->indexsetup)): ?>
+          <div class="clearfix hidden-xs text-center hide" id="aside-user">
+        <?php else: ?>
           <div class="clearfix hidden-xs text-center hide show" id="aside-user">
+        <?php endif; ?>
             <div class="dropdown wrapper">
               <a href="<?php Helper::options()->siteUrl()?>cross.html">
                 <span class="thumb-lg w-auto-folded avatar m-t-sm">

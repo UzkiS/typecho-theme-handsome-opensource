@@ -70,7 +70,7 @@ $(document).ready(function(){
 </script>
 
 <?php if( !empty($this->options->indexsetup) && in_array('atargetblank',$this->options->indexsetup) ): ?>
-<script data-no-instant type="text/javascript">
+<script type="text/javascript">
     //Add target="_blank" to a tags
     $(document).bind('DOMNodeInserted', function(event) {
         $('.comment-author a,#postpage a[href^="http"]').each(

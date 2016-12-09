@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg">
 <metadata>
-Created by FontForge 20120731 at Wed Dec  7 12:04:16 2016
+Created by FontForge 20120731 at Fri Dec  9 17:28:25 2016
  By admin
 </metadata>
 <defs>
@@ -16,10 +16,10 @@ Created by FontForge 20120731 at Wed Dec  7 12:04:16 2016
     ascent="896"
     descent="-128"
     x-height="792"
-    bbox="-0.0377358 -223 1085 896"
+    bbox="-0.0377358 -223 1097 896"
     underline-thickness="0"
     underline-position="0"
-    unicode-range="U+0078-EA5A"
+    unicode-range="U+0078-EB26"
   />
 <missing-glyph 
  />
@@ -89,6 +89,9 @@ q0 -8 -5.5 -13t-12.5 -5h-988q-7 0 -12.5 5t-5.5 13v110q0 7 5.5 12.5t12.5 5.5h988q
     <glyph glyph-name="clocko" unicode="&#xe6fa;" horiz-adv-x="1025" 
 d="M512 501v-256q0 -8 -5 -13t-13 -5h-183q-8 0 -13 5t-5 13v37q0 8 5 13t13 5h128v201q0 8 5 13t13 5h37q8 0 13 -5t5 -13v0zM750 300q0 85 -42 156.5t-113 113t-156 41.5t-156.5 -42t-113 -113t-41.5 -156t41.5 -156t113 -113t156.5 -42t156 41.5t113 113t42 156.5z
 M878 300q0 -119 -59 -220t-160 -160t-220.5 -59t-220 59t-159.5 160t-59 220t59 220t159.5 160t220 59t220.5 -59t160 -160t59 -220z" />
+    <glyph glyph-name="image" unicode="&#xeb26;" horiz-adv-x="1098" 
+d="M366 567q0 -46 -32 -78t-78 -32t-78 32t-32 77.5t32 78t78 32t78 -32t32 -77.5zM951 347v-256h-805v110l183 183l92 -91l292 292zM1006 750h-915q-7 0 -12.5 -5.5t-5.5 -13.5v-694q0 -8 5.5 -13.5t12.5 -5.5h915q7 0 12.5 5.5t5.5 13.5v694q0 8 -5.5 13.5t-12.5 5.5z
+M1097 731v-694q0 -38 -27 -65t-64 -27h-915q-37 0 -64 27t-27 65v694q0 38 27 65t64 27h915q37 0 64 -27t27 -65z" />
     <glyph glyph-name="angleright" unicode="&#xe6df;" 
 d="M376 578q0 6 5 11l23 23q5 4 11 4t11 -4l217 -217q5 -5 5 -11t-5 -11l-217 -217q-5 -4 -11 -4t-11 4l-23 23q-5 5 -5 11t5 11l183 183l-183 183q-5 5 -5 11z" />
     <glyph glyph-name="chevron" unicode="&#xe617;" 

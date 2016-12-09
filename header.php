@@ -29,8 +29,6 @@
     <!-- 本地compass版本 -->
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/appall.min.css') ?>" type="text/css" />
 
-<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" data-no-instant></script>
-
 <style type="text/css">
   html.bg{
   <?php if ( $this->options->BGtype =='0' ) : ?>

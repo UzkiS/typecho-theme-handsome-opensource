@@ -177,10 +177,21 @@
             <ul class="dropdown-menu animated fadeInRight w">
               <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
                 <div>
-                  <p>I'm a 18 years old but</p>
+                <?php 
+                    $time= date("H",time()+($this->options->timezone - idate("Z")));
+                    $percent= $time/24;
+                    $percent= sprintf("%01.2f", $percent*100).'%';
+                ?> 
+                <?php if($time>=6 && $time<=11): ?>
+                  <p>Good morning, <?php echo $time; ?><?php $this->user->screenName(); ?>.</p>
+                <?php elseif($time>=12 && $time<=17): ?>
+                  <p>Good afternoon, <?php $this->user->screenName(); ?>.</p>
+                <?php else : ?>
+                <p>Good evening, <?php $this->user->screenName(); ?>.</p>
+              <?php endif; ?>
                 </div>
                 <div class="progress progress-xs m-b-none dker">
-                  <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="50%" style="width: 20%"></div>
+                  <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="50%" style="width: <?php echo $percent; ?>"></div>
                 </div>
               </li>
               <!--文章RSS订阅-->

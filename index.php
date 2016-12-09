@@ -4,7 +4,7 @@
  * 
  * @package handsome 
  * @author 友人C
- * @version 1.2.1
+ * @version 1.3.0
  * @link http://www.ihewro.com
  */
 
@@ -49,7 +49,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
             <h2 class="m-t-none"><a href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h2>
             <p class="summary">
-            <?php $this->excerpt(200, '...'); //180就是摘要的字数，...是后缀; ?>
+            <?php $this->excerpt(200, '...'); //200就是摘要的字数，...是后缀; ?>
             </p>
             <div class="line line-lg b-b b-light"></div>
             <div class="text-muted">

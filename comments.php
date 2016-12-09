@@ -1,4 +1,6 @@
-<?php function threadedComments($comments, $options) {
+<?php 
+$GLOBALS['z']  = $this->options->CDNURL;
+function threadedComments($comments, $options) {
     $commentClass = '';
     if ($comments->authorId) {
         if ($comments->authorId == $comments->ownerId) {
@@ -24,7 +26,7 @@ echo $commentClass;
       <div id="div-<?php $comments->theId(); ?>" class="comment-body">
         <?php
         //头像CDN by Rich http://forum.typecho.org/viewtopic.php?f=5&t=6165&p=29961&hilit=gravatar#p29961
-            $host = 'https://secure.gravatar.com';//自定义头像CDN服务器
+            $host = $GLOBALS['z'];//自定义头像CDN服务器
             $url = '/avatar/';//自定义头像目录,一般保持默认即可
             $size = '80';//自定义头像大小
             $rating = Helper::options()->commentsAvatarRating;
