@@ -183,7 +183,7 @@
                     $percent= sprintf("%01.2f", $percent*100).'%';
                 ?> 
                 <?php if($time>=6 && $time<=11): ?>
-                  <p>Good morning, <?php echo $time; ?><?php $this->user->screenName(); ?>.</p>
+                  <p>Good morning, <?php $this->user->screenName(); ?>.</p>
                 <?php elseif($time>=12 && $time<=17): ?>
                   <p>Good afternoon, <?php $this->user->screenName(); ?>.</p>
                 <?php else : ?>
