@@ -5,7 +5,7 @@
  * @package handsome 
  * @author 友人C
  * @version 1.3.1
- * @link http://www.ihewro.com
+ * @link https://github.com/ihewro/typecho-theme-handsome/
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
