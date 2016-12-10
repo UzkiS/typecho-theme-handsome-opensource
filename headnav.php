@@ -152,7 +152,7 @@
                        echo '<a href="#" class="list-group-item"><span class="clear block m-b-none">'.$comment['text'].'<br><small class="text-muted">'.date('Y-n-j H:i:s',$comment['created']+($this->options->timezone - idate("Z"))).'</small></span></a>';
                       }
                   } else {
-                      echo "<li>No Comments</li>";
+                      echo '<a href="#" class="list-group-item"><span class="clear block m-b-none">这是一条默认的说说，如果你看到这条动态，请去后台新建独立页面，地址填写cross,自定义模板选择时光机。具体说明请参见主题的使用攻略。<br><small class="text-muted">'.date("F jS, Y \a\t h:i a",time()+($this->options->timezone - idate("Z"))).'</small></span></a>';
                   }?>
                 </div>
               </div>
