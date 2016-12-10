@@ -14,8 +14,9 @@
             'tag'       =>  _t('标签 %s 下的文章'),
             'author'    =>  _t('%s 发布的文章')
         ), '', ' - '); ?><?php $this->options->title(); ?><?php if ($this->is('index')) : ?> - <?php $this->options->titleintro() ?><?php endif; ?></title>
+    <?php if($this->options->favicon): ?>
     <link rel="icon" type="image/ico" href="<?php $this->options->favicon() ?>">
-
+    <?php endif; ?>
     <!-- 第三方CDN加载CSS -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 

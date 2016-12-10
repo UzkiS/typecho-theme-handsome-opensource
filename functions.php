@@ -380,7 +380,7 @@ input[type=text], textarea {
     $form->addInput($about);
 
     //网站统计代码
-    $analysis = new Typecho_Widget_Helper_Form_Element_Textarea('analysis', NULL, NULL, _t('网站统计代码'), _t('填入如 CNZZ或者Google Analysis 的第三方统计代码.<b>注意：</b>这里面填写的是js代码，而无需"\<\script\>\"标签！'));
+    $analysis = new Typecho_Widget_Helper_Form_Element_Textarea('analysis', NULL, NULL, _t('网站统计代码'), _t('填入如 CNZZ或者Google Analysis 的第三方统计代码.<b>注意：</b>这里面填写的是js代码，<b>而无需"\<\script\>\"标签！！！！！</b>'));
     $form->addInput($analysis);
     //favicon图标
     $favicon = new Typecho_Widget_Helper_Form_Element_Text('favicon', NULL, NULL, _t('favicon 地址'), _t('填入博客 favicon 的地址, 不填则显示主机根目录下的favicon.ico文件'));

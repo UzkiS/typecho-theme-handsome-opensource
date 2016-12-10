@@ -84,7 +84,7 @@ $this->need('header.php');
             </a>
             <div class="clear">
               <div><a href>Email</a></div>
-              <small class="text-muted"><?php $this->options->socialemail() ?></small>
+              <small class="text-muted"><?php if ($this->options->socialemail): ?><?php $this->options->socialemail() ?><?php else: ?>外观设置——输入email地址<?php endif; ?></small>
             </div>
           </li>
           <li class="list-group-item">
@@ -94,7 +94,7 @@ $this->need('header.php');
             </a>
             <div class="clear">
               <div><a href>Tencent QQ</a></div>
-              <small class="text-muted"><?php $this->options->socialqq() ?></small>
+              <small class="text-muted"><?php if ($this->options->socialqq): ?><?php $this->options->socialqq() ?><?php else: ?>外观设置——输入QQ号码<?php endif; ?></small>
             </div>
           </li>
           <li class="list-group-item">
@@ -104,7 +104,7 @@ $this->need('header.php');
             </a>
             <div class="clear">
               <div><a href>Sina Weibo</a></div>
-              <small class="text-muted"><?php $this->options->socialweibo() ?></small>
+              <small class="text-muted"><?php if ($this->options->socialweibo): ?><?php $this->options->socialweibo() ?><?php else: ?>外观设置——输入微博ID<?php endif; ?></small>
             </div>
           </li>
           <li class="list-group-item">
@@ -114,7 +114,7 @@ $this->need('header.php');
             </a>
             <div class="clear">
               <div><a href>网易云音乐</a></div>
-              <small class="text-muted"><?php $this->options->socialmusic() ?></small>
+              <small class="text-muted"><?php if ($this->options->socialmusic): ?><?php $this->options->socialmusic() ?><?php else: ?>外观设置——输入网易云音乐ID<?php endif; ?></small>
             </div>
           </li>
         </ul>
