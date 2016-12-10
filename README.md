@@ -89,4 +89,4 @@ handsome的完整使用依赖了两个外部插件（插件后续版本会精简
 2. 主题只会在电脑版的右下页脚有一个版权信息，手机端是是隐藏掉的，所以希望保留页脚版权信息啦，否则我会伤心呢
 
 
-  [1]: http://7xvwd6.com1.z0.glb.clouddn.com/pic2.png
+  [1]: http://7xlk7n.com1.z0.glb.clouddn.com/2016/12/2960973115.png
