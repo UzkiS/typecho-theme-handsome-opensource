@@ -16,9 +16,9 @@
   </div><!--end of .app app-header-fixed-->
 
 <!--CDN加载-->
-<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" data-no-instant></script>
-<script src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js" data-no-instant></script>
-<script data-no-instant src="http://apps.bdimg.com/libs/instantclick/3.0.1/instantclick.min.js"></script>
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" data-no-instant></script>
+<script src="//apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js" data-no-instant></script>
+<script data-no-instant src="//apps.bdimg.com/libs/instantclick/3.0.1/instantclick.min.js"></script>
 
 <script data-no-instant>
 <?php if ( $this->options->preload =='0' ) : ?>
