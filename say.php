@@ -45,7 +45,7 @@ echo $commentClass;
               </span>
             </div>
             <div class="m-b">
-              <div class="m-b"><?php $comments->content(); ?></div>
+              <div class="m-b words_contents"><?php $comments->content(); ?></div>
             </div>
           </div>
 
@@ -53,7 +53,7 @@ echo $commentClass;
     </div><!--匹配`自定义评论的代码结构`下面的div标签-->
 <?php } ?>
 
-<div id="comments">
+<div id="comments" class="smalltalk">
     <!--如果允许评论，会出现评论框和个人信息的填写-->
     <?php if($this->allow('comment')): ?>
       <!--判断是否登录，只有登陆者才有权利发表说说-->
@@ -68,6 +68,9 @@ echo $commentClass;
       <div class="panel-footer bg-light lter">
         <button type="submit" name="submit" id="submit" class="submit btn btn-info pull-right btn-sm">
           <span class="text">发表新鲜事</span>
+          <span class="text-active">提交中...
+            <i class="icon-spin iconfont icon-spinner hide" id="spin"></i>
+          </span>
         </button>
             <ul class="nav nav-pills nav-sm">
             <li><a id="image-insert" ><i class="iconfont icon-image text-muted"></i></a></li>

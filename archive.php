@@ -39,6 +39,8 @@
       <?php while($this->next()): ?>      
         <div class="panel">
          <!-- 文章页面头图-->
+         <?php if ($this->options->RandomPicChoice !=='0' && !empty($this->options->indexsetup) && in_array('NoRandomPic-index', $this->options->indexsetup)): ?>
+        <?php else: ?>
           <div id="index-post-img">
         <?php if (array_key_exists('thumb',unserialize($this->___fields()))): ?>
           <img src="<?php echo $this->fields->thumb; ?>" class="img-full">
@@ -48,14 +50,18 @@
         <?php endif; ?>
         <?php endif; ?>
       </div>
+      <?php endif; ?>
           <!-- 文章内容-->
           <div class="wrapper-lg">
           
 
             <h2 class="m-t-none"><a href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h2>
-            <div>
-            <?php $this->excerpt(200, '...'); //180就是摘要的字数，...是后缀; ?>
-            </div>
+         <?php if (!empty($this->options->indexsetup) && in_array('NoSummary-index', $this->options->indexsetup)): ?>
+        <?php else: ?>
+            <p class="summary">
+            <?php $this->excerpt(200, '...'); //200就是摘要的字数，...是后缀; ?>
+            </p>
+        <?php endif; ?>
             <div class="line line-lg b-b b-light"></div>
             <div class="text-muted">
               <i class="iconfont icon-user1 text-muted"></i> <a href="<?php $this->author->permalink(); ?>" class="m-r-sm"><?php $this->author(); ?> </a>

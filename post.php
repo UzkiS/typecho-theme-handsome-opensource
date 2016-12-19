@@ -43,6 +43,8 @@
        <div id="postpage" class="blog-post">
         <article class="panel post-2529 post type-post status-publish format-standard has-post-thumbnail hentry category-develop tag-javascript-api tag-148">
         <!--文章页面的头图-->
+         <?php if ($this->options->RandomPicChoice !=='0' && !empty($this->options->indexsetup) && in_array('NoRandomPic-post', $this->options->indexsetup)): ?>
+        <?php else: ?>
          <div class="entry-thumbnail" aria-hidden="true"> 
         <?php if (array_key_exists('thumb',unserialize($this->___fields()))): ?>
           <img width="900" height="300" src="<?php echo $this->fields->thumb; ?>" class="img-responsive center-block wp-post-image" />
@@ -52,6 +54,7 @@
         <?php endif; ?>
         <?php endif; ?>
          </div>
+       <?php endif; ?>
          <!--文章内容-->
          <div class="wrapper-lg">
           <div class="entry-content l-h-2x">

@@ -19,7 +19,7 @@ $this->need('header.php');
 
 <div class="hbox hbox-auto-xs hbox-auto-sm">
   <div class="col">
-    <div style="background:url(<?php $this->options->themeUrl('img/c4.png') ?>) center center; background-size:cover">
+    <div style="background:url(<?php $this->options->timepic(); ?>) center center; background-size:cover">
       <div class="wrapper-lg bg-white-opacity">
         <div class="row m-t">
           <div class="col-sm-7">
@@ -65,7 +65,7 @@ $this->need('header.php');
     </div>
     <div class="wrapper bg-white b-b">
       <ul class="nav nav-pills nav-sm">
-        <li class="active"><a href>我的动态</a></li>
+        <li class="active"><a>我的动态</a></li>
       </ul>
     </div>
     <div class="padder">

@@ -89,7 +89,6 @@
         <!-- / buttons -->
 
 
-
         <!-- search form -->
         <form method="post" action="" class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
           <div class="form-group">
@@ -149,7 +148,7 @@
                           ->limit($limit));
                    
                       foreach ($comments AS $comment) {
-                       echo '<a href="#" class="list-group-item"><span class="clear block m-b-none">'.$comment['text'].'<br><small class="text-muted">'.date('Y-n-j H:i:s',$comment['created']+($this->options->timezone - idate("Z"))).'</small></span></a>';
+                       echo '<a href="#" class="list-group-item"><span class="clear block m-b-none words_contents">'.$comment['text'].'<br><small class="text-muted">'.date('Y-n-j H:i:s',$comment['created']+($this->options->timezone - idate("Z"))).'</small></span></a>';
                       }
                   } else {
                       echo '<a href="#" class="list-group-item"><span class="clear block m-b-none">这是一条默认的说说，如果你看到这条动态，请去后台新建独立页面，地址填写cross,自定义模板选择时光机。具体说明请参见主题的使用攻略。<br><small class="text-muted">'.date("F jS, Y \a\t h:i a",time()+($this->options->timezone - idate("Z"))).'</small></span></a>';

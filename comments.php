@@ -123,7 +123,9 @@ echo $commentClass;
       <div class="form-group">
         <button type="submit" name="submit" id="submit" class="submit btn btn-success padder-lg">
           <span class="text">发表评论</span>
+          <span class="text-active">提交中...</span>
         </button>
+        <i class="icon-spin iconfont icon-spinner hide" id="spin"></i>
         <input type="hidden" name="comment_post_ID" value="448" id="comment_post_ID">
         <input type="hidden" name="comment_parent" id="comment_parent" value="0">
         </div>

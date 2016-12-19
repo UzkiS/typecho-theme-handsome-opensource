@@ -49,7 +49,7 @@
                   <img alt="" src="<?php echo $avatar ?>" class="avatar-40 photo img-circle" height="40" width="40"></a>
               </a>
               <a href="<?php $comments->permalink(); ?>" class="text-muted"> 
-                  <i class="fa fa-comment-o pull-right m-t-sm text-sm" title="详情" aria-hidden="true" data-toggle="tooltip" data-placement="auto left"></i>        
+                  <i class="iconfont icon-commento pull-right m-t-sm text-sm" title="详情" aria-hidden="true" data-toggle="tooltip" data-placement="auto left"></i>        
                   <span class="sr-only">评论详情</span> 
               </a>
               <div class="clear">
@@ -90,7 +90,8 @@
                ->parse('<li class="list-group-item"> <a href="{permalink}"> <span class="badge pull-right">{count}</span>{name}</a></li>'); ?>
        </ul>
       </section>
-      <!--循环输出标签-->
+      <!--循环输出标签(在非文章页面显示)-->
+      <?php //if (!($this->is('post'))) : ?>
       <section id="tag_cloud-2" class="widget widget_tag_cloud wrapper-md clear">
        <h3 class="widget-title m-t-none text-md">标签云</h3>
        <div class="tags l-h-2x"> 
@@ -102,4 +103,19 @@
         <?php endif; ?>
        </div>
       </section>
+    <?php //else: ?>
+    <!--下下个版本更新目录树吧~~~~~
+      <section id="tag_cloud-2" class="widget widget_tag_cloud wrapper-md clear">
+       <h3 class="widget-title m-t-none text-md">文章目录</h3>
+       <div class="tags l-h-2x"> 
+       <?php //Typecho_Widget::widget('Widget_Metas_Tag_Cloud','ignoreZeroCount=1&limit=30')->to($tags); ?>
+        <?php //if($tags->have()): ?>
+            <?php //while ($tags->next()): ?>
+            <a href="<?php //$tags->permalink();?>" class="label bg-info" title="<?php //$tags->name(); ?>" data-toggle="tooltip"><?php //$tags->name(); ?></a> 
+            <?php //endwhile; ?>
+        <?php //endif; ?>
+       </div>
+      </section>
+      -->
+    <?php //endif; ?>
      </aside>
