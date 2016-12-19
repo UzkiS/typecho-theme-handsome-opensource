@@ -463,7 +463,7 @@ input[type=text], textarea {
     gravatar由于国内被墙，推荐使用https://secure.gravatar.com 或者https://cdn.v2ex.com/gravatar 镜像源。你可以使用你自己的镜像源(末尾不要加斜杠！！！)"));
     $form->addInput($CDNURL);
     //时光机页面的头图
-    $timepic = new Typecho_Widget_Helper_Form_Element_Text('timepic', NULL, 'http://www.ihewro.com/usr/themes/handsome/img/c4.png', _t('时光机页面的头图'), _t("填写图片地址，在时光机页面cross.html独立页面的头图，图片大小切勿过大，控制在100K左右为佳。"));
+    $timepic = new Typecho_Widget_Helper_Form_Element_Text('timepic', NULL, 'https://o9o5ixzu2.qnssl.com/background3.jpg', _t('时光机页面的头图'), _t("填写图片地址，在时光机页面cross.html独立页面的头图，图片大小切勿过大，控制在100K左右为佳。"));
     $form->addInput($timepic);
 
     //加载进度条颜色
