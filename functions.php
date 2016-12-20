@@ -270,6 +270,14 @@ input[type=text], textarea {
     padding: 8px 2%;
     width: 94%;
 }
+
+#typecho-option-item-ChromeThemeColor-32{
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    background-color: #fff;
+    margin: 8px 1%;
+    padding: 8px 2%;
+    width: 94%;
+}
 </style>
 
 	";
@@ -477,6 +485,9 @@ input[type=text], textarea {
     //回调函数
     $ChangeAction = new Typecho_Widget_Helper_Form_Element_Textarea('ChangeAction', NULL, NULL, _t('instantclick回调函数'), _t('本主题使用instantclick.js 技术，instantclick提供丰富的回调函数接口，方便在通过instantclick跳转页面时候再次调用函数，避免了由于instantclick导致的函数失效。最常用的是change函数，当页面跳转的同时就会触发该函数，在这里填入相应的事件以便回调（与pjax的send函数相似）。</br><span style="color: #f00">注意</span>：如果你没有修改主题源码，是不需要填写此项的。如果你不明白该项，建议不要填写。'));
     $form->addInput($ChangeAction);
+    //chrome 安卓选项卡颜色
+    $ChromeThemeColor = new Typecho_Widget_Helper_Form_Element_Text('ChromeThemeColor', NULL, _t('#3a3f51'), _t('Android Chrome 地址栏颜色'), _t('安卓系统下的chrome浏览器顶部的地址栏颜色，请填写正确的颜色代码。'));
+    $form->addInput($ChromeThemeColor);
 
 }
 

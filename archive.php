@@ -39,6 +39,9 @@
       <?php while($this->next()): ?>      
         <div class="panel">
          <!-- 文章页面头图-->
+        <?php if($this->fields->thumb == "no"): ?>
+          <!--自定义字段为no,则不输出头图-->
+        <?php else: ?>
          <?php if ($this->options->RandomPicChoice !=='0' && !empty($this->options->indexsetup) && in_array('NoRandomPic-index', $this->options->indexsetup)): ?>
         <?php else: ?>
           <div id="index-post-img">
@@ -50,6 +53,7 @@
         <?php endif; ?>
         <?php endif; ?>
       </div>
+      <?php endif; ?>
       <?php endif; ?>
           <!-- 文章内容-->
           <div class="wrapper-lg">

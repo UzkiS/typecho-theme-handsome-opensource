@@ -54,7 +54,26 @@
               </a>
               <!-- dropdown -->
               <ul class="dropdown-menu animated fadeInRight w hidden-folded">
-              </li>
+                <li class="wrapper b-b m-b-sm bg-info m-t-n-xs">
+                  <span class="arrow top hidden-folded arrow-info"></span>
+                  <div>
+                <?php 
+                    $time= date("H",time()+($this->options->timezone - idate("Z")));
+                    $percent= $time/24;
+                    $percent= sprintf("%01.2f", $percent*100).'%';
+                ?> 
+                <?php if($time>=6 && $time<=11): ?>
+                  <p>Good morning, <?php $this->user->screenName(); ?>.</p>
+                <?php elseif($time>=12 && $time<=17): ?>
+                  <p>Good afternoon, <?php $this->user->screenName(); ?>.</p>
+                <?php else : ?>
+                <p>Good evening, <?php $this->user->screenName(); ?>.</p>
+                <?php endif; ?>
+                  </div>
+                  <div class="progress progress-xs m-b-none dker">
+                    <div class="progress-bar bg-white" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
+                  </div>
+                </li>
               <!--文章RSS订阅-->
               <li>
                 <a href="<?php $this->options->feedUrl(); ?>">

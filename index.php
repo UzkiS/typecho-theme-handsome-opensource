@@ -4,7 +4,7 @@
  * 
  * @package handsome 
  * @author 友人C
- * @version 1.4.1
+ * @version 1.5.0
  * @link https://github.com/ihewro/typecho-theme-handsome/
  */
 
@@ -35,6 +35,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
       <?php while($this->next()): ?>      
         <div class="panel">
          <!--首页文章页面头图-->
+        <?php if($this->fields->thumb == "no"): ?>
+          <!--自定义字段为no,则不输出头图-->
+        <?php else: ?>
          <?php if (!empty($this->options->indexsetup) && in_array('NoRandomPic-index', $this->options->indexsetup)): ?>
         <?php else: ?>
           <div id="index-post-img">
@@ -49,6 +52,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </a>
       </div>
       <?php endif; ?>
+       <?php endif; ?>
           <!--首页文章内容-->
           <div class="wrapper-lg">
           
