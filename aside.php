@@ -63,15 +63,15 @@
                     $percent= sprintf("%01.2f", $percent*100).'%';
                 ?> 
                 <?php if($time>=6 && $time<=11): ?>
-                  <p>Good morning, <?php $this->user->screenName(); ?>.</p>
+                  <p>Good morning, <?php $this->options->BlogName(); ?>.</p>
                 <?php elseif($time>=12 && $time<=17): ?>
-                  <p>Good afternoon, <?php $this->user->screenName(); ?>.</p>
+                  <p>Good afternoon, <?php $this->options->BlogName(); ?>.</p>
                 <?php else : ?>
-                <p>Good evening, <?php $this->user->screenName(); ?>.</p>
+                <p>Good evening, <?php $this->options->BlogName(); ?>.</p>
                 <?php endif; ?>
                   </div>
                   <div class="progress progress-xs m-b-none dker">
-                    <div class="progress-bar bg-white" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
+                    <div class="progress-bar bg-white" data-toggle="tooltip" data-original-title="<?php echo $percent; ?>" style="width: <?php echo $percent; ?>"></div>
                   </div>
                 </li>
               <!--文章RSS订阅-->

@@ -190,7 +190,7 @@
               <?php endif; ?>
                 </div>
                 <div class="progress progress-xs m-b-none dker">
-                  <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="50%" style="width: <?php echo $percent; ?>"></div>
+                  <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="<?php echo $percent; ?>" style="width: <?php echo $percent; ?>"></div>
                 </div>
               </li>
               <!--文章RSS订阅-->

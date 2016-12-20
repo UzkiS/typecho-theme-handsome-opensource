@@ -45,6 +45,7 @@
          <?php if ($this->options->RandomPicChoice !=='0' && !empty($this->options->indexsetup) && in_array('NoRandomPic-index', $this->options->indexsetup)): ?>
         <?php else: ?>
           <div id="index-post-img">
+          <a href="<?php $this->permalink() ?>">
         <?php if (array_key_exists('thumb',unserialize($this->___fields()))): ?>
           <img src="<?php echo $this->fields->thumb; ?>" class="img-full">
         <?php else: ?>
@@ -52,6 +53,7 @@
           <img src="<?php echo $thumb ?>" class="img-full">
         <?php endif; ?>
         <?php endif; ?>
+          </a>
       </div>
       <?php endif; ?>
       <?php endif; ?>
