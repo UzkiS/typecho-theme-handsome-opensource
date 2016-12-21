@@ -32,6 +32,8 @@
   
     <!-- 本地compass版本 -->
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/appall.min.css') ?>" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('css/player.css'); ?>">
+
 <style type="text/css">
 <?php if($this->options->progresscolor) : ?>
   #instantclick-bar {
@@ -177,7 +179,7 @@
     
   <!--网站统计代码-->
 <script data-no-instant type="text/javascript">
-<?php $this->options->analytics(); ?>
+<?php $this->options->analysis(); ?>
 </script>
 
 </head>
