@@ -1,8 +1,5 @@
   <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 
-  <!--引入 BufannaoCms 插件。作者：不烦恼。版本：1.0.0-->
-  <?php BufannaoCms_Plugin::hotShow()->to($hot); ?>
-
      <aside class="col w-md bg-white-only b-l bg-auto no-border-xs" role="complementary">
       <section id="tabs-4" class="widget widget_tabs clear">
        <div class="nav-tabs-alt no-js-hide">
@@ -17,16 +14,7 @@
         <div id="widget-tabs-4-hots" class="tab-pane wrapper-md active" role="tabpanel">
          <h3 class="widget-title m-t-none text-md">热门文章</h3>
          <ul class="list-group no-bg no-borders pull-in m-b-none">
-            <?php while($hot->next()): ?>
-            <li class="list-group-item">
-                <a href="<?php $hot->permalink(); ?>" class="pull-left thumb-sm m-r">
-                <img style="height: 40px!important;width: 40px!important;" src="<?php echo showThumbnail2($hot) ?>" class="img-circle wp-post-image">
-                </a>
-                <div class="clear">
-                    <h4 class="h5 l-h"> <a href="<?php $hot->permalink(); ?>" title="<?php $hot->title(); ?>"> <?php $hot->title(); ?> </a></h4>
-                    <small class="text-muted"> <span class="meta-date"> <i class="iconfont icon-clocko" aria-hidden="true"></i> <span class="sr-only">发布时间：</span> <time class="meta-value" datetime="<?php $hot->date('c'); ?>" itemprop="datePublished"> <?php $hot->date('F j, Y'); ?></time> </span>  </small></div>
-            </li>
-            <?php endwhile; ?>
+          <?php TePostViews_Plugin::outputHotPosts($this) ?>
          </ul>
         </div>
         <!--最新评论-->
@@ -67,17 +55,7 @@
         <div id="widget-tabs-4-random" class="tab-pane wrapper-md no-js-show" role="tabpanel">
          <h3 class="widget-title m-t-none text-md">随机文章</h3>
          <ul class="list-group no-bg no-borders pull-in m-b-none">
-           <?php BufannaoCms_Plugin::randomShow()->to($randomShow); ?>
-            <?php while($randomShow->next()): ?>
-            <li class="list-group-item">
-                <a href="<?php $randomShow->permalink(); ?>" class="pull-left thumb-sm m-r">
-                <img style="height: 40px!important;width: 40px!important;" src="<?php echo showThumbnail2($randomShow) ?>" class="img-circle wp-post-image">
-                </a>
-                <div class="clear">
-                    <h4 class="h5 l-h"> <a href="<?php $randomShow->permalink(); ?>" title="<?php $randomShow->title(); ?>"> <?php $randomShow->title(); ?> </a></h4>
-                    <small class="text-muted"> <span class="meta-date"> <i class="iconfont icon-clocko" aria-hidden="true"></i> <span class="sr-only">发布时间：</span> <time class="meta-value" datetime="<?php $randomShow->date('c'); ?>" itemprop="datePublished"> <?php $randomShow->date('F j, Y'); ?></time> </span>  </small></div>
-            </li>
-            <?php endwhile; ?>
+          <?php theme_random_posts($this);?>
          </ul>
         </div>
        </div>

@@ -1,6 +1,11 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
+function themeInit($archive)
+{
+    Helper::options()->commentsMaxNestingLevels = 999;
+}
+
 function themeConfig($form) {
 	echo "
     
@@ -9,22 +14,18 @@ function themeConfig($form) {
     ::-webkit-scrollbar-track {
         background-color: rgba(255,255,255,0);
     }
-
     ::-webkit-scrollbar {
         width: 6px;
         background-color: rgba(255,255,255,0);
     }
-
     ::-webkit-scrollbar-thumb {
         border-radius: 3px;
         background-color: rgba(193,193,193,1);
     }
 }
-
 .row {
     margin: 0px;
 }
-
 #use-intro {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
     background-color: #fff;
@@ -152,6 +153,12 @@ input[type=text], textarea {
     right: 32px;
     bottom: 32px;
 }
+.typecho-foot {
+    padding: 16px 40px;
+    color: rgb(158, 158, 158);
+    background-color: rgb(66, 66, 66);
+    margin-top: 80px;
+}
 @media screen and (max-width: 480px){  
 .typecho-option {
     width: 94% !important;
@@ -246,37 +253,48 @@ input[type=text], textarea {
     width: 29%;
     margin-bottom: 40px;
 }
-#typecho-option-item-RandomPicAmnt-24,#typecho-option-item-RandomPicAmnt2-25,#typecho-option-item-RandomPicChoice-26 {
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
-    background-color: #fff;
-    margin: 8px 1%;
-    padding: 8px 2%;
-    width: 27.333%;
-    margin-bottom: 40px;
-}
-#typecho-option-item-CDNURL-27, #typecho-option-item-timepic-28,#typecho-option-item-progresscolor-29 {
+#typecho-option-item-RandomPicAmnt-24,#typecho-option-item-RandomPicAmnt2-25,#typecho-option-item-CDNURL-27, #typecho-option-item-timepic-28 {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     background-color: #fff;
     margin: 8px 1%;
     padding: 8px 2%;
-    width: 27.333%;
-    margin-bottom: 40px;
+    width: 44%;
 }
-
-#typecho-option-item-BottomInfo-30,#typecho-option-item-ChangeAction-31{
+#typecho-option-item-RandomPicChoice-26 {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     background-color: #fff;
     margin: 8px 1%;
     padding: 8px 2%;
     width: 94%;
 }
-
+#typecho-option-item-progresscolor-29,#typecho-option-item-BottomInfo-30,#typecho-option-item-ChangeAction-31{
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    background-color: #fff;
+    margin: 8px 1%;
+    padding: 8px 2%;
+    width: 94%;
+}
 #typecho-option-item-ChromeThemeColor-32{
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     background-color: #fff;
     margin: 8px 1%;
     padding: 8px 2%;
     width: 94%;
+}
+#typecho-option-item-musiclist-33 {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    background-color: #fff;
+    margin: 8px 1%;
+    padding: 8px 2%;
+    width: 94%;
+}
+#typecho-option-item-isautoplay-34, #typecho-option-item-ismobilehide-35 {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    background-color: #fff;
+    margin: 8px 1%;
+    padding: 8px 2%;
+    width: 44%;
+    margin-bottom: 40px;
 }
 </style>
 
@@ -488,9 +506,34 @@ input[type=text], textarea {
     //chrome 安卓选项卡颜色
     $ChromeThemeColor = new Typecho_Widget_Helper_Form_Element_Text('ChromeThemeColor', NULL, _t('#3a3f51'), _t('Android Chrome 地址栏颜色'), _t('安卓系统下的chrome浏览器顶部的地址栏颜色，请填写正确的颜色代码。'));
     $form->addInput($ChromeThemeColor);
+    
+    //播放器音乐
+    $musiclist = new Typecho_Widget_Helper_Form_Element_Textarea('musiclist', NULL,'{title:"晚安；）",artist:"性人盒",mp3:"//o9o5ixzu2.qnssl.com/wanan.mp3",cover:"//o9o5ixzu2.qnssl.com/7975857349674458.jpg",},
+{title:"远山",artist:"末小皮",mp3:"//o9o5ixzu2.qnssl.com/%E8%BF%9C%E5%B1%B1.mp3",cover:"//o9o5ixzu2.qnssl.com/8978611952438381.jpg",},', _t('音乐播放器的音乐列表'), _t('格式: {title:"xxx", artist:"xxx", mp3:"http:xxxx"} ，每个歌曲之间用英文,隔开。请保证歌曲列表里至少有一首歌！'));
+    $form->addInput($musiclist);
+
+    //音乐播放器是否自动播放
+   $isautoplay = new Typecho_Widget_Helper_Form_Element_Radio('isautoplay',
+        array(
+            '0' => _t(' 不自动播放'),
+            '1' => _t('自动播放')
+        ),
+        //Default choose
+        '0',_t('音乐播放器播放设置'),_t("自动播放指打开页面会自动播放音乐")
+    );
+    $form->addInput($isautoplay);
+    //音乐播放器手机端是否隐藏
+   $ismobilehide = new Typecho_Widget_Helper_Form_Element_Radio('ismobilehide',
+        array(
+            '0' => _t(' 隐藏'),
+            '1' => _t('不隐藏')
+        ),
+        //Default choose
+        '1',_t('音乐播放器手机端是否隐藏'),_t("默认不隐藏")
+    );
+    $form->addInput($ismobilehide);
 
 }
-
 // 首页文章缩略图
 
 function showThumbnail($widget)
@@ -559,37 +602,6 @@ function showThumbnail2($widget)
 return $random;
 }
 
-
-/*文章阅读次数含cookie 代码来自“youdu”主题*/
-function get_post_view($archive)
-{
-    $cid    = $archive->cid;
-    $db     = Typecho_Db::get();
-    $prefix = $db->getPrefix();
-    if (!array_key_exists('views', $db->fetchRow($db->select()->from('table.contents')))) {
-        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `views` INT(10) DEFAULT 0;');
-        echo 0;
-        return;
-    }
-    $row = $db->fetchRow($db->select('views')->from('table.contents')->where('cid = ?', $cid));
-    if ($archive->is('single')) {
- $views = Typecho_Cookie::get('extend_contents_views');
-        if(empty($views)){
-            $views = array();
-        }else{
-            $views = explode(',', $views);
-        }
-if(!in_array($cid,$views)){
-       $db->query($db->update('table.contents')->rows(array('views' => (int) $row['views'] + 1))->where('cid = ?', $cid));
-array_push($views, $cid);
-            $views = implode(',', $views);
-            Typecho_Cookie::set('extend_contents_views', $views); //记录查看cookie
-        }
-    }
-    echo $row['views'];
-}
-
-
 /**
 * 显示上一篇
 *
@@ -649,3 +661,63 @@ echo $link;
 }
 }
 
+//随机显示文章
+function theme_random_posts($random){
+$defaults = array(
+'number' => 5, //输出文章条数
+'xformat' => '<li><a href="{permalink}">{title}</a></li>'
+);
+$db = Typecho_Db::get();
+ 
+$sql = $db->select()->from('table.contents')
+->where('status = ?','publish')
+->where('type = ?', 'post')
+->limit($defaults['number'])
+->order('RAND()');
+ 
+$result = $db->fetchAll($sql);
+foreach($result as $val){
+$val = Typecho_Widget::widget('Widget_Abstract_Contents')->filter($val);
+echo '<li class="list-group-item">
+                <a href="' . $val['permalink'] . '" class="pull-left thumb-sm m-r">
+                <img style="height: 40px!important;width: 40px!important;" src="'.showThumbnail2($random).'" class="img-circle wp-post-image">
+                </a>
+                <div class="clear">
+                    <h4 class="h5 l-h"> <a href="' . $val['permalink'] . '" title="' . $val['title'] . '"> ' . $val['title'] . ' </ a></h4>
+                    <small class="text-muted">
+                    <span class="meta-views"> <i class="iconfont icon-comments" aria-hidden="true"></i> <span class="sr-only">评论数：</span> <span class="meta-value">'.$val['commentsNum'].'</span> 
+                    </span>  
+                    <span class="meta-date m-l-sm"> <i class="iconfont icon-eye" aria-hidden="true"></i> <span class="sr-only">浏览次数:</span> <span class="meta-value">'.$val['views'].'</span> 
+                    </span> 
+                    </small>
+                    </div>
+            </li>';
+}
+}
+
+//获取评论的锚点链接
+function get_comment_at($coid)
+{
+    $db   = Typecho_Db::get();
+    $prow = $db->fetchRow($db->select('parent')->from('table.comments')
+                                 ->where('coid = ? AND status = ?', $coid, 'approved'));
+    $parent = $prow['parent'];
+    if ($parent != "0") {
+        $arow = $db->fetchRow($db->select('author')->from('table.comments')
+                                     ->where('coid = ? AND status = ?', $parent, 'approved'));
+        $author = $arow['author'];
+        $href   = '<a href="#comment-' . $parent . '">@' . $author . '</a>';
+        echo $href;
+    } else {
+        echo '';
+    }
+
+}
+//输出评论内容(不带p标签)
+function get_filtered_comment($coid){
+    $db   = Typecho_Db::get();
+    $rs=$db->fetchRow($db->select('text')->from('table.comments')
+                                 ->where('coid = ? AND status = ?', $coid, 'approved'));
+    $content=$rs['text'];
+    echo $content;
+}

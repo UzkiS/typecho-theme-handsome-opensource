@@ -6,7 +6,7 @@
 	<!-- / aside -->
 
   	<!-- content -->
-	<div id="content" class="app-content"> 
+	<div id="content" class="app-content markdown-body"> 
    <a href="#" class="off-screen-toggle hide" data-toggle-class=".app-aside=off-screen"></a>
    <main class="app-content-body">
     <div class="hbox hbox-auto-xs hbox-auto-sm">
@@ -22,20 +22,20 @@
        <!--文章标题下面的小部件-->
        <ul class="entry-meta text-muted list-inline m-b-none small">
        <!--作者-->
-        <li class="meta-author"> <i class="iconfont icon-user1" aria-hidden="true"></i> <span class="sr-only">作者：</span> <a class="meta-value" href="<?php $this->author->permalink(); ?>" rel="author"> <?php $this->author(); ?> </a></li>
+        <li class="meta-author"><i class="iconfont icon-user1" aria-hidden="true"></i> <span class="sr-only">作者：</span> <a class="meta-value" href="<?php $this->author->permalink(); ?>" rel="author"> <?php $this->author(); ?></a></li>
         <!--发布时间-->
-        <li class="meta-date"> <i class="iconfont icon-clocko" aria-hidden="true"></i> <span class="sr-only">发布时间：</span> <time class="meta-value" datetime="2016-07-16T17:27:59+00:00"> <?php $this->date('F j, Y'); ?>  </time></li>
+        <li class="meta-date"><i class="iconfont icon-clocko" aria-hidden="true"></i> <span class="sr-only">发布时间：</span> <time class="meta-value"><?php $this->date('Y 年 m 月 d 日'); ?></time></li>
         <!--浏览数-->
-        <li class="meta-views"> <i class="iconfont icon-eye" aria-hidden="true"></i> <span class="meta-value"><?php get_post_view($this) ?>次浏览</span></li>
+        <li class="meta-views"><i class="iconfont icon-eye" aria-hidden="true"></i> <span class="meta-value"><?php $this->views(); ?>次浏览</span></li>
         <!--评论数-->
-        <li class="meta-comments"> <i class="iconfont icon-comments" aria-hidden="true"></i><?php $this->commentsNum(_t(' 暂无评论'), _t(' 1 条评论'), _t(' %d 条评论')); ?></li>
-        <!--标签-->        
-        <li class="meta-tags"> <i class="iconfont icon-tags" aria-hidden="true"></i> <span class="sr-only">标签：</span> <span class="meta-value"><?php $this->tags(' ', true, 'none'); ?></span></li>
+        <li class="meta-comments"><i class="iconfont icon-comments" aria-hidden="true"></i><a class="meta-value" href="#comments"><?php $this->commentsNum(_t(' 暂无评论'), _t(' 1 条评论'), _t(' %d 条评论')); ?></a></li>
+        <!--分类-->        
+        <li class="meta-categories"><i class="iconfont icon-tags" aria-hidden="true"></i> <span class="sr-only">分类：</span> <span class="meta-value"><?php $this->category(' '); ?></span></li>
        </ul>
       </header>
       <div class="wrapper-md">
        <ol class="breadcrumb bg-white b-a" itemscope="" itemtype="http://schema.org/WebPage">
-        <li><a href="<?php $this->options->siteUrl(); ?>" itemprop="breadcrumb" title="返回首页" data-toggle="tooltip"><i class="iconfont icon-shouye" aria-hidden="true"></i> 首页</a></li>
+        <li><a href="<?php $this->options->siteUrl(); ?>" itemprop="breadcrumb" title="返回首页" data-toggle="tooltip"><i class="iconfont icon-home" aria-hidden="true"></i> 首页</a></li>
         <li><?php $this->category(','); ?></li>
         <li class="active">正文</li>
        </ol>
@@ -62,7 +62,21 @@
          <!--文章内容-->
          <div class="wrapper-lg">
           <div class="entry-content l-h-2x">
-			        <?php $this->content(); ?>
+          <?php
+          $db = Typecho_Db::get();
+          $sql = $db->select()->from('table.comments')
+          ->where('cid = ?',$this->cid)
+          ->where('mail = ?', $this->remember('mail',true))
+          ->limit(1);
+          $result = $db->fetchAll($sql);
+          if($this->user->hasLogin() || $result) {
+          $content = preg_replace("/\[hide\](.*?)\[\/hide\]/sm",'<div><i></i>$1</div>',$this->content);
+          }
+          else{
+          $content = preg_replace("/\[hide\](.*?)\[\/hide\]/sm",'<div class="reply2view"><i></i>此处内容需要评论回复后方可阅读。</div>',$this->content);
+          }
+          echo $content;
+          ?>
           </div>
          </div>
         </article>

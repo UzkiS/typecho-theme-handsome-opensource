@@ -45,7 +45,21 @@
          <!--文章内容-->
          <div class="wrapper-lg">
           <div class="entry-content l-h-2x">
-			        <?php $this->content(); ?>
+          <?php
+          $db = Typecho_Db::get();
+          $sql = $db->select()->from('table.comments')
+          ->where('cid = ?',$this->cid)
+          ->where('mail = ?', $this->remember('mail',true))
+          ->limit(1);
+          $result = $db->fetchAll($sql);
+          if($this->user->hasLogin() || $result) {
+          $content = preg_replace("/\[hide\](.*?)\[\/hide\]/sm",'<div><i></i>$1</div>',$this->content);
+          }
+          else{
+          $content = preg_replace("/\[hide\](.*?)\[\/hide\]/sm",'<div class="reply2view"><i></i>此处内容需要评论回复后方可阅读。</div>',$this->content);
+          }
+          echo $content;
+          ?>
           </div>
          </div>
         </article>

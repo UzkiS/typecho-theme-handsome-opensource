@@ -8,8 +8,6 @@
       </span>
       &copy; <?php echo date("Y");?> Copyright.
     </div>
-
-
   </footer>
   </div><!--end of .app app-header-fixed-->
 
@@ -18,16 +16,8 @@
 <script src="//cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js" data-no-instant></script>
 <script data-no-instant src="//cdn.bootcss.com/instantclick/3.0.1/instantclick.min.js"></script>
 
-<script data-no-instant>
-<?php if ( $this->options->preload =='0' ) : ?>
-InstantClick.init('mouseover');
-<?php elseif ( $this->options->preload =='1' ) : ?>
-InstantClick.init('mousedown');
-<?php elseif ( $this->options->preload =='2' ) : ?>
-InstantClick.init('<?php $this->options->delaytime(); ?>');
-<?php endif; ?>
-</script>
 <script data-no-instant type="text/javascript">
+
 InstantClick.on('change', function(isInitialLoad) {
   if (isInitialLoad === false) {
     //if (typeof MathJax !== 'undefined') // support MathJax
@@ -38,17 +28,54 @@ InstantClick.on('change', function(isInitialLoad) {
       _hmt.push(['_trackPageview', location.pathname + location.search]);
     if (typeof ga !== 'undefined')  // support google analytics
         ga('send', 'pageview', location.pathname + location.search);
-if (typeof DUOSHUO !== 'undefined') //多说
-DUOSHUO.EmbedThread('.ds-thread');
+    if (typeof DUOSHUO !== 'undefined') //多说
+        DUOSHUO.EmbedThread('.ds-thread');
   }
 });
+
 </script>
+
+<script data-no-instant>
+<?php if ( $this->options->preload =='0' ) : ?>
+InstantClick.init('mouseover');
+<?php elseif ( $this->options->preload =='1' ) : ?>
+InstantClick.init('mousedown');
+<?php elseif ( $this->options->preload =='2' ) : ?>
+InstantClick.init('<?php $this->options->delaytime(); ?>');
+<?php endif; ?>
+</script>
+
 <!--develope本地版本-->
 <!--<script data-no-instant src="<?php $this->options->themeUrl('js/develope/ui-nav.js') ?>"></script>
 <script data-no-instant src="<?php $this->options->themeUrl('js/develope/ui-toggle.js') ?>"></script>
 <script data-no-instant src="<?php $this->options->themeUrl('js/develope/ui-client.js') ?>"></script>
 <script src="<?php $this->options->themeUrl('js/develope/script.js') ?>"></script>-->
 
+<!--音乐播放器开始。by qqdie 修改自youduBGM插件-->
+<bgm>     
+<a class="ymusic" onclick="playbtu();" target="_blank">
+<i id="ydmc"></i>
+</a>
+<a class="ymusic" onclick="next();" id="ydnext" target="_blank">
+<i class="iconfont icon-next"></i>
+</a>
+</bgm>
+<script data-no-instant>
+var yaudio = new Audio();
+yaudio.controls = true;
+var musicArr=[<?php $this->options->musiclist(); ?>];//后台填写播放列表
+/*首次随机播放*/
+var a=parseInt(Math.random()*musicArr.length);
+var sj=musicArr[a];
+yaudio.src=sj.mp3;
+yaudio.ti=sj.title;
+yaudio.art=sj.artist;
+<?php if ( $this->options->isautoplay =='0' ) : ?>
+<?php else: ?>
+yaudio.play();
+<?php endif; ?>
+ </script>
+<!--音乐播放器结束-->
 
 <!-- 压缩后版本 -->
 <script data-no-instant src="<?php $this->options->themeUrl('js/main.min.js') ?>"></script>
@@ -59,6 +86,17 @@ DUOSHUO.EmbedThread('.ds-thread');
 <?php if (!empty($this->options->indexsetup) && in_array('header-fix', $this->options->indexsetup)): ?>
 $(document).ready(function(){
     $('#alllayout').addClass("app-header-fixed");
+    $('#comments a[href^=#][href!=#]').click(function() {
+    var target = document.getElementById(this.hash.slice(1));
+    if (!target) return;
+    var targetOffset = $(target).offset().top - 50;
+    $('html,body').animate({
+        scrollTop: targetOffset
+    },
+    300);
+    return false;
+    });//主要修复评论定位不准确BUG
+    if (window.location.hash.indexOf('#')>=0){$('html,body').animate({scrollTop: ($(window.location.hash).offset().top - 80)+"px"}, 300);};//主要修复评论定位不准确BUG
 });
 <?php endif; ?>
 <?php if (!empty($this->options->indexsetup) && in_array('aside-fix', $this->options->indexsetup)): ?>
@@ -98,6 +136,8 @@ $(document).ready(function(){
     });
 </script>
 <?php endif; ?>
+
+
 <?php $this->footer(); ?>
 
 </body><!--#body end-->

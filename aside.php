@@ -89,7 +89,7 @@
               <?php if($this->user->hasLogin()): ?>
               <!--后台管理-->
               <li>
-                <a data-no-instant target="_blank" href="<?php $this->options->adminUrl(); ?>"><i style="position: relative;width: 30px;margin: -11px -10px;margin-right: 0px;overflow: hidden;line-height: 30px;text-align: center;" class="iconfont icon-xitongguanli1"></i><span>后台管理</span></a>
+                <a data-no-instant target="_blank" href="<?php $this->options->adminUrl(); ?>"><i style="position: relative;width: 30px;margin: -11px -10px;margin-right: 0px;overflow: hidden;line-height: 30px;text-align: center;" class="iconfont icon-cogs"></i><span>后台管理</span></a>
               </li>
               <?php else: ?>
               <li>
@@ -113,7 +113,7 @@
               <!--主页-->
               <li>
                 <a href="<?php $this->options->siteUrl(); ?>" class="auto">      
-                  <i class="iconfont icon-shouye icon text-md"></i>
+                  <i class="iconfont icon-home icon text-md"></i>
                   <span>主页</span>
                 </a>
               </li>

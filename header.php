@@ -32,9 +32,12 @@
   
     <!-- 本地compass版本 -->
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/appall.min.css') ?>" type="text/css" />
-  <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('css/player.css'); ?>">
 
 <style type="text/css">
+<?php if ( $this->options->ismobilehide =='0' ) : ?>
+@media only screen and (max-width:766px){.ymusic{display:none}}
+<?php else: ?>
+<?php endif; ?>
 <?php if($this->options->progresscolor) : ?>
   #instantclick-bar {
     background: <?php $this->options->progresscolor() ?>!important;

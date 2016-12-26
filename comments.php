@@ -1,4 +1,5 @@
 <?php 
+
 $GLOBALS['z']  = $this->options->CDNURL;
 function threadedComments($comments, $options) {
     $commentClass = '';
@@ -10,14 +11,22 @@ function threadedComments($comments, $options) {
         }
     } 
     $commentLevelClass = $comments->_levels > 0 ? ' comment-child' : ' comment-parent';  //评论层数大于0为子级，否则是父级
+    $depth = $comments->levels +1; //添加的一句
 ?>
  
 <!--自定义评论代码结构-->
+<!--<a name="<?php //$comments->theId(); ?>" class="target">
+</a>-->
     <li id="<?php $comments->theId(); ?>" class="comment-body<?php 
-if ($comments->_levels > 0) {
-    echo ' comment-child';
+if ($depth > 1 && $depth < 3) {
+    echo ' comment-child ';
     $comments->levelsAlt('comment-level-odd', ' comment-level-even');
-} else {
+}
+else if( $depth > 2){
+    echo ' comment-child2';
+    $comments->levelsAlt(' comment-level-odd', ' comment-level-even');
+}
+else {
     echo ' comment-parent';
 }
 $comments->alt(' comment-odd', ' comment-even');
@@ -33,7 +42,6 @@ echo $commentClass;
             $hash = md5(strtolower($comments->mail));
             $avatar = $host . $url . $hash . '?s=' . $size . '&r=' . $rating . '&d=';
         ?>
-
         <a class="pull-left thumb-sm">
           <img alt="" src="<?php echo $avatar ?>" class="avatar-40 photo img-circle" height="40" width="40"></a>
         <div class="m-b m-l-xxl">
@@ -49,7 +57,7 @@ echo $commentClass;
           </div>
           <!--回复内容-->
           <div class="comment-content m-t-sm">
-            <?php $comments->content(); ?>
+            <p><b><?php get_comment_at($comments->coid)?></b>  <?php get_filtered_comment($comments->coid)?></p>
           </div>
           <!--回复按钮-->
           <div class="reply m-t-sm">

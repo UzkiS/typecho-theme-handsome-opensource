@@ -50,13 +50,17 @@ $this->need('header.php');
           <div class="col-sm-5">
      <?php Typecho_Widget::widget('Widget_Stat')->to($stat); ?>
             <div class="pull-right pull-none-xs text-center">
-              <a href class="m-b-md inline m">
+              <a class="m-b-md inline m">
                 <span class="h3 block font-bold"><?php $stat->publishedCommentsNum() ?></span>
                 <small>comments</small>
               </a>
-              <a href class="m-b-md inline m">
+              <a class="m-b-md inline m">
                 <span class="h3 block font-bold"><?php $stat->publishedPostsNum() ?></span>
                 <small>articles</small>
+              </a>
+              <a class="m-b-md inline m">
+                <span class="h3 block font-bold"><?php $this->commentsNum(); ?></span>
+                <small>weibo</small>
               </a>
             </div>
           </div>

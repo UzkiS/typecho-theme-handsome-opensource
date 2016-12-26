@@ -25,7 +25,7 @@
         <div class="wrapper-md">
 
        <ol class="breadcrumb bg-white b-a" itemscope="" itemtype="http://schema.org/WebPage">
-        <li><a href="<?php $this->options->siteUrl(); ?>" itemprop="breadcrumb" title="返回首页" data-toggle="tooltip"><i class="iconfont icon-shouye" aria-hidden="true"></i> 首页</a></li>
+        <li><a href="<?php $this->options->siteUrl(); ?>" itemprop="breadcrumb" title="返回首页" data-toggle="tooltip"><i class="iconfont icon-home" aria-hidden="true"></i> 首页</a></li>
         <li class="active"><?php $this->archiveTitle(array(
             'category'  =>  _t('%s'),
             'search'    =>  _t('%s'),
