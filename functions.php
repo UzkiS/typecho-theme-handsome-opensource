@@ -400,7 +400,7 @@ input[type=text], textarea {
     $form->addInput($BlogName);
 
     //博主头像：在本主题中首页index.php 和 aboutme.php中将会调用此头像
-    $BlogPic = new Typecho_Widget_Helper_Form_Element_Text('BlogPic', NULL, 'http://www.gravatar.com/avatar/9e543b9d68c191fdc484c3bbe9f953a4?s=220&r=X&d=mm', _t('头像图片地址'), _t('logo头像地址，尺寸在200X200左右即可'));
+    $BlogPic = new Typecho_Widget_Helper_Form_Element_Text('BlogPic', NULL, 'https://o9o5ixzu2.qnssl.com/mingren.jpeg', _t('头像图片地址'), _t('logo头像地址，尺寸在200X200左右即可'));
     $form->addInput($BlogPic);
 
     //博主职业

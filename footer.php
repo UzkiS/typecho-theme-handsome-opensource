@@ -15,9 +15,10 @@
 <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" data-no-instant></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js" data-no-instant></script>
 <script data-no-instant src="//cdn.bootcss.com/instantclick/3.0.1/instantclick.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 <script data-no-instant type="text/javascript">
-
 InstantClick.on('change', function(isInitialLoad) {
   if (isInitialLoad === false) {
     //if (typeof MathJax !== 'undefined') // support MathJax
@@ -31,8 +32,10 @@ InstantClick.on('change', function(isInitialLoad) {
     if (typeof DUOSHUO !== 'undefined') //多说
         DUOSHUO.EmbedThread('.ds-thread');
   }
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
 });
-
 </script>
 
 <script data-no-instant>
