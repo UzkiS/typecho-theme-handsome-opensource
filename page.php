@@ -32,6 +32,8 @@
         <?php if($this->fields->thumb == "no"): ?>
           <!--自定义字段为no,则不输出头图-->
         <?php else: ?>
+         <?php if ($this->options->RandomPicChoice !=='0' && !empty($this->options->indexsetup) && in_array('NoRandomPic-post', $this->options->indexsetup)): ?>
+        <?php else: ?>
          <div class="entry-thumbnail" aria-hidden="true"> 
         <?php if (array_key_exists('thumb',unserialize($this->___fields()))): ?>
           <img width="900" height="300" src="<?php echo $this->fields->thumb; ?>" class="img-responsive center-block wp-post-image" />
@@ -41,7 +43,8 @@
         <?php endif; ?>
         <?php endif; ?>
          </div>
-         <?php endif; ?>
+       <?php endif; ?>
+     <?php endif; ?>
          <!--文章内容-->
          <div class="wrapper-lg">
           <div class="entry-content l-h-2x">
