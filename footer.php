@@ -21,10 +21,6 @@
 <script data-no-instant type="text/javascript">
 InstantClick.on('change', function(isInitialLoad) {
   if (isInitialLoad === false) {
-    //if (typeof MathJax !== 'undefined') // support MathJax
-      //MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-    //if (typeof prettyPrint !== 'undefined') // support google code prettify
-      //prettyPrint();
     if (typeof _hmt !== 'undefined')  // support 百度统计
       _hmt.push(['_trackPageview', location.pathname + location.search]);
     if (typeof ga !== 'undefined')  // support google analytics
@@ -35,6 +31,7 @@ InstantClick.on('change', function(isInitialLoad) {
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
+
 });
 </script>
 
@@ -99,8 +96,13 @@ $(document).ready(function(){
     300);
     return false;
     });//主要修复评论定位不准确BUG
-    if (window.location.hash.indexOf('#')>=0){$('html,body').animate({scrollTop: ($(window.location.hash).offset().top - 80)+"px"}, 300);};//主要修复评论定位不准确BUG
+    setTimeout(function() {
+      if (window.location.hash.indexOf('#')>=0){$('html,body').animate({scrollTop: ($(window.location.hash).offset().top - 50)+"px"}, 300);};//主要修复评论定位不准确BUG
+    }, 500);
 });
+//window.onload= function(){
+  //if (window.location.hash.indexOf('#')>=0){$('html,body').animate({scrollTop: ($(window.location.hash).offset().top - 50)+"px"}, 300);};//主要修复评论定位不准确BUG
+//}
 <?php endif; ?>
 <?php if (!empty($this->options->indexsetup) && in_array('aside-fix', $this->options->indexsetup)): ?>
 $(document).ready(function(){
