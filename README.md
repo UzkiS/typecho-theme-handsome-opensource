@@ -1,9 +1,11 @@
 # Handsome  
 
 [![author](https://img.shields.io/badge/author-Hewro-blue.svg)](http://www.ihewro.xyz) 
-[![issues](https://img.shields.io/github/issues/ihewro/typecho-theme-handsome.svg)](https://github.com/ihewro/typecho-theme-handsome/issues) 
+[![GitHub issues](https://img.shields.io/github/issues/ihewro/typecho-theme-handsome.svg)](https://github.com/ihewro/typecho-theme-handsome/issues)
+[![GitHub forks](https://img.shields.io/github/forks/ihewro/typecho-theme-handsome.svg)](https://github.com/ihewro/typecho-theme-handsome/network)
+[![GitHub stars](https://img.shields.io/github/stars/ihewro/typecho-theme-handsome.svg)](https://github.com/ihewro/typecho-theme-handsome/stargazers)
 [![helpdocs](https://img.shields.io/badge/Docs-HELP-red.svg)](http://www.ihewro.xyz/archives/519/) 
-[![license](https://img.shields.io/github/license/ihewro/typecho-theme-handsome.svg)](https://github.com/ihewro/typecho-theme-handsome/blob/master/LICENSE) 
+[![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg)](https://raw.githubusercontent.com/ihewro/typecho-theme-handsome/master/LICENSE)
 
 Handsome is  a responsive,cool and beautiful typecho theme.
 
