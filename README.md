@@ -7,6 +7,7 @@
 [![Travis branch](https://img.shields.io/github/license/ihewro/typecho-theme-handsome.svg?style=flat-square)](https://github.com/ihewro/typecho-theme-handsome/blob/master/LICENSE) 
 
 Handsome is  a responsive,cool and beautiful typecho theme.
+
 handsome 是一个自响应，很酷的typecho主题。
 
 [中文 README](http://www.ihewro.xyz/archives/489) 
