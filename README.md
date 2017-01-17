@@ -16,12 +16,12 @@ handsome 是一个自响应，很酷的typecho主题。
 
 
 ## Contents
-* [Features 特性](#Features-特性)
-* [Demo 演示](#Demo-演示)
-* [Docs 文档](#Docs-文档)
-* [Contributing 贡献](#Contributing-贡献)
-* [License 许可证](#License-许可证)
-* [Changelog 开发日志](#Changelog-开发日志)
+* [Features 特性](#features-特性)
+* [Demo 演示](#demo-演示)
+* [Docs 文档](#docs-文档)
+* [Contributing 贡献](#contributing-贡献)
+* [License 许可证](#license-许可证)
+* [Changelog 开发日志](#changelog-开发日志)
 
 ## Features 特性
 
