@@ -1,10 +1,9 @@
 # Handsome  
 
-[![Travis branch](https://img.shields.io/badge/author-Hewro-blue.svg?style=flat-square)](http://www.ihewro.xyz) 
-[![Travis branch](https://img.shields.io/travis/rust-lang/rust/master.svg?style=flat-square)](https://github.com/ihewro/typecho-theme-handsome) 
-[![Travis branch](https://img.shields.io/github/issues/ihewro/typecho-theme-handsome.svg?style=flat-square)](https://github.com/ihewro/typecho-theme-handsome/issues) 
-[![Travis branch](https://img.shields.io/badge/Docs-HELP-red.svg?style=flat-square)](http://www.ihewro.xyz/archives/519/) 
-[![Travis branch](https://img.shields.io/github/license/ihewro/typecho-theme-handsome.svg?style=flat-square)](https://github.com/ihewro/typecho-theme-handsome/blob/master/LICENSE) 
+[![author](https://img.shields.io/badge/author-Hewro-blue.svg)](http://www.ihewro.xyz) 
+[![issues](https://img.shields.io/github/issues/ihewro/typecho-theme-handsome.svg)](https://github.com/ihewro/typecho-theme-handsome/issues) 
+[![helpdocs](https://img.shields.io/badge/Docs-HELP-red.svg)](http://www.ihewro.xyz/archives/519/) 
+[![license](https://img.shields.io/github/license/ihewro/typecho-theme-handsome.svg)](https://github.com/ihewro/typecho-theme-handsome/blob/master/LICENSE) 
 
 Handsome is  a responsive,cool and beautiful typecho theme.
 
