@@ -310,6 +310,13 @@ input[type=text], textarea {
     width: 44%;
     margin-bottom: 40px;
 }
+#typecho-option-item-langis-37 {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    background-color: #fff;
+    margin: 8px 1%;
+    padding: 8px 2%;
+    width: 94%;
+}
 </style>
 
     ";
@@ -318,7 +325,7 @@ input[type=text], textarea {
     margin-bottom: 10px;
     margin-top: 10px;
     font-size: 16px;">感谢您使用 handsome主题&emsp; </span>
-    <span style="margin-bottom:10px;display:block"> 给我的项目 <a href="https://github.com/ihewro/typecho-theme-handsome/stargazers" style="color: rgb(255, 255, 255); background-color: rgb(255, 0, 0);">star</a>，是我不断更新的动力哦！</span>
+    <span style="margin-bottom:10px;display:block"> 如果您喜欢handsome主题，<a href="https://github.com/ihewro/typecho-theme-handsome/stargazers" style="color: rgb(255, 255, 255); background: rgb(63, 63, 63);">给该项目star一下吧</a>，是我不断更新的动力哦！</span>
     <span style="margin-bottom:10px;display:block">点击这里 <a href="https://github.com/ihewro/typecho-theme-handsome" target="_blank" style="color:#3384da;font-weight:bold;text-decoration:underline">typecho-theme-handsome</a> 以获得
     <span style="color:#df3827;font-weight:bold;">最新版本支持</span>
     </span>
@@ -342,9 +349,10 @@ input[type=text], textarea {
     'NoRandomPic-post' => _t('文章页面不显示头图'),
     'NoRandomPic-index' => _t('首页不显示头图'),
     'NoSummary-index' => _t('首页文章不显示摘要'),
-    'lazyloadimg' => _t('图片延迟加载')
+    'lazyloadimg' => _t('图片延迟加载'),
+    'festival' => _t('节日祝贺效果（暂只有新年）')
     ),
-    array('header-fix', 'aside-fix','container-box','atargetblank','lazyloadimg'), _t('全站设置开关'));
+    array('header-fix', 'aside-fix','container-box','atargetblank','lazyloadimg','festival'), _t('全站设置开关'));
     
     $form->addInput($indexsetup->multiMode());
 

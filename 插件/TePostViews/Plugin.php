@@ -171,7 +171,7 @@ class TePostViews_Plugin implements Typecho_Plugin_Interface
                 <img style="height: 40px!important;width: 40px!important;" src="'.showThumbnail2($hot).'" class="img-circle wp-post-image">
                 </a>
                 <div class="clear">
-                    <h4 class="h5 l-h"> <a href="' . $row['permalink'] . '" title="' . $row['title'] . '"> ' . $row['title'] . ' </ a></h4>
+                    <h4 class="h5 l-h"> <a href="' . $row['permalink'] . '" title="' . $row['title'] . '"> ' . $row['title'] . ' </a></h4>
                     <small class="text-muted"> 
                     <span class="meta-views"> <i class="iconfont icon-comments" aria-hidden="true"></i> <span class="sr-only">评论数：</span> <span class="meta-value"> '.$row['commentsNum'].' </span> 
                     </span>  
