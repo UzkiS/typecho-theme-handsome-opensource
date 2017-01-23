@@ -7,7 +7,7 @@
 
   	<!-- content -->
 	<div id="content" class="app-content markdown-body"> 
-   <a href="#" class="off-screen-toggle hide" data-toggle-class=".app-aside=off-screen"></a>
+   <a href="#" class="off-screen-toggle hide"></a>
    <main class="app-content-body">
     <div class="hbox hbox-auto-xs hbox-auto-sm">
     <!--文章-->
@@ -24,7 +24,7 @@
        <!--作者-->
         <li class="meta-author"><i class="iconfont icon-user1" aria-hidden="true"></i> <span class="sr-only">作者：</span> <a class="meta-value" href="<?php $this->author->permalink(); ?>" rel="author"> <?php $this->author(); ?></a></li>
         <!--发布时间-->
-        <li class="meta-date"><i class="iconfont icon-clocko" aria-hidden="true"></i> <span class="sr-only">发布时间：</span> <time class="meta-value"><?php $this->date('Y 年 m 月 d 日'); ?></time></li>
+        <li class="meta-date"><i class="iconfont icon-clocko" aria-hidden="true"></i> <span class="sr-only">发布时间：</span> <time class="meta-value"><?php if($this->options->langis == '0'): ?><?php $this->date('F j, Y'); ?><?php elseif($this->options->langis == '1'): ?><?php $this->date('Y 年 m 月 d 日'); ?><?php elseif($this->options->langis == '2'): ?><?php $this->date('Y 年 m 月 d 日'); ?><?php endif; ?></time></li>
         <!--浏览数-->
         <li class="meta-views"><i class="iconfont icon-eye" aria-hidden="true"></i> <span class="meta-value"><?php $this->views(); ?>次浏览</span></li>
         <!--评论数-->
@@ -50,17 +50,17 @@
         <?php else: ?>
          <div class="entry-thumbnail" aria-hidden="true"> 
         <?php if (array_key_exists('thumb',unserialize($this->___fields()))): ?>
-          <img width="900" height="300" src="<?php echo $this->fields->thumb; ?>" class="img-responsive center-block wp-post-image" />
+          <img width="900" height="auto" src="<?php echo $this->fields->thumb; ?>" class="img-responsive center-block wp-post-image" />
         <?php else: ?>
           <?php $thumb = showThumbnail($this); if(!empty($thumb)): ?>
-          <img width="900" height="300" src="<?php echo $thumb ?>" class="img-responsive center-block wp-post-image" />
+          <img width="900" height="auto" src="<?php echo $thumb ?>" class="img-responsive center-block wp-post-image" />
         <?php endif; ?>
         <?php endif; ?>
          </div>
        <?php endif; ?>
      <?php endif; ?>
          <!--文章内容-->
-         <div class="wrapper-lg">
+         <div id="post-content" class="wrapper-lg">
           <div class="entry-content l-h-2x">
           <?php
           $db = Typecho_Db::get();
@@ -99,7 +99,7 @@
   </div>
   	<!-- /content -->
 
-
+<script src="<?php $this->options->themeUrl("js/toc.js") ?>"></script>
     <!-- footer -->
 	<?php $this->need('footer.php'); ?>
   	<!-- / footer -->

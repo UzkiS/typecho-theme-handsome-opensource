@@ -7,7 +7,7 @@ function themeInit($archive)
 }
 
 function themeConfig($form) {
-	echo "
+    echo "
     
 <style>
 @media screen and (min-device-width: 1024px) {
@@ -48,11 +48,16 @@ function themeConfig($form) {
     padding: 0 10px; 
     background: #20af42;
 }
-.typecho-head-nav .operate a{border:none;color: #fff;padding-top: 8px;padding-bottom: 8px;}
+.typecho-head-nav .operate a{
+    border: none;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    color: rgba(255,255,255,.6);
+}
 .typecho-head-nav .operate a:hover {
-	background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.05);
     color: #fff;
-}	
+}   
 ul.typecho-option-tabs.fix-tabs.clearfix {
     background: #1a9c39;
 }
@@ -61,19 +66,19 @@ ul.typecho-option-tabs.fix-tabs.clearfix {
 }
 .typecho-page-title {
     margin:0;
-	height: 70px;
-	background: #20af42;
+    height: 70px;
+    background: #20af42;
     background-size: cover;
     padding: 30px;
 }
 .typecho-page-title h2{
-	margin: 0px;
+    margin: 0px;
     font-size: 2.28571em;
     color: #fff;
 }
 .typecho-option-tabs{
-	padding: 0px;
-	background: #fff;
+    padding: 0px;
+    background: #fff;
 }
 .typecho-option-tabs a:hover{
     background-color: rgba(0, 0, 0, 0.05);
@@ -95,15 +100,15 @@ li.current {
     background:none;
 }
 .container{
-	margin:0;
-	padding:0;
+    margin:0;
+    padding:0;
 }
 .body.container {
     min-width: 100% !important;
     padding: 0px;
 }
 .typecho-option-tabs{
-	margin:0;
+    margin:0;
 }
 .typecho-option-submit button {
     float: right;
@@ -112,18 +117,18 @@ li.current {
     color: #FFF;
 }
 .typecho-option-tabs li{
-	margin-left:20px;
+    margin-left:20px;
 }
 .typecho-option{
-	border-radius: 3px;
+    border-radius: 3px;
     background: #fff;
     padding: 12px 16px;
 }
 .col-mb-12{
-	padding-left: 0px!important;
+    padding-left: 0px!important;
 }
 .typecho-option-submit{
-	background:none!important;
+    background:none!important;
 }
 .typecho-option {
     float: left;
@@ -267,28 +272,37 @@ input[type=text], textarea {
     padding: 8px 2%;
     width: 94%;
 }
-#typecho-option-item-progresscolor-29,#typecho-option-item-BottomInfo-30,#typecho-option-item-ChangeAction-31{
+#typecho-option-item-progresscolor-29,#typecho-option-item-ChangeAction-32{
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     background-color: #fff;
     margin: 8px 1%;
     padding: 8px 2%;
     width: 94%;
 }
-#typecho-option-item-ChromeThemeColor-32{
+
+#typecho-option-item-BottomleftInfo-30, #typecho-option-item-BottomInfo-31 {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    background-color: #fff;
+    margin: 8px 1%;
+    padding: 8px 2%;
+    width: 44%;
+}
+
+#typecho-option-item-ChromeThemeColor-33{
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     background-color: #fff;
     margin: 8px 1%;
     padding: 8px 2%;
     width: 94%;
 }
-#typecho-option-item-musiclist-33 {
+#typecho-option-item-musiclist-34 {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     background-color: #fff;
     margin: 8px 1%;
     padding: 8px 2%;
     width: 94%;
 }
-#typecho-option-item-isautoplay-34, #typecho-option-item-ismobilehide-35 {
+#typecho-option-item-isautoplay-35, #typecho-option-item-ismobilehide-36 {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     background-color: #fff;
     margin: 8px 1%;
@@ -298,12 +312,13 @@ input[type=text], textarea {
 }
 </style>
 
-	";
+    ";
     echo '<p style="font-size:14px;" id="use-intro">
     <span style="display: block;
     margin-bottom: 10px;
     margin-top: 10px;
     font-size: 16px;">感谢您使用 handsome主题&emsp; </span>
+    <span style="margin-bottom:10px;display:block"> 给我的项目 <a href="https://github.com/ihewro/typecho-theme-handsome/stargazers" style="color: rgb(255, 255, 255); background-color: rgb(255, 0, 0);">star</a>，是我不断更新的动力哦！</span>
     <span style="margin-bottom:10px;display:block">点击这里 <a href="https://github.com/ihewro/typecho-theme-handsome" target="_blank" style="color:#3384da;font-weight:bold;text-decoration:underline">typecho-theme-handsome</a> 以获得
     <span style="color:#df3827;font-weight:bold;">最新版本支持</span>
     </span>
@@ -326,9 +341,10 @@ input[type=text], textarea {
     'atargetblank' => _t('文章和评论区链接以新标签页形式打开'),
     'NoRandomPic-post' => _t('文章页面不显示头图'),
     'NoRandomPic-index' => _t('首页不显示头图'),
-    'NoSummary-index' => _t('首页文章不显示摘要')
+    'NoSummary-index' => _t('首页文章不显示摘要'),
+    'lazyloadimg' => _t('图片延迟加载')
     ),
-    array('header-fix', 'aside-fix','atargetblank'), _t('全站设置开关'));
+    array('header-fix', 'aside-fix','container-box','atargetblank','lazyloadimg'), _t('全站设置开关'));
     
     $form->addInput($indexsetup->multiMode());
 
@@ -458,7 +474,7 @@ input[type=text], textarea {
         ),
 
         //Default choose
-        '2',_t('instantclick预加载模式选择'),_t("<b>mouseover</b>:鼠标悬停在链接上，就开始预加载。<b>mousedown</b>:鼠标点击链接的同时才开始预加载。 <b>on-mouseover-with-a-delay</b>:鼠标悬停在链接上并有一定延迟时间才开始预加载，选中此项，必须设置下面的延迟时间项。")
+        '1',_t('instantclick预加载模式选择'),_t("<b>mouseover</b>:鼠标悬停在链接上，就开始预加载。<b>mousedown</b>:鼠标点击链接的同时才开始预加载。 <b>on-mouseover-with-a-delay</b>:鼠标悬停在链接上并有一定延迟时间才开始预加载，选中此项，必须设置下面的延迟时间项。")
     );
     $form->addInput($preload);
     //instantclick延迟时间设置
@@ -466,7 +482,7 @@ input[type=text], textarea {
     $form->addInput($delaytime);
 
     // 文章缩略图数目设置
-    $RandomPicAmnt = new Typecho_Widget_Helper_Form_Element_Text('RandomPicAmnt', NULL, _t('2'), _t('文章头图随机缩略图数量'), _t('对应于主题目录下的img/sj 文件夹中的图片的数量。说明：文章头图显示方式：<b>thumb（自定义字段）--> 第一个图片附件--> 文章第一张图片 --> 随机图片输出</b>。图片必须以从1开始的数字命名，而且必须是.jpg文件'));
+    $RandomPicAmnt = new Typecho_Widget_Helper_Form_Element_Text('RandomPicAmnt', NULL, _t('2'), _t('文章头图随机缩略图数量'), _t('对应于主题目录下的img/sj 文件夹中的图片的数量。说明：文章头图显示方式：<b>thumb（自定义字段）--> 文章第一张图片 --> 随机图片输出</b>。图片必须以从1开始的数字命名，而且必须是.jpg文件'));
     $form->addInput($RandomPicAmnt);
 
     // 右侧边栏缩略图数目设置
@@ -476,8 +492,8 @@ input[type=text], textarea {
    $RandomPicChoice = new Typecho_Widget_Helper_Form_Element_Radio('RandomPicChoice',
         array(
             '0' => _t('只显示随机图片'),
-            '1' => _t('显示顺序：thumb自定义字段——文章第一张图片——第一个附件'),
-            '2' => _t('显示顺序：thumb自定义字段——文章第一张图片——第一个附件——随机图片(推荐)')
+            '1' => _t('显示顺序：thumb自定义字段——文章第一张图片'),
+            '2' => _t('显示顺序：thumb自定义字段——文章第一张图片——随机图片(推荐)')
         ),
         //Default choose
         '2',_t('博客头图设置'),_t('该头图设置对首页和文章页面同时生效。推荐选择第三个。<br><span style="color: #f00">注意</span>：此项设置仅在全局设置开启头图后才生效')
@@ -496,10 +512,13 @@ input[type=text], textarea {
     $progresscolor = new Typecho_Widget_Helper_Form_Element_Text('progresscolor', NULL, NULL, _t('加载进度条颜色'), _t('在这里填写正确的颜色代码作为顶部加载进度条的颜色，默认为蓝色#29。'));
     $form->addInput($progresscolor);
 
-    //网站底部信息
-    $BottomInfo = new Typecho_Widget_Helper_Form_Element_Textarea('BottomInfo', NULL, NULL, _t('博客底部信息'), _t('这里面填写的是html代码，位置是博客底部的右边。可以填写备案号等一些信息。'));
-    $form->addInput($BottomInfo);
+    //网站底部左侧信息
+    $BottomleftInfo = new Typecho_Widget_Helper_Form_Element_Textarea('BottomleftInfo', NULL, NULL, _t('博客左侧底部信息'), _t('这里面填写的是html代码，位置是博客底部的左边。可以填写备案号等一些信息。注意：所有屏幕尺寸下都会显示该内容'));
+    $form->addInput($BottomleftInfo);
 
+    //网站底部右侧信息
+    $BottomInfo = new Typecho_Widget_Helper_Form_Element_Textarea('BottomInfo', NULL, NULL, _t('博客底部右侧信息'), _t('这里面填写的是html代码，位置是博客底部的右边。可以填写备案号等一些信息。注意：屏幕尺寸小于767px，不会显示该内容'));
+    $form->addInput($BottomInfo);
     //回调函数
     $ChangeAction = new Typecho_Widget_Helper_Form_Element_Textarea('ChangeAction', NULL, NULL, _t('instantclick回调函数'), _t('本主题使用instantclick.js 技术，instantclick提供丰富的回调函数接口，方便在通过instantclick跳转页面时候再次调用函数，避免了由于instantclick导致的函数失效。最常用的是change函数，当页面跳转的同时就会触发该函数，在这里填入相应的事件以便回调（与pjax的send函数相似）。</br><span style="color: #f00">注意</span>：如果你没有修改主题源码，是不需要填写此项的。如果你不明白该项，建议不要填写。'));
     $form->addInput($ChangeAction);
@@ -532,6 +551,17 @@ input[type=text], textarea {
         '1',_t('音乐播放器手机端是否隐藏'),_t("默认不隐藏")
     );
     $form->addInput($ismobilehide);
+    //语言设置
+    $langis = new Typecho_Widget_Helper_Form_Element_Radio('langis',
+        array(
+            '0' => _t('English <br />'),
+            '1' => _t('简体中文 <br />'),
+            '2' => _t('繁体中文 <br />')
+        ),
+
+        '1', _t('界面语言设置'), _t("默认使用英文, 中文总感觉有些违和 _(:3」∠)_")
+    );
+    $form->addInput($langis);
 
 }
 // 首页文章缩略图
@@ -683,7 +713,7 @@ echo '<li class="list-group-item">
                 <img style="height: 40px!important;width: 40px!important;" src="'.showThumbnail2($random).'" class="img-circle wp-post-image">
                 </a>
                 <div class="clear">
-                    <h4 class="h5 l-h"> <a href="' . $val['permalink'] . '" title="' . $val['title'] . '"> ' . $val['title'] . ' </ a></h4>
+                    <h4 class="h5 l-h"> <a href="' . $val['permalink'] . '" title="' . $val['title'] . '"> ' . $val['title'] . ' </a></h4>
                     <small class="text-muted">
                     <span class="meta-views"> <i class="iconfont icon-comments" aria-hidden="true"></i> <span class="sr-only">评论数：</span> <span class="meta-value">'.$val['commentsNum'].'</span> 
                     </span>  

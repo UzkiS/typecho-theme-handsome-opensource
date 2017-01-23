@@ -69,7 +69,7 @@ $this->need('header.php');
     </div>
     <div class="wrapper bg-white b-b">
       <ul class="nav nav-pills nav-sm">
-        <li class="active"><a>我的动态</a></li>
+        <li class="active"><a><?php if($this->options->langis == '0'): ?>Small talk<?php elseif($this->options->langis == '1'): ?>我的动态<?php elseif($this->options->langis == '2'): ?>我的動態<?php endif; ?></a></li>
       </ul>
     </div>
     <div class="padder">
@@ -79,52 +79,52 @@ $this->need('header.php');
   <div class="col w-lg bg-light lter b-l bg-auto">
     <div class="wrapper">
       <div class="">
-        <h4 class="m-t-xs m-b-xs">其他联系方式</h4>
+        <h4 class="m-t-xs m-b-xs"><?php if($this->options->langis == '0'): ?>Contact information<?php elseif($this->options->langis == '1'): ?>联系方式<?php elseif($this->options->langis == '2'): ?>聯繫方式<?php endif; ?></h4>
         <ul class="list-group no-bg no-borders pull-in">
           <li class="list-group-item">
-            <a herf class="pull-left thumb-sm avatar m-r">
-              <img src="<?php $this->options->themeUrl('img/a4.png') ?>" alt="..." class="img-circle">
+            <a class="pull-left thumb-sm avatar m-r">
+              <img src="<?php $this->options->themeUrl('img/a4.png') ?>" class="img-circle">
               <i class="on b-white bottom"></i>
             </a>
             <div class="clear">
-              <div><a href>Email</a></div>
+              <div><a>Email</a></div>
               <small class="text-muted"><?php if ($this->options->socialemail): ?><?php $this->options->socialemail() ?><?php else: ?>外观设置——输入email地址<?php endif; ?></small>
             </div>
           </li>
           <li class="list-group-item">
-            <a herf class="pull-left thumb-sm avatar m-r">
-              <img src="<?php $this->options->themeUrl('img/a5.png') ?>" alt="..." class="img-circle">
+            <a class="pull-left thumb-sm avatar m-r">
+              <img src="<?php $this->options->themeUrl('img/a5.png') ?>" class="img-circle">
               <i class="on b-white bottom"></i>
             </a>
             <div class="clear">
-              <div><a href>Tencent QQ</a></div>
+              <div><a>Tencent QQ</a></div>
               <small class="text-muted"><?php if ($this->options->socialqq): ?><?php $this->options->socialqq() ?><?php else: ?>外观设置——输入QQ号码<?php endif; ?></small>
             </div>
           </li>
           <li class="list-group-item">
-            <a herf class="pull-left thumb-sm avatar m-r">
-              <img src="<?php $this->options->themeUrl('img/a6.png') ?>" alt="..." class="img-circle">
+            <a class="pull-left thumb-sm avatar m-r">
+              <img src="<?php $this->options->themeUrl('img/a6.png') ?>" class="img-circle">
               <i class="busy b-white bottom"></i>
             </a>
             <div class="clear">
-              <div><a href>Sina Weibo</a></div>
+              <div><a>Sina Weibo</a></div>
               <small class="text-muted"><?php if ($this->options->socialweibo): ?><?php $this->options->socialweibo() ?><?php else: ?>外观设置——输入微博ID<?php endif; ?></small>
             </div>
           </li>
           <li class="list-group-item">
-            <a herf class="pull-left thumb-sm avatar m-r">
-              <img src="<?php $this->options->themeUrl('img/a7.png') ?>" alt="..." class="img-circle">
+            <a class="pull-left thumb-sm avatar m-r">
+              <img src="<?php $this->options->themeUrl('img/a7.png') ?>" class="img-circle">
               <i class="busy b-white bottom"></i>
             </a>
             <div class="clear">
-              <div><a href>网易云音乐</a></div>
+              <div><a>网易云音乐</a></div>
               <small class="text-muted"><?php if ($this->options->socialmusic): ?><?php $this->options->socialmusic() ?><?php else: ?>外观设置——输入网易云音乐ID<?php endif; ?></small>
             </div>
           </li>
         </ul>
       </div>
       <div class="panel b-a">
-        <h4 class="font-thin padder">关于我</h4>
+        <h4 class="font-thin padder"><?php if($this->options->langis == '0'): ?>About me<?php elseif($this->options->langis == '1'): ?>关于我<?php elseif($this->options->langis == '2'): ?>關於我<?php endif; ?></h4>
         <ul class="list-group">
           <li class="list-group-item">
               <p><?php $this->options->about() ?></p>

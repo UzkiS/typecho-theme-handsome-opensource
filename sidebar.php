@@ -4,22 +4,28 @@
       <section id="tabs-4" class="widget widget_tabs clear">
        <div class="nav-tabs-alt no-js-hide">
         <ul class="nav nav-tabs nav-justified" role="tablist">
-         <li class="active" role="presentation"> <a href="#widget-tabs-4-hots" role="tab" aria-controls="widget-tabs-4-hots" aria-expanded="true" data-toggle="tab"> <i class="iconfont icon-fire text-md text-muted wrapper-sm" aria-hidden="true"></i> <span class="sr-only">热门文章</span> </a></li>
-         <li role="presentation"> <a href="#widget-tabs-4-comments" role="tab" aria-controls="widget-tabs-4-comments" aria-expanded="false" data-toggle="tab"> <i class="iconfont icon-comments text-md text-muted wrapper-sm" aria-hidden="true"></i> <span class="sr-only">最新评论</span> </a></li>
-         <li role="presentation"> <a href="#widget-tabs-4-random" role="tab" aria-controls="widget-tabs-4-random" aria-expanded="false" data-toggle="tab"> <i class="iconfont icon-random text-md text-muted wrapper-sm" aria-hidden="true"></i> <span class="sr-only">随机文章</span> </a></li>
+         <li class="active" role="presentation"> <a href="#widget-tabs-4-hots" role="tab" aria-controls="widget-tabs-4-hots" aria-expanded="true" data-toggle="tab"> <i class="iconfont icon-fire text-md text-muted wrapper-sm" aria-hidden="true"></i> <span class="sr-only"><?php if($this->options->langis == '0'): ?>Popular articles
+<?php elseif($this->options->langis == '1'): ?>热门文章<?php elseif($this->options->langis == '2'): ?>熱門文章<?php endif; ?></span> </a></li>
+         <li role="presentation"> <a href="#widget-tabs-4-comments" role="tab" aria-controls="widget-tabs-4-comments" aria-expanded="false" data-toggle="tab"> <i class="iconfont icon-comments text-md text-muted wrapper-sm" aria-hidden="true"></i> <span class="sr-only"><?php if($this->options->langis == '0'): ?>Latest comments
+<?php elseif($this->options->langis == '1'): ?>最新评论<?php elseif($this->options->langis == '2'): ?>最新評論<?php endif; ?></span> </a></li>
+         <li role="presentation"> <a href="#widget-tabs-4-random" role="tab" aria-controls="widget-tabs-4-random" aria-expanded="false" data-toggle="tab"> <i class="iconfont icon-random text-md text-muted wrapper-sm" aria-hidden="true"></i> <span class="sr-only"><?php if($this->options->langis == '0'): ?>Random articles
+<?php elseif($this->options->langis == '1'): ?>随机文章<?php elseif($this->options->langis == '2'): ?>隨機文章
+<?php endif; ?></span> </a></li>
         </ul>
        </div>
        <div class="tab-content">
        <!--热门文章-->
         <div id="widget-tabs-4-hots" class="tab-pane wrapper-md active" role="tabpanel">
-         <h3 class="widget-title m-t-none text-md">热门文章</h3>
+         <h3 class="widget-title m-t-none text-md"><?php if($this->options->langis == '0'): ?>Popular articles
+<?php elseif($this->options->langis == '1'): ?>热门文章<?php elseif($this->options->langis == '2'): ?>熱門文章<?php endif; ?></h3>
          <ul class="list-group no-bg no-borders pull-in m-b-none">
           <?php TePostViews_Plugin::outputHotPosts($this) ?>
          </ul>
         </div>
         <!--最新评论-->
         <div id="widget-tabs-4-comments" class="tab-pane wrapper-md no-js-show" role="tabpanel">
-         <h3 class="widget-title m-t-none text-md">最新评论</h3>
+         <h3 class="widget-title m-t-none text-md"><?php if($this->options->langis == '0'): ?>Latest comments
+<?php elseif($this->options->langis == '1'): ?>最新评论<?php elseif($this->options->langis == '2'): ?>最新評論<?php endif; ?></h3>
          <ul class="list-group no-borders pull-in auto m-b-none">
           <?php $this->widget('Widget_Comments_Recent', 'ignoreAuthor=true&pageSize=5')->to($comments); ?>
           <?php while($comments->next()): ?>
@@ -53,7 +59,9 @@
         </div>
         <!--随机文章-->
         <div id="widget-tabs-4-random" class="tab-pane wrapper-md no-js-show" role="tabpanel">
-         <h3 class="widget-title m-t-none text-md">随机文章</h3>
+         <h3 class="widget-title m-t-none text-md"><?php if($this->options->langis == '0'): ?>Random articles
+<?php elseif($this->options->langis == '1'): ?>随机文章<?php elseif($this->options->langis == '2'): ?>隨機文章
+<?php endif; ?></h3>
          <ul class="list-group no-bg no-borders pull-in m-b-none">
           <?php theme_random_posts($this);?>
          </ul>
@@ -62,16 +70,18 @@
       </section>
       <!--循环输出分类列表-->
       <section id="categories-2" class="widget widget_categories wrapper-md clear">
-       <h3 class="widget-title m-t-none text-md">分类</h3>
+       <h3 class="widget-title m-t-none text-md"><?php if($this->options->langis == '0'): ?>Categories
+<?php elseif($this->options->langis == '1'): ?>分类<?php elseif($this->options->langis == '2'): ?>分類<?php endif; ?></h3>
        <ul class="list-group">
         <?php $this->widget('Widget_Metas_Category_List')
                ->parse('<li class="list-group-item"> <a href="{permalink}"> <span class="badge pull-right">{count}</span>{name}</a></li>'); ?>
        </ul>
       </section>
-      <!--循环输出标签(在非文章页面显示)-->
-      <?php //if (!($this->is('post'))) : ?>
+      <!--在文章页面输出目录，在其他页面输出标签云-->
+      <?php if (!($this->is('post'))) : ?>
       <section id="tag_cloud-2" class="widget widget_tag_cloud wrapper-md clear">
-       <h3 class="widget-title m-t-none text-md">标签云</h3>
+       <h3 class="widget-title m-t-none text-md"><?php if($this->options->langis == '0'): ?>Tag cloud
+<?php elseif($this->options->langis == '1'): ?>标签云<?php elseif($this->options->langis == '2'): ?>標籤雲<?php endif; ?></h3>
        <div class="tags l-h-2x"> 
        <?php Typecho_Widget::widget('Widget_Metas_Tag_Cloud','ignoreZeroCount=1&limit=30')->to($tags); ?>
         <?php if($tags->have()): ?>
@@ -81,19 +91,12 @@
         <?php endif; ?>
        </div>
       </section>
-    <?php //else: ?>
-    <!--下下个版本更新目录树吧~~~~~
-      <section id="tag_cloud-2" class="widget widget_tag_cloud wrapper-md clear">
-       <h3 class="widget-title m-t-none text-md">文章目录</h3>
+    <?php else: ?>
+      <section id="tag_toc" class="widget widget_categories wrapper-md clear">
+       <h3 class="widget-title m-t-none text-md"><?php if($this->options->langis == '0'): ?>Article Directory<?php elseif($this->options->langis == '1'): ?>文章目录<?php elseif($this->options->langis == '2'): ?>文章目錄<?php endif; ?></h3>
        <div class="tags l-h-2x"> 
-       <?php //Typecho_Widget::widget('Widget_Metas_Tag_Cloud','ignoreZeroCount=1&limit=30')->to($tags); ?>
-        <?php //if($tags->have()): ?>
-            <?php //while ($tags->next()): ?>
-            <a href="<?php //$tags->permalink();?>" class="label bg-info" title="<?php //$tags->name(); ?>" data-toggle="tooltip"><?php //$tags->name(); ?></a> 
-            <?php //endwhile; ?>
-        <?php //endif; ?>
+       <div id="toc"></div>
        </div>
       </section>
-      -->
-    <?php //endif; ?>
+    <?php endif; ?>
      </aside>

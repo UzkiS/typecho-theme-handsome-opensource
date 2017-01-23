@@ -1,26 +1,50 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-
+<?php
+if (!empty($this->options->indexsetup) && in_array('lazyloadimg', $this->options->indexsetup)){
+//图片延缓加载相关处理，替换src为data-original，并添加占位符
+  $echo = ob_get_contents(); //获取缓冲区内容
+  ob_clean(); //清除缓冲区内容，不输出到页面
+  $placeholder = $this->options->themeUrl.'/img/white.gif'; //占位符图片
+  $preg = "/<img (.*)src(.*) \/>/i"; //匹配图片正则
+  //$preg2 = "/\<img (.*?)src\=\"(.*?)\" (.*?)>/i"; //匹配图片正则
+  $replaced = '<img \\1src="'.$placeholder.'" data-original\\2 />';
+  //$replaced2 = '<img \\1src="'.$placeholder.'" data-original="\\2" \\3 />';
+  print preg_replace($preg, $replaced, $echo); //重新写入的缓冲区
+  ob_end_flush(); //将缓冲区输入到页面，并关闭缓存区
+}
+?>
   <footer id="footer" class="app-footer" role="footer">
     <div class="wrapper b-t bg-light">
       <span class="pull-right hidden-xs">
       <?php $this->options->BottomInfo(); ?>
-      Power by <a data-no-instant target="blank" href="http://www.typecho.org">Typecho</a> | Theme <a data-no-instant target="blank" href="https://github.com/ihewro/typecho-theme-handsome/">handsome</a> <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a>
+      Power by <a data-no-instant target="blank" href="http://www.typecho.org">Typecho</a> | Theme <a data-no-instant target="blank" href="https://github.com/ihewro/typecho-theme-handsome/">handsome</a> <a onclick="gotoTop()" class="m-l-sm text-muted"><i class="iconfont icon-longarrowup"></i></a>
       </span>
-      &copy; <?php echo date("Y");?> Copyright.
+      &copy; <?php echo date("Y");?> Copyright.<?php $this->options->BottomleftInfo(); ?>
     </div>
   </footer>
   </div><!--end of .app app-header-fixed-->
 
 <!--CDN加载-->
-<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" data-no-instant></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js" data-no-instant></script>
 <script data-no-instant src="//cdn.bootcss.com/instantclick/3.0.1/instantclick.min.js"></script>
 <script src="//cdn.bootcss.com/highlight.js/9.5.0/highlight.min.js"></script>
+<?php if (!empty($this->options->indexsetup) && in_array('lazyloadimg', $this->options->indexsetup)): ?>
+<script src="<?php $this->options->themeUrl("js/jquery.lazyload.min.js") ?>"></script>
+<script type="text/javascript">
+    //图片延迟加载
+$("img").lazyload({
+    effect:'fadeIn'
+});
+</script>
+<?php endif; ?>
+
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script data-no-instant type="text/javascript">
 InstantClick.on('change', function(isInitialLoad) {
   if (isInitialLoad === false) {
+     if (typeof MathJax !== 'undefined'){
+      MathJax.Hub.Queue(["Typeset",MathJax.Hub]);} // support MathJax
     if (typeof _hmt !== 'undefined')  // support 百度统计
       _hmt.push(['_trackPageview', location.pathname + location.search]);
     if (typeof ga !== 'undefined')  // support google analytics
@@ -31,7 +55,7 @@ InstantClick.on('change', function(isInitialLoad) {
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
-
+<?php $this->options->ChangeAction() ?>
 });
 </script>
 
@@ -80,49 +104,29 @@ yaudio.play();
 <!-- 压缩后版本 -->
 <script data-no-instant src="<?php $this->options->themeUrl('js/main.min.js') ?>"></script>
 <script src="<?php $this->options->themeUrl('js/script.min.js') ?>"></script>
-
 <!--页面布局开关-->
 <script type="text/javascript">
+<?php if (!empty($this->options->indexsetup) && in_array('festival', $this->options->indexsetup)): ?>
+window.onload = clickclose;
+<?php endif; ?>
 <?php if (!empty($this->options->indexsetup) && in_array('header-fix', $this->options->indexsetup)): ?>
 $(document).ready(function(){
     $('#alllayout').addClass("app-header-fixed");
     $('#comments a[href^=#][href!=#]').click(function() {
-    var target = document.getElementById(this.hash.slice(1));
-    if (!target) return;
-    var targetOffset = $(target).offset().top - 50;
-    $('html,body').animate({
-        scrollTop: targetOffset
-    },
-    300);
-    return false;
+      var target = document.getElementById(this.hash.slice(1));
+      if (!target) return;
+      var targetOffset = $(target).offset().top - 50;
+      $('html,body').animate({
+          scrollTop: targetOffset
+      },
+      300);
+      return false;
     });//主要修复评论定位不准确BUG
     setTimeout(function() {
-      if (window.location.hash.indexOf('#')>=0){$('html,body').animate({scrollTop: ($(window.location.hash).offset().top - 50)+"px"}, 300);};//主要修复评论定位不准确BUG
-    }, 500);
-});
-//window.onload= function(){
-  //if (window.location.hash.indexOf('#')>=0){$('html,body').animate({scrollTop: ($(window.location.hash).offset().top - 50)+"px"}, 300);};//主要修复评论定位不准确BUG
-//}
-<?php endif; ?>
-<?php if (!empty($this->options->indexsetup) && in_array('aside-fix', $this->options->indexsetup)): ?>
-$(document).ready(function(){
-    $('#alllayout').addClass("app-aside-fixed");
-});
-<?php endif; ?>
-<?php if (!empty($this->options->indexsetup) && in_array('aside-folded', $this->options->indexsetup)): ?>
-$(document).ready(function(){
-    $('#alllayout').addClass("app-aside-folded");
-});
-<?php endif; ?>
-<?php if (!empty($this->options->indexsetup) && in_array('aside-dock', $this->options->indexsetup)): ?>
-$(document).ready(function(){
-    $('#alllayout').addClass("app-aside-dock");
-});
-<?php endif; ?>
-<?php if (!empty($this->options->indexsetup) && in_array('container-box', $this->options->indexsetup)): ?>
-$(document).ready(function(){
-	$('html').addClass("bg");
-    $('#alllayout').addClass("container");
+      if (window.location.hash.indexOf('#')>=0){
+        $('html,body').animate({scrollTop: ($(window.location.hash).offset().top - 50)+"px"}, 300);
+      };//主要修复评论定位不准确BUG
+    }, 700);
 });
 <?php endif; ?>
 </script>

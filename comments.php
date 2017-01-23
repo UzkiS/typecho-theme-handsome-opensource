@@ -1,6 +1,6 @@
 <?php 
-
 $GLOBALS['z']  = $this->options->CDNURL;
+$GLOBALS['timechoice'] = $this->options->langis;
 function threadedComments($comments, $options) {
     $commentClass = '';
     if ($comments->authorId) {
@@ -17,7 +17,7 @@ function threadedComments($comments, $options) {
 <!--自定义评论代码结构-->
 <!--<a name="<?php //$comments->theId(); ?>" class="target">
 </a>-->
-    <li id="<?php $comments->theId(); ?>" class="comment-body<?php 
+    <li data-no-instant id="<?php $comments->theId(); ?>" class="comment-body<?php 
 if ($depth > 1 && $depth < 3) {
     echo ' comment-child ';
     $comments->levelsAlt('comment-level-odd', ' comment-level-even');
@@ -43,15 +43,16 @@ echo $commentClass;
             $avatar = $host . $url . $hash . '?s=' . $size . '&r=' . $rating . '&d=';
         ?>
         <a class="pull-left thumb-sm">
-          <img alt="" src="<?php echo $avatar ?>" class="avatar-40 photo img-circle" height="40" width="40"></a>
+          <!--<img data-original="<?php //echo $avatar ?>" src="<?php //$comments->options->themeUrl.'/img/white.gif' ?>" class="lazy avatar-40 photo img-circle" height="40" width="40">-->
+          <img data-original="<?php echo $avatar ?>" src="<?php echo $avatar ?>" class="lazy avatar-40 photo img-circle" height="40" width="40">
+          </a>
         <div class="m-b m-l-xxl">
           <div class="comment-meta">
             <span class="comment-author vcard">
               <b class="fn"><?php $comments->author(); ?></b>
-              <!--<span class="says sr-only"> </span>-->
               </span>
             <div class="comment-metadata">
-              <time class="text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="<?php $comments->date(); ?>"><?php $comments->date(); ?>
+              <time class="text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="<?php $comments->date(); ?>"><?php if($GLOBALS['timechoice'] == '0'): ?><?php $comments->date("F jS, Y \a\t h:i a"); ?><?php elseif($GLOBALS['timechoice'] == '1'): ?><?php $comments->date('Y 年 m 月 d 日 h 时 i 分 A'); ?><?php elseif($GLOBALS['timechoice'] == '2'): ?><?php $comments->date('Y 年 m 月 d 日 h 时 i 分 A'); ?><?php endif; ?>
               </time>
               </div>
           </div>
@@ -81,13 +82,19 @@ echo $commentClass;
    <?php if ($comments->have()): ?>
     <h4 class="comments-title m-t-lg m-b"><?php $this->commentsNum(_t(' 暂无评论'), _t(' 1 条评论'), _t(' %d 条评论')); ?></h4>
     <?php $comments->listComments(); ?>
-    <?php //if (($this->options->commentsPageBreak)): ?><!--如何后台评论设置启用了分页，则显示分页-->
     <nav class="text-center m-t-lg m-b-lg" role="navigation">
         <?php $comments->pageNav('&lt;', '&gt;'); ?>
     </nav>
+<script type="text/javascript">
+//给分页按钮增加样式
+$(".page-navigator").addClass("pagination pagination-md");
+$("#comments .page-navigator").addClass("pagination-sm");
+$(".page-navigator .current").addClass("active");
+$("#comments .comment-list").addClass("list-unstyled m-b-none");
+</script>
     <?php endif; ?>
     <?php //endif; ?>
-    <!--如何允许评论，会出现评论框和个人信息的填写-->
+    <!--如果允许评论，会出现评论框和个人信息的填写-->
     <?php if($this->allow('comment')): ?>
     <div id="<?php $this->respondId(); ?>" class="respond comment-respond">
 
@@ -100,18 +107,23 @@ echo $commentClass;
       <div class="comment-form-comment form-group">
         <label for="comment">评论
           <span class="required text-danger">*</span></label>
-        <textarea id="comment" class="textarea form-control" name="text" rows="5" maxlength="65525" aria-required="true" required><?php $this->remember('text'); ?></textarea>
+        <textarea id="comment" class="textarea form-control OwO-textarea" name="text" rows="5" maxlength="65525" required><?php $this->remember('text'); ?></textarea>
+        <div class="OwO"></div>
       </div>
       <!--判断是否登录-->
     <?php if($this->user->hasLogin()): ?>
     <p>欢迎 <a data-no-intant target="blank" href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a> 归来！ <a data-no-instant href="<?php $this->options->logoutUrl(); ?>" title="Logout">退出&raquo;</a></p>
     <?php else: ?>
-      <div class="row row-sm">
-
+        <?php if($this->remember('author',true) != "" && $this->remember('mail',true) != "") : ?>
+        <p>欢迎 <a style="color: #333!important;" onClick='showhidediv("author_info")'><?php $this->remember('author'); ?></a> 归来！</p>
+        <div id="author_info" style="display:none;">
+        <?php else : ?>
+        <div id="author_info" class="row row-sm">
+        <?php endif; ?>
         <div class="comment-form-author form-group col-sm-6 col-md-4">
           <label for="author">名称
             <span class="required text-danger">*</span></label>
-          <input id="author" class="form-control" name="author" type="text" value="<?php $this->remember('author'); ?>" maxlength="245" placeholder="姓名或昵称" required aria-required="true">
+          <input id="author" class="form-control" name="author" type="text" value="<?php $this->remember('author'); ?>" maxlength="245" placeholder="姓名或昵称" required>
           </div>
 
         <div class="comment-form-email form-group col-sm-6 col-md-4">
@@ -125,7 +137,6 @@ echo $commentClass;
           <label for="url">网址</label>
           <input id="url" class="form-control" name="url" type="url" value="<?php $this->remember('url'); ?>" maxlength="200" placeholder="网站或博客"></div>
       </div>
-
       <?php endif; ?>
       <!--提交按钮-->
       <div class="form-group">
@@ -143,8 +154,19 @@ echo $commentClass;
     <h4>此处评论已关闭</h4>
     <?php endif; ?>
 </div> 
-
-<script type = "text/javascript" data-no-instant>
+<script type = "text/javascript">
+$("#comments .reply a").addClass("comment-reply-link label bg-info");
+$('#comments .cancel-comment-reply a').addClass("label bg-primary m-l-xs");
+function showhidediv(id){  
+var sbtitle=document.getElementById(id);  
+if(sbtitle){  
+   if(sbtitle.style.display=='block'){  
+   sbtitle.style.display='none';  
+   }else{  
+   sbtitle.style.display='block';  
+   }  
+}  
+}
 (function() {
     window.TypechoComment = {
         dom: function(id) {
@@ -273,3 +295,17 @@ echo $commentClass;
     });
 })();
 </script>
+<!--表情OwO代码开始，来自DIYgod-->
+<script>
+  var OwOdemo = new OwO({
+    logo: '表情',
+    container: document.getElementsByClassName('OwO')[0],
+    target: document.getElementsByClassName('OwO-textarea')[0],
+    api: '<?php $this->options->themeUrl('js/OwO.json') ?>',
+    position: 'down',
+    width: '100%',
+    maxHeight: '220px'
+});
+</script>
+
+<!--表情OwO代码结束-->

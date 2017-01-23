@@ -7,7 +7,7 @@
 
   	<!-- content -->
 	<div id="content" class="app-content"> 
-   <a href="#" class="off-screen-toggle hide" data-toggle-class=".app-aside=off-screen"></a>
+   <a href="#" class="off-screen-toggle hide"></a>
    <main class="app-content-body">
     <div class="hbox hbox-auto-xs hbox-auto-sm">
     <!--文章-->
@@ -46,7 +46,7 @@
        <?php endif; ?>
      <?php endif; ?>
          <!--文章内容-->
-         <div class="wrapper-lg">
+         <div id="post-content" class="wrapper-lg">
           <div class="entry-content l-h-2x">
           <?php
           $db = Typecho_Db::get();

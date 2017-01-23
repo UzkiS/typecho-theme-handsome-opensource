@@ -1,5 +1,6 @@
 <?php 
 $GLOBALS['z']  = $this->options->CDNURL;
+$GLOBALS['timechoice'] = $this->options->langis;
 function threadedComments($comments, $options) {
     $commentClass = '';
     if ($comments->authorId) {
@@ -41,7 +42,7 @@ echo $commentClass;
             <div class="m-b-xs">
               <a href="" class="h4"><?php $comments->author(); ?></a>
               <span class="text-muted m-l-sm pull-right">
-                <?php $comments->date(); ?>
+                <?php if($GLOBALS['timechoice'] == '0'): ?><?php $comments->date("F jS, Y \a\t h:i a"); ?><?php elseif($GLOBALS['timechoice'] == '1'): ?><?php $comments->date('Y 年 m 月 d 日 h 时 i 分 A'); ?><?php elseif($GLOBALS['timechoice'] == '2'): ?><?php $comments->date('Y 年 m 月 d 日 h 时 i 分 A'); ?><?php endif; ?>
               </span>
             </div>
             <div class="m-b">
@@ -95,6 +96,12 @@ echo $commentClass;
     <nav class="text-center m-b-lg" role="navigation">
         <?php $comments->pageNav('&lt;', '&gt;'); ?>
     </nav>
+          <script type="text/javascript">
+$(".page-navigator").addClass("pagination pagination-md");
+$("#comments .page-navigator").addClass("pagination-sm");
+$(".page-navigator .current").addClass("active");
+$("#comments .comment-list").addClass("list-unstyled m-b-none");
+          </script>
     <?php else: ?>
 <div class="streamline b-l b-info m-l-lg m-b padder-v">
     <ol class="comment-list list-unstyled m-b-none"> 
@@ -107,7 +114,7 @@ echo $commentClass;
           <div class="m-l-lg m-b-lg">
             <div class="m-b-xs">
               <a href="" class="h4"></a><a href="<?php $this->options->siteUrl(); ?>"><?php $this->user->screenName(); ?></a>
-              <span class="text-muted m-l-sm pull-right"><?php echo date("F jS, Y \a\t h:i a",time()+($this->options->timezone - idate("Z"))); ?></span>
+              <span class="text-muted m-l-sm pull-right"><?php if($this->options->langis() == '0'): ?><?php echo date("F jS, Y \a\t h:i a",time()+($this->options->timezone - idate("Z"))); ?><?php elseif($this->options->langis == '1'): ?><?php echo date('Y 年 m 月 d 日 h 时 i 分 A',time()+($this->options->timezone - idate("Z"))); ?><?php elseif($this->options->langis == '2'): ?><?php echo date('Y 年 m 月 d 日 h 时 i 分 A',time()+($this->options->timezone - idate("Z"))); ?><?php endif; ?></span>
             </div>
             <div class="m-b">
               <div class="m-b"><p>欢迎你来到「时光机」栏目。在这里你可以记录你的日常和心情。而且，首页的“闲言碎语”栏目会显示最新的三条动态哦！这是默认的第一条说说，当你发布第一条说说的时候，该条动态会自动消失。</p></div>

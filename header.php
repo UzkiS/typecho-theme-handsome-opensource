@@ -1,12 +1,17 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+ <?PHP ob_start();?>
 <!DOCTYPE HTML>
-<html class="no-js">
+<html class="no-js" <?php if($this->options->langis == '0'): ?>lang="en"<?php elseif($this->options->langis == '1'): ?>lang="zh-cmn-Hans"<?php elseif($this->options->langis == '2'): ?>lang="zh-cmn-Hant"<?php endif; ?>>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta charset="<?php $this->options->charset(); ?>">
+    <!--IE 8浏览器的页面渲染方式-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <!--默认使用极速内核：针对国内浏览器产商-->
     <meta name="renderer" content="webkit">
+    <!--针对移动端的界面优化-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--chrome Android 地址栏颜色-->
     <?php if($this->options->ChromeThemeColor): ?>
     <meta name="theme-color" content="<?php $this->options->ChromeThemeColor() ?>" />
     <?php endif; ?>
@@ -19,18 +24,24 @@
     <?php if($this->options->favicon): ?>
     <link rel="icon" type="image/ico" href="<?php $this->options->favicon() ?>">
     <?php endif; ?>
+
+
     <!-- 第三方CDN加载CSS -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" data-no-instant></script>
     <!-- 本地develope版本 -->
   <!--
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/animate.css') ?>" type="text/css" />
   <link rel="stylesheet" type="text/css" href="<?php $this->options->themeUrl('css/iconfont.css') ?>">
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/font.css') ?>" type="text/css" />
+  <link rel="stylesheet" href="<?php $this->options->themeUrl('css/OwO.min.css') ?>" type="text/css" />
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/app.css') ?>" type="text/css" />-->
-  
+
+
+
     <!-- 本地compass版本 -->
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/appall.min.css') ?>" type="text/css" />
+  <script src="<?php $this->options->themeUrl('js/OwO.min.js') ?>"></script>
 
 <style type="text/css">
 <?php if ( $this->options->ismobilehide =='0' ) : ?>
@@ -185,11 +196,32 @@
 </script>
 
 </head>
-<body>
+<body id="body">
+<?php if (!empty($this->options->indexsetup) && in_array('festival', $this->options->indexsetup)): ?>
+<div id="note" class="note" >
+ <div><a href="#" onclick="closeclick()" class="guanbi"><img src="<?php $this->options->themeUrl("img/close-note.gif") ?>" class="newyear_img"/></a></div>
+</div>
+<style type="text/css">
+.note{display:none;height:100%;width:100%;background:url(<?php $this->options->themeUrl("img/newyear.png")  ?>) center no-repeat;position:fixed;top:0;z-index:9999;background-color: #fff}
+.guanbi{float:right;font-size:12px;padding:6px}
+</style>
+<?php endif; ?>
 <div id="alllayout" class="app">
+<script type="text/javascript">
+  <?php if (!empty($this->options->indexsetup) && in_array('aside-fix', $this->options->indexsetup)): ?>
+    $('#alllayout').addClass("app-aside-fixed");
+<?php endif; ?>
+<?php if (!empty($this->options->indexsetup) && in_array('aside-folded', $this->options->indexsetup)): ?>
+    $('#alllayout').addClass("app-aside-folded");
+<?php endif; ?>
+<?php if (!empty($this->options->indexsetup) && in_array('aside-dock', $this->options->indexsetup)): ?>
+    $('#alllayout').addClass("app-aside-dock");
+<?php endif; ?>
+<?php if (!empty($this->options->indexsetup) && in_array('container-box', $this->options->indexsetup)): ?>
+  $('html').addClass("bg");
+  $('#alllayout').addClass("container");
+<?php endif; ?>
+</script>
     <!-- header -->
 <?php $this->need('headnav.php'); ?>
   <!-- / header -->
-
-    
-    

@@ -90,12 +90,13 @@
 
 
         <!-- search form -->
-        <form method="post" action="" class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
+        <form method="post" class="navbar-form navbar-form-sm navbar-left shift" role="search">
           <div class="form-group">
             <div class="input-group">
-              <input type="text" name="s" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
+              <input id="keyword" type="search" name="s" class="form-control input-sm bg-light no-border rounded padder" placeholder="<?php if($this->options->langis == '0'): ?>Search projects...<?php elseif($this->options->langis == '1'): ?>来这里搜索吧……<?php elseif($this->options->langis == '2'): ?>來這裡搜索吧……<?php endif; ?>" onkeypress="getKey()"/>
               <span class="input-group-btn">
-                <button data-instant type="submit" class="btn btn-sm bg-light rounded"><i class="iconfont icon-search"></i></button>
+                <a id="soux" href="<?php $this->options->siteUrl(); ?>search/" data-instant type="submit" class="btn btn-sm bg-light rounded"><i class="iconfont icon-search"></i>
+                </a>
               </span>
             </div>
           </div>
@@ -107,14 +108,30 @@
           <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle">
               <i style="height: 14px!important"  class="iconfont icon-bell icon-fw"></i>
-              <span class="visible-xs-inline">闲言碎语</span>
+              <span class="visible-xs-inline">
+              <?php if($this->options->langis == '0'): ?>
+                New thing
+              <?php elseif($this->options->langis == '1'): ?>
+                闲言碎语
+              <?php elseif($this->options->langis == '2'): ?>
+                閒言碎語
+              <?php endif; ?>
+              </span>
               <span class="badge badge-sm up bg-danger pull-right-xs"></span>
             </a>
             <!-- dropdown -->
             <div class="dropdown-menu w-xl animated fadeInUp">
               <div class="panel bg-white">
                 <div class="panel-heading b-light bg-light">
-                  <strong>闲言碎语</strong>
+                  <strong>
+              <?php if($this->options->langis == '0'): ?>
+                New thing
+              <?php elseif($this->options->langis == '1'): ?>
+                闲言碎语
+              <?php elseif($this->options->langis == '2'): ?>
+                閒言碎語
+              <?php endif; ?>
+                  </strong>
                 </div>
                 <div class="list-group">
                   <?php
@@ -182,11 +199,11 @@
                     $percent= sprintf("%01.2f", $percent*100).'%';
                 ?> 
                 <?php if($time>=6 && $time<=11): ?>
-                  <p>Good morning, <?php $this->user->screenName(); ?>.</p>
+                  <p><?php if($this->options->langis == '0'): ?>Good morning, <?php elseif($this->options->langis == '1'): ?>早上好，<?php elseif($this->options->langis == '2'): ?>早上好，<?php endif; ?><?php $this->user->screenName(); ?>.</p>
                 <?php elseif($time>=12 && $time<=17): ?>
-                  <p>Good afternoon, <?php $this->user->screenName(); ?>.</p>
+                  <p><?php if($this->options->langis == '0'): ?>Good afternoon, <?php elseif($this->options->langis == '1'): ?>中午好，<?php elseif($this->options->langis == '2'): ?>中午好，<?php endif; ?><?php $this->user->screenName(); ?>.</p>
                 <?php else : ?>
-                <p>Good evening, <?php $this->user->screenName(); ?>.</p>
+                <p><?php if($this->options->langis == '0'): ?>Good evening, <?php elseif($this->options->langis == '1'): ?>晚上好，<?php elseif($this->options->langis == '2'): ?>晚上好，<?php endif; ?><?php $this->user->screenName(); ?>.</p>
               <?php endif; ?>
                 </div>
                 <div class="progress progress-xs m-b-none dker">
@@ -228,10 +245,12 @@
                 <input type="password" name="password" id="navbar-login-password" class="form-control" placeholder="密码"></div>
               <button type="submit" id="login-submit" class="btn btn-block btn-primary">
               <span class="text">登录</span>
-              <span class="text-active">提交中...</span>
+              <span class="text-active">登录中...</span>
               <i class="icon-spin iconfont icon-spinner hide" id="spin-login"></i>
               </button>
-              <input type="hidden" name="referer" value="<?php $this->options->siteUrl(); ?>" data-current-url="value"></form>
+              <?php $protocol = strpos(strtolower($_SERVER[ 'SERVER_PROTOCOL' ]),'https')  === false ? 'http' : 'https'; ?>
+              <!--本地测试没问题，我的博客使用就有问题！-->
+              <input type="hidden" name="referer" value="<?php echo $protocol.'://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']; ?>" data-current-url="value"></form>
           </div>
           <?php endif; ?>
           </li>

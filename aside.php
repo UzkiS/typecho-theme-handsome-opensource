@@ -40,7 +40,7 @@
             <div class="dropdown wrapper">
               <a href="<?php Helper::options()->siteUrl()?>cross.html">
                 <span class="thumb-lg w-auto-folded avatar m-t-sm">
-                  <img src="<?php $this->options->BlogPic() ?>" class="img-full" alt="...">
+                  <img src="<?php $this->options->BlogPic() ?>" class="img-full">
                 </span>
               </a>
               <a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
@@ -63,11 +63,11 @@
                     $percent= sprintf("%01.2f", $percent*100).'%';
                 ?> 
                 <?php if($time>=6 && $time<=11): ?>
-                  <p>Good morning, <?php $this->options->BlogName(); ?>.</p>
+                  <p><?php if($this->options->langis == '0'): ?>Good morning, <?php elseif($this->options->langis == '1'): ?>早上好，<?php elseif($this->options->langis == '2'): ?>早上好，<?php endif; ?><?php $this->options->BlogName(); ?>.</p>
                 <?php elseif($time>=12 && $time<=17): ?>
-                  <p>Good afternoon, <?php $this->options->BlogName(); ?>.</p>
+                  <p><?php if($this->options->langis == '0'): ?>Good afternoon, <?php elseif($this->options->langis == '1'): ?>中午好，<?php elseif($this->options->langis == '2'): ?>中午好，<?php endif; ?><?php $this->options->BlogName(); ?>.</p>
                 <?php else : ?>
-                <p>Good evening, <?php $this->options->BlogName(); ?>.</p>
+                <p><?php if($this->options->langis == '0'): ?>Good evening, <?php elseif($this->options->langis == '1'): ?>晚上好，<?php elseif($this->options->langis == '2'): ?>晚上好，<?php endif; ?><?php $this->options->BlogName(); ?>.</p>
                 <?php endif; ?>
                   </div>
                   <div class="progress progress-xs m-b-none dker">
@@ -108,13 +108,15 @@
             <ul class="nav">
              <!--index-->
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                <span>导航</span>
+                <span><?php if($this->options->langis == '0'): ?>Navigation
+<?php elseif($this->options->langis == '1'): ?>导航<?php elseif($this->options->langis == '2'): ?>導航<?php endif; ?></span>
               </li>
               <!--主页-->
               <li>
                 <a href="<?php $this->options->siteUrl(); ?>" class="auto">      
                   <i class="iconfont icon-home icon text-md"></i>
-                  <span>主页</span>
+                  <span><?php if($this->options->langis == '0'): ?>Home
+<?php elseif($this->options->langis == '1'): ?>首页<?php elseif($this->options->langis == '2'): ?>首頁<?php endif; ?></span>
                 </a>
               </li>
               <!-- /主页 -->
@@ -124,7 +126,8 @@
               <li class="line dk"></li>
 			<!--Components-->
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                <span>组成</span>
+                <span><?php if($this->options->langis == '0'): ?>Components
+<?php elseif($this->options->langis == '1'): ?>组成<?php elseif($this->options->langis == '2'): ?>組成<?php endif; ?></span>
               </li>
               <!--分类category-->
               <li>
@@ -134,12 +137,14 @@
                     <i class="iconfont icon-fw icon-angledown text-active"></i>
                   </span>
                   <i class="iconfont icon-c-classification"></i>
-                  <span>分类</span>
+                  <span><?php if($this->options->langis == '0'): ?>Categories
+<?php elseif($this->options->langis == '1'): ?>分类<?php elseif($this->options->langis == '2'): ?>分類<?php endif; ?></span>
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="nav-sub-header">
                     <a data-no-instant>
-                      <span>分类</span>
+                      <span><?php if($this->options->langis == '0'): ?>Categories
+<?php elseif($this->options->langis == '1'): ?>分类<?php elseif($this->options->langis == '2'): ?>分類<?php endif; ?></span>
                     </a>
                   </li><!--不会显示出来-->
                   <!--循环输出分类-->
@@ -155,12 +160,14 @@
                     <i class="iconfont icon-fw icon-angledown text-active"></i>
                   </span>
                   <i class="iconfont icon-176pages"></i>
-                  <span>页面</span>
+                  <span><?php if($this->options->langis == '0'): ?>Pages
+<?php elseif($this->options->langis == '1'): ?>页面<?php elseif($this->options->langis == '2'): ?>頁面<?php endif; ?></span>
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="nav-sub-header">
                     <a data-no-instant>
-                      <span>页面</span>
+                      <span><?php if($this->options->langis == '0'): ?>Pages
+<?php elseif($this->options->langis == '1'): ?>页面<?php elseif($this->options->langis == '2'): ?>頁面<?php endif; ?></span>
                     </a>
                   </li><!--这个字段不会被显示出来-->
                   <!--循环输出独立页面-->
@@ -178,7 +185,8 @@
                     <i class="iconfont icon-fw icon-angledown text-active"></i>
                   </span>
                   <i class="iconfont icon-pengyouquan"></i>
-                  <span>友链</span>
+                  <span><?php if($this->options->langis == '0'): ?>Links
+<?php elseif($this->options->langis == '1'): ?>友链<?php elseif($this->options->langis == '2'): ?>友鏈<?php endif; ?></span>
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="nav-sub-header">

@@ -17,7 +17,7 @@ $this->need('header.php');
   <div class="butterbar hide">
     <span class="bar"></span>
   </div>
-  <a href="#" class="off-screen-toggle hide" data-toggle-class=".app-aside=off-screen"></a>
+  <a href="#" class="off-screen-toggle hide"></a>
   <main class="app-content-body">
     <header class="bg-light lter b-b wrapper-md">
       <h1 class="entry-title m-n font-thin h3 text-black l-h">文章归档</h1></header>

@@ -21,7 +21,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
   <div class="butterbar hide">
     <span class="bar"></span>
   </div>
-  <a href="#" class="off-screen-toggle hide" data-toggle-class=".app-aside=off-screen"></a>
+  <a href="#" class="off-screen-toggle hide"></a>
   <main class="app-content-body">
     <div class="hbox hbox-auto-xs hbox-auto-sm">
       <div class="col">
@@ -46,7 +46,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
           <img src="<?php echo $this->fields->thumb; ?>" class="img-full">
         <?php else: ?>
           <?php $thumb = showThumbnail($this); if(!empty($thumb)): ?>
-          <img src="<?php echo $thumb ?>" class="img-full">
+          <img src="<?php echo $thumb ?>" class="img-full" />
         <?php endif; ?>
         <?php endif; ?>
         </a>
@@ -67,7 +67,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             <div class="line line-lg b-b b-light"></div>
             <div class="text-muted">
               <i class="iconfont icon-user1 text-muted"></i> <a href="<?php $this->author->permalink(); ?>" class="m-r-sm"><?php $this->author(); ?> </a>
-              <i class="iconfont icon-clocko text-muted"></i> <?php $this->date('F j, Y'); ?>
+              <i class="iconfont icon-clocko text-muted"></i> <?php if($this->options->langis == '0'): ?><?php $this->date('F j, Y'); ?><?php elseif($this->options->langis == '1'): ?><?php $this->date('Y 年 m 月 d 日'); ?><?php elseif($this->options->langis == '2'): ?><?php $this->date('Y 年 m 月 d 日'); ?><?php endif; ?>
               <a href="<?php $this->permalink() ?>#comments" class="m-l-sm"><i class="iconfont icon-comments text-muted"></i> <?php $this->commentsNum(_t(' 暂无评论'), _t(' 1 条评论'), _t(' %d 条评论')); ?></a>
             </div>
           </div>
@@ -80,6 +80,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
           <nav class="text-center m-t-lg m-b-lg" role="navigation">
         <?php $this->pageNav('&laquo;', '&raquo;'); ?>
           </nav>
+          <script type="text/javascript">
+$(".page-navigator").addClass("pagination pagination-md");
+$(".page-navigator .current").addClass("active");
+          </script>
         </div>
       </div>
       <!--首页右侧栏-->
