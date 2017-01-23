@@ -47,10 +47,10 @@
           <div id="index-post-img">
           <a href="<?php $this->permalink() ?>">
         <?php if (array_key_exists('thumb',unserialize($this->___fields()))): ?>
-          <img src="<?php echo $this->fields->thumb; ?>" class="img-full">
+          <img src="<?php echo $this->fields->thumb; ?>" class="img-full" />
         <?php else: ?>
           <?php $thumb = showThumbnail($this); if(!empty($thumb)): ?>
-          <img src="<?php echo $thumb ?>" class="img-full">
+          <img src="<?php echo $thumb ?>" class="img-full" />
         <?php endif; ?>
         <?php endif; ?>
           </a>

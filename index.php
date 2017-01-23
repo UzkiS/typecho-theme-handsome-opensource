@@ -4,7 +4,7 @@
  * 
  * @package handsome 
  * @author 友人C
- * @version 2.0.0
+ * @version 2.0.1
  * @link https://github.com/ihewro/typecho-theme-handsome/
  */
 
@@ -43,7 +43,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
           <div id="index-post-img">
           <a href="<?php $this->permalink() ?>">
         <?php if ($this->options->RandomPicChoice !=='0' && array_key_exists('thumb',unserialize($this->___fields()))): ?>
-          <img src="<?php echo $this->fields->thumb; ?>" class="img-full">
+          <img src="<?php echo $this->fields->thumb; ?>" class="img-full" />
         <?php else: ?>
           <?php $thumb = showThumbnail($this); if(!empty($thumb)): ?>
           <img src="<?php echo $thumb ?>" class="img-full" />
