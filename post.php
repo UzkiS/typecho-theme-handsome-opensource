@@ -7,7 +7,7 @@
 
   	<!-- content -->
 	<div id="content" class="app-content markdown-body"> 
-   <a href="#" class="off-screen-toggle hide"></a>
+   <a class="off-screen-toggle hide"></a>
    <main class="app-content-body">
     <div class="hbox hbox-auto-xs hbox-auto-sm">
     <!--文章-->

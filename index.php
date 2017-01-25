@@ -4,7 +4,7 @@
  * 
  * @package handsome 
  * @author 友人C
- * @version 2.0.1
+ * @version 2.0.2
  * @link https://github.com/ihewro/typecho-theme-handsome/
  */
 
@@ -21,7 +21,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
   <div class="butterbar hide">
     <span class="bar"></span>
   </div>
-  <a href="#" class="off-screen-toggle hide"></a>
+  <a class="off-screen-toggle hide"></a>
   <main class="app-content-body">
     <div class="hbox hbox-auto-xs hbox-auto-sm">
       <div class="col">

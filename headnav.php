@@ -250,7 +250,7 @@
               </button>
               <?php $protocol = strpos(strtolower($_SERVER[ 'SERVER_PROTOCOL' ]),'https')  === false ? 'http' : 'https'; ?>
               <!--本地测试没问题，我的博客使用就有问题！-->
-              <input type="hidden" name="referer" value="<?php echo $protocol.'://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']; ?>" data-current-url="value"></form>
+              <input type="hidden" name="referer" value="<?php echo $protocol.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" data-current-url="value"></form>
           </div>
           <?php endif; ?>
           </li>
