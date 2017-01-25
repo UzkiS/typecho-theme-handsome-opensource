@@ -70,12 +70,13 @@ InstantClick.init('<?php $this->options->delaytime(); ?>');
 </script>
 
 <!--develope本地版本-->
-<!--<script data-no-instant src="<?php $this->options->themeUrl('js/develope/ui-nav.js') ?>"></script>
-<script data-no-instant src="<?php $this->options->themeUrl('js/develope/ui-toggle.js') ?>"></script>
-<script data-no-instant src="<?php $this->options->themeUrl('js/develope/ui-client.js') ?>"></script>
-<script src="<?php $this->options->themeUrl('js/develope/script.js') ?>"></script>-->
+<!--<script data-no-instant src="<?php //$this->options->themeUrl('js/develope/ui-nav.js') ?>"></script>
+<script data-no-instant src="<?php //$this->options->themeUrl('js/develope/ui-toggle.js') ?>"></script>
+<script data-no-instant src="<?php //$this->options->themeUrl('js/develope/ui-client.js') ?>"></script>
+<script src="<?php //$this->options->themeUrl('js/develope/script.js') ?>"></script>-->
 
 <!--音乐播放器开始。by qqdie 修改自youduBGM插件-->
+<?php if (!empty($this->options->indexsetup) && in_array('musicplayer', $this->options->indexsetup)): ?>
 <bgm>     
 <a class="ymusic" onclick="playbtu();" target="_blank">
 <i id="ydmc"></i>
@@ -99,11 +100,15 @@ yaudio.art=sj.artist;
 yaudio.play();
 <?php endif; ?>
  </script>
+ <script data-no-instant src="<?php $this->options->themeUrl('js/player.min.js'); ?>"></script>
+ <script src="<?php $this->options->themeUrl('js/prbug.min.js'); ?>"></script>
+ <?php endif; ?>
 <!--音乐播放器结束-->
 
 <!-- 压缩后版本 -->
-<script data-no-instant src="<?php $this->options->themeUrl('js/main.min.js') ?>"></script>
-<script src="<?php $this->options->themeUrl('js/script.min.js') ?>"></script>
+<script data-no-instant src="<?php $this->options->themeUrl('js/main.min.js'); ?>"></script>
+<script src="<?php $this->options->themeUrl('js/script.min.js'); ?>"></script>
+
 <!--页面布局开关-->
 <script type="text/javascript">
 <?php if (!empty($this->options->indexsetup) && in_array('festival', $this->options->indexsetup)): ?>

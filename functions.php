@@ -350,9 +350,10 @@ input[type=text], textarea {
     'NoRandomPic-index' => _t('首页不显示头图'),
     'NoSummary-index' => _t('首页文章不显示摘要'),
     'lazyloadimg' => _t('图片延迟加载'),
-    'festival' => _t('节日祝贺效果（暂只有新年）')
+    'festival' => _t('节日祝贺效果（暂只有新年）'),
+    'musicplayer' => _t('启用音乐播放器')
     ),
-    array('header-fix', 'aside-fix','container-box','atargetblank','lazyloadimg','festival'), _t('全站设置开关'));
+    array('header-fix', 'aside-fix','container-box','atargetblank','lazyloadimg','festival','musicplayer'), _t('全站设置开关'));
     
     $form->addInput($indexsetup->multiMode());
 
@@ -536,7 +537,7 @@ input[type=text], textarea {
     
     //播放器音乐
     $musiclist = new Typecho_Widget_Helper_Form_Element_Textarea('musiclist', NULL,'{title:"晚安；）",artist:"性人盒",mp3:"//o9o5ixzu2.qnssl.com/wanan.mp3"},
-{title:"远山",artist:"末小皮",mp3:"//o9o5ixzu2.qnssl.com/%E8%BF%9C%E5%B1%B1.mp3"},', _t('音乐播放器的音乐列表'), _t('格式: {title:"xxx", artist:"xxx", mp3:"http:xxxx"} ，每个歌曲之间用英文,隔开。请保证歌曲列表里至少有一首歌！'));
+{title:"远山",artist:"末小皮",mp3:"//o9o5ixzu2.qnssl.com/%E8%BF%9C%E5%B1%B1.mp3"},', _t('音乐播放器的音乐列表'), _t('格式: {title:"xxx", artist:"xxx", mp3:"http:xxxx"} ，每个歌曲之间用英文,隔开。请保证歌曲列表里至少有一首歌！（在全站设置项启用播放器后才有效）'));
     $form->addInput($musiclist);
 
     //音乐播放器是否自动播放
@@ -546,7 +547,7 @@ input[type=text], textarea {
             '1' => _t('自动播放')
         ),
         //Default choose
-        '0',_t('音乐播放器播放设置'),_t("自动播放指打开页面会自动播放音乐")
+        '0',_t('音乐播放器播放设置'),_t("自动播放指打开页面会自动播放音乐（在全站设置项启用播放器后才有效）")
     );
     $form->addInput($isautoplay);
     //音乐播放器手机端是否隐藏
@@ -556,7 +557,7 @@ input[type=text], textarea {
             '1' => _t('不隐藏')
         ),
         //Default choose
-        '1',_t('音乐播放器手机端是否隐藏'),_t("默认不隐藏")
+        '1',_t('音乐播放器手机端是否隐藏'),_t("默认不隐藏（在全站设置项启用播放器后才有效）")
     );
     $form->addInput($ismobilehide);
     //语言设置

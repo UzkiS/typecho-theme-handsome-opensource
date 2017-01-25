@@ -99,7 +99,7 @@
   </div>
   	<!-- /content -->
 
-<script src="<?php $this->options->themeUrl("js/toc.js") ?>"></script>
+<script src="<?php $this->options->themeUrl("js/toc.min.js") ?>"></script>
     <!-- footer -->
 	<?php $this->need('footer.php'); ?>
   	<!-- / footer -->
