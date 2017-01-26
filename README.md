@@ -57,6 +57,10 @@ handsome 是一个自响应，很酷的typecho主题。
 
 ## Contributing 贡献
 
+[==>**如何贡献代码**](https://github.com/ihewro/typecho-theme-handsome/wiki/%E8%B4%A1%E7%8C%AE%E4%BB%A3%E7%A0%81)
+
+[==>**How to Contribute Your Code**](https://github.com/ihewro/typecho-theme-handsome/wiki/%E8%B4%A1%E7%8C%AE%E4%BB%A3%E7%A0%81)
+
 All kinds of contributions (enhancements, new features, documentation & code improvements, issues & bugs reporting) are welcome.
 
 欢迎各种形式的贡献，包括但不限于优化，添加功能，文档 & 代码的改进，问题和 bugs 的报告。期待您的`Pull Request`。
@@ -69,10 +73,26 @@ All code licensed under the [GPL-3.0  License](https://github.com/ihewro/typecho
 
 ## Changelog 开发日志
 
+### 2017-1-24 更新至2.0.0
+
+1. 增加了文章目录树（仅在电脑端显示）
+2. 增加了lang属性,优化SEO
+3. 修复由于预加载导致的MathJax失效问题
+4. 优化了文章页面内的链接样式
+5. 优化了文章内的图片样式
+6. 添加 I18n 支持（支持三种语言：中文简体、繁体与英语）
+7. 添加了评论框处了[表情]功能
+8. 增加图片延迟加载效果
+9. 增加了节日祝贺的功能
+10. 增加 已经评论过的游客的效果
+11. 增加了返回顶部功能
+12. 修复一系列bug
+13. 后台功能完善
 
 ### 2016-12-27 更新至 1.6.0
 
 老用户更新时，请查看插件文件夹，不再使BufannaoCms插件，换成更加轻巧的针对handsome主题优化的TePostViews插件（7kb）！
+
 1. 增加了播放器！！试试吧！
 2. 评论实现了无限嵌套哦！而且修复了锚点链接的定位偏差
 3. 登录的按钮也有登录中的效果了！
