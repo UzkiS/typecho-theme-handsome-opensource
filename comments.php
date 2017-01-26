@@ -1,6 +1,7 @@
 <?php 
 $GLOBALS['z']  = $this->options->CDNURL;
 $GLOBALS['timechoice'] = $this->options->langis;
+$GLOBALS['imgdelay'] = $this->options->themeUrl.'/img/white.gif';
 function threadedComments($comments, $options) {
     $commentClass = '';
     if ($comments->authorId) {
@@ -43,8 +44,7 @@ echo $commentClass;
             $avatar = $host . $url . $hash . '?s=' . $size . '&r=' . $rating . '&d=';
         ?>
         <a class="pull-left thumb-sm">
-          <!--<img data-original="<?php //echo $avatar ?>" src="<?php //$comments->options->themeUrl.'/img/white.gif' ?>" class="lazy avatar-40 photo img-circle" height="40" width="40">-->
-          <img data-original="<?php echo $avatar ?>" src="<?php echo $avatar ?>" class="lazy avatar-40 photo img-circle" height="40" width="40">
+          <img data-original="<?php echo $avatar ?>" src="<?php echo $GLOBALS['imgdelay'] ?>" class="avatar-40 photo img-circle" height="40" width="40">
           </a>
         <div class="m-b m-l-xxl">
           <div class="comment-meta">
@@ -58,7 +58,7 @@ echo $commentClass;
           </div>
           <!--回复内容-->
           <div class="comment-content m-t-sm">
-            <p><b><?php get_comment_at($comments->coid)?></b>  <?php get_filtered_comment($comments->coid)?></p>
+            <p><b><?php get_comment_at($comments->coid)?></b>  <?php //$comments->content(); ?><?php get_filtered_comment($comments->coid)?></p>
           </div>
           <!--回复按钮-->
           <div class="reply m-t-sm">
@@ -99,7 +99,7 @@ $("#comments .comment-list").addClass("list-unstyled m-b-none");
     <div id="<?php $this->respondId(); ?>" class="respond comment-respond">
 
     <h4 id="reply-title" class="comment-reply-title m-t-lg m-b">发表评论
-        <small class="cancel-comment-reply">
+        <small data-no-instant class="cancel-comment-reply">
           <?php $comments->cancelReply(); ?>
         </small>
     </h4>

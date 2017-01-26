@@ -248,9 +248,9 @@
               <span class="text-active">登录中...</span>
               <i class="icon-spin iconfont icon-spinner hide" id="spin-login"></i>
               </button>
-              <?php $protocol = strpos(strtolower($_SERVER[ 'SERVER_PROTOCOL' ]),'https')  === false ? 'http' : 'https'; ?>
+              <?php $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://'; ?>
               <!--本地测试没问题，我的博客使用就有问题！-->
-              <input type="hidden" name="referer" value="<?php echo $protocol.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" data-current-url="value"></form>
+              <input type="hidden" name="referer" value="<?php echo $http_type.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" data-current-url="value"></form>
           </div>
           <?php endif; ?>
           </li>
