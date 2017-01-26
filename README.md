@@ -51,9 +51,9 @@ handsome 是一个自响应，很酷的typecho主题。
 
 ## Docs 文档
 
-[handsome theme  help docs_US](http://www.ihewro.xyz/archives/519/)
+[handsome theme  help docs_US](https://github.com/ihewro/typecho-theme-handsome/wiki/Help-Docs_US)
 
-[handsome主题帮助文档](http://www.ihewro.xyz/archives/519/)
+[handsome主题帮助文档](https://github.com/ihewro/typecho-theme-handsome/wiki/%E4%B8%AD%E6%96%87%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3)
 
 ## Contributing 贡献
 
@@ -72,6 +72,8 @@ All code licensed under the [GPL-3.0  License](https://github.com/ihewro/typecho
 所有代码根据[GPL-3.0协议](https://github.com/ihewro/typecho-theme-handsome/blob/master/LICENSE)。换句话说，你可以使用或者修改代码，但是你不能用于商业目的。
 
 ## Changelog 开发日志
+
+[详细更新记录点击这里](https://github.com/ihewro/typecho-theme-handsome/wiki/ChangeLog-%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97)
 
 ### 2017-1-24 更新至2.0.0
 
