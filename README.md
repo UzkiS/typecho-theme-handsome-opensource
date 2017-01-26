@@ -4,7 +4,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/ihewro/typecho-theme-handsome.svg)](https://github.com/ihewro/typecho-theme-handsome/issues)
 [![GitHub forks](https://img.shields.io/github/forks/ihewro/typecho-theme-handsome.svg)](https://github.com/ihewro/typecho-theme-handsome/network)
 [![GitHub stars](https://img.shields.io/github/stars/ihewro/typecho-theme-handsome.svg)](https://github.com/ihewro/typecho-theme-handsome/stargazers)
-[![helpdocs](https://img.shields.io/badge/Docs-HELP-red.svg)](http://www.ihewro.xyz/archives/519/) 
+[![helpdocs](https://img.shields.io/badge/Docs-HELP-red.svg)](https://github.com/ihewro/typecho-theme-handsome/wiki/%E4%B8%AD%E6%96%87%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3) 
 [![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg)](https://raw.githubusercontent.com/ihewro/typecho-theme-handsome/master/LICENSE)
 
 Handsome is  a responsive,cool and beautiful typecho theme.
