@@ -40,7 +40,7 @@
             $avatar = $host . $url . $hash . '?s=' . $size . '&r=' . $rating . '&d=';
         ?>
               <a href="<?php $comments->permalink(); ?>" class="pull-left thumb-sm avatar m-r"> 
-                  <img alt="" src="<?php echo $avatar ?>" class="avatar-40 photo img-circle" height="40" width="40"></a>
+                  <img alt="" src="<?php echo $avatar ?>" class="avatar-40 photo img-circle" style="height:40px!important; width: 40px!important;"></a>
               </a>
               <a href="<?php $comments->permalink(); ?>" class="text-muted"> 
                   <i class="iconfont icon-commento pull-right m-t-sm text-sm" title="详情" aria-hidden="true" data-toggle="tooltip" data-placement="auto left"></i>        

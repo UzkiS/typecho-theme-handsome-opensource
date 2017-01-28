@@ -44,7 +44,7 @@ echo $commentClass;
             $avatar = $host . $url . $hash . '?s=' . $size . '&r=' . $rating . '&d=';
         ?>
         <a class="pull-left thumb-sm">
-          <img data-original="<?php echo $avatar ?>" src="<?php echo $GLOBALS['imgdelay'] ?>" class="avatar-40 photo img-circle" height="40" width="40">
+          <img data-original="<?php echo $avatar ?>" src="<?php echo $GLOBALS['imgdelay'] ?>" class="avatar-40 photo img-circle" style="height:40px!important; width: 40px!important;">
           </a>
         <div class="m-b m-l-xxl">
           <div class="comment-meta">
