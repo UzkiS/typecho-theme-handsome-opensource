@@ -50,7 +50,7 @@
       <i class="iconfont icon-chevron text-muted"></i>
       <i class="iconfont icon-fw icon-signin m-r-xs"></i> 登录
     </a>
-    <a href="<?php $this->options->siteUrl(); ?>register.php" ui-sref="access.signup" class="list-group-item">
+    <a href="<?php $this->options->siteUrl(); ?>admin/register.php" ui-sref="access.signup" class="list-group-item">
       <i class="iconfont icon-chevron text-muted"></i>
       <i class="iconfont icon-fw icon-unlockalt m-r-xs"></i> 注册
     </a>
