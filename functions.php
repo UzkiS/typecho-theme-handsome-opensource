@@ -514,7 +514,7 @@ input[type=text], textarea {
     gravatar由于国内被墙，推荐使用https://secure.gravatar.com 或者https://cdn.v2ex.com/gravatar 镜像源。你可以使用你自己的镜像源(末尾不要加斜杠！！！)"));
     $form->addInput($CDNURL);
     //时光机页面的头图
-    $timepic = new Typecho_Widget_Helper_Form_Element_Text('timepic', NULL, 'https://ww4.sinaimg.cn/large/a15b4afegy1fcets6ivogj20p00ho45a', _t('时光机页面的头图'), _t("填写图片地址，在时光机页面cross.html独立页面的头图，图片大小切勿过大，控制在100K左右为佳。"));
+    $timepic = new Typecho_Widget_Helper_Form_Element_Text('timepic', NULL, 'https://o9o5ixzu2.qnssl.com/background3.jpg', _t('时光机页面的头图'), _t("填写图片地址，在时光机页面cross.html独立页面的头图，图片大小切勿过大，控制在100K左右为佳。"));
     $form->addInput($timepic);
 
     //加载进度条颜色
@@ -779,7 +779,7 @@ function getFriendWall()
     if (count($result) > 0) {   
         $maxNum = $result[0]['cnt'];   
         foreach ($result as $value) {   
-            $mostactive .= '<li><a target="_blank" rel="nofollow" href="' . $value['url'] . '"><span class="pic" style="background: url(http://1.gravatar.com/avatar/'.md5(strtolower($value['mail'])).'?s=36&d=&r=G) no-repeat;background-size: 36px;"></span><em>' . $value['author'] . '</em><strong>+' . $value['cnt'] . '</strong><br />' . $value['url'] . '</a></li>';       
+            $mostactive .= '<li><a target="_blank" rel="nofollow" href="' . $value['url'] . '"><span class="pic" style="background: url(https://secure.gravatar.com/avatar/'.md5(strtolower($value['mail'])).'?s=36&d=&r=G) no-repeat;background-size: 36px;"></span><em>' . $value['author'] . '</em><strong>+' . $value['cnt'] . '</strong><br />' . $value['url'] . '</a></li>';       
         }   
         echo $mostactive;   
     }   
