@@ -349,11 +349,11 @@ input[type=text], textarea {
     'NoRandomPic-post' => _t('文章页面不显示头图'),
     'NoRandomPic-index' => _t('首页不显示头图'),
     'NoSummary-index' => _t('首页文章不显示摘要'),
-    'lazyloadimg' => _t('图片延迟加载'),
+    'lazyloadimg' => _t('图片延迟加载(可能会卡顿)'),
     'festival' => _t('节日祝贺效果（暂只有新年）'),
     'musicplayer' => _t('启用音乐播放器')
     ),
-    array('header-fix', 'aside-fix','container-box','atargetblank','lazyloadimg','festival','musicplayer'), _t('全站设置开关'));
+    array('header-fix', 'aside-fix','container-box','atargetblank','festival','musicplayer'), _t('全站设置开关'));
     
     $form->addInput($indexsetup->multiMode());
 
