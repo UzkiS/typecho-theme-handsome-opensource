@@ -2,6 +2,7 @@
 $GLOBALS['z']  = $this->options->CDNURL;
 $GLOBALS['timechoice'] = $this->options->langis;
 $GLOBALS['imgdelay'] = $this->options->themeUrl.'/img/white.gif';
+$GLOBALS['isimgdelay'] = !empty($this->options->indexsetup) && in_array('lazyloadimg', $this->options->indexsetup);
 function threadedComments($comments, $options) {
     $commentClass = '';
     if ($comments->authorId) {
@@ -44,7 +45,11 @@ echo $commentClass;
             $avatar = $host . $url . $hash . '?s=' . $size . '&r=' . $rating . '&d=';
         ?>
         <a class="pull-left thumb-sm">
+        <?php if ($GLOBALS['isimgdelay']): ?>
           <img data-original="<?php echo $avatar ?>" src="<?php echo $GLOBALS['imgdelay'] ?>" class="avatar-40 photo img-circle" style="height:40px!important; width: 40px!important;">
+        <?php else: ?>
+          <img src="<?php echo $avatar ?>" class="avatar-40 photo img-circle" style="height:40px!important; width: 40px!important;">
+        <?php endif; ?>
           </a>
         <div class="m-b m-l-xxl">
           <div class="comment-meta">
