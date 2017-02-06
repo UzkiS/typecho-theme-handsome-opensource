@@ -425,7 +425,7 @@ input[type=text], textarea {
     $form->addInput($BlogName);
 
     //博主头像：在本主题中首页index.php 和 aboutme.php中将会调用此头像
-    $BlogPic = new Typecho_Widget_Helper_Form_Element_Text('BlogPic', NULL, 'http://ww4.sinaimg.cn/large/a15b4afegy1fcgr86xdu6j2064064mxd', _t('头像图片地址'), _t('logo头像地址，尺寸在200X200左右即可'));
+    $BlogPic = new Typecho_Widget_Helper_Form_Element_Text('BlogPic', NULL, 'https://ww4.sinaimg.cn/large/a15b4afegy1fcgr86xdu6j2064064mxd', _t('头像图片地址'), _t('logo头像地址，尺寸在200X200左右即可'));
     $form->addInput($BlogPic);
 
     //博主职业
