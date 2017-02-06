@@ -18,11 +18,19 @@ if (!empty($this->options->indexsetup) && in_array('lazyloadimg', $this->options
       <span class="pull-right hidden-xs">
       <?php $this->options->BottomInfo(); ?>
       Power by <a data-no-instant target="blank" href="http://www.typecho.org">Typecho</a> | Theme <a data-no-instant target="blank" href="https://github.com/ihewro/typecho-theme-handsome/">handsome</a> <a onclick="gotoTop()" class="m-l-sm text-muted"><i class="iconfont icon-longarrowup"></i></a>
-      </span>
-      &copy; <?php echo date("Y");?> Copyright.<?php $this->options->BottomleftInfo(); ?>
+      </span><?php $this->options->BottomleftInfo(); ?>
+      &copy; <?php echo date("Y");?> Copyright.
     </div>
   </footer>
   </div><!--end of .app app-header-fixed-->
+
+<?php $this->footer(); ?>
+
+<!--develope本地版本-->
+<!--<script data-no-instant src="<?php //$this->options->themeUrl('js/develope/ui-nav.js') ?>"></script>
+<script data-no-instant src="<?php //$this->options->themeUrl('js/develope/ui-toggle.js') ?>"></script>
+<script data-no-instant src="<?php //$this->options->themeUrl('js/develope/ui-client.js') ?>"></script>
+<script src="<?php //$this->options->themeUrl('js/develope/script.js') ?>"></script>-->
 
 <!--CDN加载-->
 <script src="//cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js" data-no-instant></script>
@@ -55,11 +63,9 @@ InstantClick.on('change', function(isInitialLoad) {
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
+
 <?php $this->options->ChangeAction() ?>
 });
-</script>
-
-<script data-no-instant>
 <?php if ( $this->options->preload =='0' ) : ?>
 InstantClick.init('mouseover');
 <?php elseif ( $this->options->preload =='1' ) : ?>
@@ -69,11 +75,6 @@ InstantClick.init('<?php $this->options->delaytime(); ?>');
 <?php endif; ?>
 </script>
 
-<!--develope本地版本-->
-<!--<script data-no-instant src="<?php //$this->options->themeUrl('js/develope/ui-nav.js') ?>"></script>
-<script data-no-instant src="<?php //$this->options->themeUrl('js/develope/ui-toggle.js') ?>"></script>
-<script data-no-instant src="<?php //$this->options->themeUrl('js/develope/ui-client.js') ?>"></script>
-<script src="<?php //$this->options->themeUrl('js/develope/script.js') ?>"></script>-->
 
 <!--音乐播放器开始。by qqdie 修改自youduBGM插件-->
 <?php if (!empty($this->options->indexsetup) && in_array('musicplayer', $this->options->indexsetup)): ?>
@@ -151,8 +152,6 @@ $(document).ready(function(){
 </script>
 <?php endif; ?>
 
-
-<?php $this->footer(); ?>
 
 </body><!--#body end-->
 </html><!--html end-->
