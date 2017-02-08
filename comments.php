@@ -63,7 +63,7 @@ echo $commentClass;
           </div>
           <!--回复内容-->
           <div class="comment-content m-t-sm">
-            <p><b><?php get_comment_at($comments->coid)?></b>  <?php //$comments->content(); ?><?php get_filtered_comment($comments->coid)?></p>
+            <span class="comment-author-at"><b><?php get_comment_at($comments->coid)?></b></span>  <?php $comments->content(); ?>
           </div>
           <!--回复按钮-->
           <div class="reply m-t-sm">

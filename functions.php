@@ -753,14 +753,13 @@ function get_comment_at($coid)
 
 }
 //输出评论内容(不带p标签)
-function get_filtered_comment($coid){
+/*function get_filtered_comment($coid){
     $db   = Typecho_Db::get();
     $rs=$db->fetchRow($db->select('text')->from('table.comments')
                                  ->where('coid = ? AND status = ?', $coid, 'approved'));
     $content=$rs['text'];
     echo $content;
-}
-
+}*/
 //获得读者墙   
 function getFriendWall()   
 {   
