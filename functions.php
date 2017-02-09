@@ -768,7 +768,7 @@ function getFriendWall()
               ->where('status = ?', 'approved')   
               ->where('type = ?', 'comment')   
               ->where('authorId = ?', '0')   
-              ->where('mail != ?', 'admin@lab.munen.cc')   //排除自己上墙   
+              ->where('mail != ?', 'ihewro@163.com')   //排除自己上墙   
               ->group('author')   
               ->order('cnt', Typecho_Db::SORT_DESC)   
               ->limit('15');    //读取几位用户的信息   
