@@ -453,13 +453,13 @@ input[type=text], textarea {
     $socialemail = new Typecho_Widget_Helper_Form_Element_Text('socialemail', NULL,'ihewro@163.com', _t('输入email地址'), _t('在这里输入email地址，在时光机页面显示'));
     $form->addInput($socialemail);
     //QQ
-    $socialqq = new Typecho_Widget_Helper_Form_Element_Text('socialqq', NULL,'535425690', _t('输入QQ号码'), _t('在这里输入QQ号码，在时光机页面显示'));
+    $socialqq = new Typecho_Widget_Helper_Form_Element_Text('socialqq', NULL,'#', _t('输入QQ号码'), _t('在这里输入QQ号码，在时光机页面显示'));
     $form->addInput($socialqq);
     //weibo
-    $socialweibo = new Typecho_Widget_Helper_Form_Element_Text('socialweibo', NULL,'@超级男孩', _t('输入微博ID'), _t('在这里输入微博名称，在时光机页面显示'));
+    $socialweibo = new Typecho_Widget_Helper_Form_Element_Text('socialweibo', NULL,'#', _t('输入微博ID'), _t('在这里输入微博名称，在时光机页面显示'));
     $form->addInput($socialweibo);
     //网易云音乐
-    $socialmusic = new Typecho_Widget_Helper_Form_Element_Text('socialmusic', NULL,'@许多年后我依然是我', _t('输入网易云音乐ID'), _t('在这里输入网易云音乐ID，在时光机页面显示'));
+    $socialmusic = new Typecho_Widget_Helper_Form_Element_Text('socialmusic', NULL,'#', _t('输入网易云音乐ID'), _t('在这里输入网易云音乐ID，在时光机页面显示'));
     $form->addInput($socialmusic);
     //时光机中关于我的内容
     $about = new Typecho_Widget_Helper_Form_Element_Textarea('about', NULL, '来自南部的一个小城市，个性不张扬，讨厌随波逐流。', _t('输入关于我的内容'), _t('输入关于我的内容，将会在时光机的关于我栏目中显示'));
@@ -472,7 +472,7 @@ input[type=text], textarea {
     $favicon = new Typecho_Widget_Helper_Form_Element_Text('favicon', NULL, NULL, _t('favicon 地址'), _t('填入博客 favicon 的地址, 不填则显示主机根目录下的favicon.ico文件'));
     $form->addInput($favicon);
     //首页标题后缀
-    $titleintro = new Typecho_Widget_Helper_Form_Element_Text('titleintro', NULL, '相逢的人会再相逢', _t('首页标题后缀'), _t('你的博客标题栏博客名称后面的副标题'));
+    $titleintro = new Typecho_Widget_Helper_Form_Element_Text('titleintro', NULL, '首页标题后缀', _t('首页标题后缀'), _t('你的博客标题栏博客名称后面的副标题'));
     $form->addInput($titleintro);
     //instantclick预加载模式
    $preload = new Typecho_Widget_Helper_Form_Element_Radio('preload',
@@ -536,8 +536,7 @@ input[type=text], textarea {
     $form->addInput($ChromeThemeColor);
     
     //播放器音乐
-    $musiclist = new Typecho_Widget_Helper_Form_Element_Textarea('musiclist', NULL,'{title:"晚安；）",artist:"性人盒",mp3:"//o9o5ixzu2.qnssl.com/wanan.mp3"},
-{title:"远山",artist:"末小皮",mp3:"//o9o5ixzu2.qnssl.com/%E8%BF%9C%E5%B1%B1.mp3"},', _t('音乐播放器的音乐列表'), _t('格式: {title:"xxx", artist:"xxx", mp3:"http:xxxx"} ，每个歌曲之间用英文,隔开。请保证歌曲列表里至少有一首歌！（在全站设置项启用播放器后才有效）'));
+    $musiclist = new Typecho_Widget_Helper_Form_Element_Textarea('musiclist', NULL,'{title:"晚安；）",artist:"性人盒",mp3:"xxxx.mp3"}', _t('音乐播放器的音乐列表'), _t('格式: {title:"xxx", artist:"xxx", mp3:"http:xxxx"} ，每个歌曲之间用英文逗号隔开。请保证歌曲列表里至少有一首歌！（在全站设置项启用播放器后才有效）'));
     $form->addInput($musiclist);
 
     //音乐播放器是否自动播放
