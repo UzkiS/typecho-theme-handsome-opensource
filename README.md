@@ -132,4 +132,4 @@ All code licensed under the [GPL-3.0  License](https://github.com/ihewro/typecho
 3. 后台增加了instantclick的预加载方式选择
 4. 管理员登陆后前台有可编辑的按钮，方便进入后台编辑当前文章
 
-[1]: http://7xlk7n.com1.z0.glb.clouddn.com/2016/12/2960973115.png
+[1]: https://www.ihewro.com/usr/uploads/2017/02/975778959.png
