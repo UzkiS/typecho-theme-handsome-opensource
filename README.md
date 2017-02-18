@@ -47,7 +47,7 @@ handsome 是一个自响应，很酷的typecho主题。
 
 ## Demo 演示
 
-[Friend C](http://www.ihewro.xyz)
+[Friend C](http://www.ihewro.com)
 
 ## Docs 文档
 
