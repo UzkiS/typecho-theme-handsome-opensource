@@ -103,7 +103,7 @@ yaudio.play();
 <!--音乐播放器结束-->
 
 <!--lightgallery必备组件-->
-<script src="http://cdn.bootcss.com/lightgallery/1.3.9/js/lightgallery.min.js"></script>
+<script src="//cdn.bootcss.com/lightgallery/1.3.9/js/lightgallery.min.js"></script>
 <script src="//cdn.bootcss.com/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
 <script src="//cdn.bootcss.com/lightgallery/1.2.21/js/lg-zoom.min.js"></script>
 

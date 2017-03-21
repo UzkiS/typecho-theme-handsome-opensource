@@ -49,7 +49,7 @@
   <link rel="stylesheet" href="<?= THEME_URL ?>/css/appall.min.css" type="text/css" />
   <script src="<?= THEME_URL ?>/js/OwO.min.js"></script>
 
-  <link href="http://cdn.bootcss.com/lightgallery/1.3.9/css/lightgallery.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/lightgallery/1.3.9/css/lightgallery.min.css" rel="stylesheet">
 
 
 
