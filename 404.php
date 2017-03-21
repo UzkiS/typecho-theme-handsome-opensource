@@ -1,4 +1,8 @@
 <!DOCTYPE HTML>
+<?php
+    $options = Typecho_Widget::widget('Widget_Options');
+    define("THEME_URL", rtrim(preg_replace('/^'.preg_quote($options->siteUrl, '/').'/', $options->rootUrl.'/', $options->themeUrl, 1),'/'));
+?>
 <html class="no-js">
 <head>
     <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
@@ -26,7 +30,7 @@
   <link rel="stylesheet" href="<?php $this->options->themeUrl('css/app.css') ?>" type="text/css" />-->
   
     <!-- 本地compass版本 -->
-  <link rel="stylesheet" href="<?php $this->options->themeUrl('css/appall.min.css') ?>" type="text/css" />
+  <link rel="stylesheet" href="<?= THEME_URL ?>/css/appall.min.css" type="text/css" />
 
 
     <!-- 通过自有函数输出HTML头部信息 -->
@@ -42,15 +46,15 @@
     <h1 class="text-shadow text-white">404</h1>
   </div>
   <div class="list-group bg-info auto m-b-sm m-b-lg">
-    <a href="<?php $this->options->siteUrl(); ?>" class="list-group-item">
+    <a href="<?php $this->options->rootUrl(); ?>" class="list-group-item">
       <i class="iconfont icon-chevron text-muted"></i>
       <i class="iconfont icon-mailforward  icon-fw m-r-xs"></i> 回到首页
     </a>
-    <a href="<?php $this->options->siteUrl(); ?>admin/login.php" ui-sref="access.signin" class="list-group-item">
+    <a href="<?php $this->options->rootUrl(); ?>/admin/login.php" ui-sref="access.signin" class="list-group-item">
       <i class="iconfont icon-chevron text-muted"></i>
       <i class="iconfont icon-fw icon-signin m-r-xs"></i> 登录
     </a>
-    <a href="<?php $this->options->siteUrl(); ?>admin/register.php" ui-sref="access.signup" class="list-group-item">
+    <a href="<?php $this->options->rootUrl(); ?>/register.php" ui-sref="access.signup" class="list-group-item">
       <i class="iconfont icon-chevron text-muted"></i>
       <i class="iconfont icon-fw icon-unlockalt m-r-xs"></i> 注册
     </a>

@@ -14,6 +14,11 @@ function threadedComments($comments, $options) {
     } 
     $commentLevelClass = $comments->_levels > 0 ? ' comment-child' : ' comment-parent';  //评论层数大于0为子级，否则是父级
     $depth = $comments->levels +1; //添加的一句
+    if ($comments->url) {
+        $author = '<a href="' . $comments->url . '"target="_blank"' . ' rel="external nofollow">' . $comments->author . '</a>';
+    } else {
+        $author = $comments->author;
+    }
 ?>
  
 <!--自定义评论代码结构-->
@@ -54,7 +59,7 @@ echo $commentClass;
         <div class="m-b m-l-xxl">
           <div class="comment-meta">
             <span class="comment-author vcard">
-              <b class="fn"><?php $comments->author(); ?></b>
+              <b class="fn"><?php echo $author; ?></b>
               </span>
             <div class="comment-metadata">
               <time class="text-muted text-xs block m-t-xs" pubdate="pubdate" datetime="<?php $comments->date(); ?>"><?php if($GLOBALS['timechoice'] == '0'): ?><?php $comments->date("F jS, Y \a\t h:i a"); ?><?php elseif($GLOBALS['timechoice'] == '1'): ?><?php $comments->date('Y 年 m 月 d 日 h 时 i 分 A'); ?><?php elseif($GLOBALS['timechoice'] == '2'): ?><?php $comments->date('Y 年 m 月 d 日 h 时 i 分 A'); ?><?php endif; ?>
@@ -63,7 +68,7 @@ echo $commentClass;
           </div>
           <!--回复内容-->
           <div class="comment-content m-t-sm">
-            <span class="comment-author-at"><b><?php get_comment_at($comments->coid)?></b></span>  <?php $comments->content(); ?>
+            <span class="comment-author-at"><b><?php get_comment_at($comments->coid)?></b></span><?php $comments->content(); ?>
           </div>
           <!--回复按钮-->
           <div class="reply m-t-sm">
@@ -112,7 +117,7 @@ $("#comments .comment-list").addClass("list-unstyled m-b-none");
       <div class="comment-form-comment form-group">
         <label for="comment">评论
           <span class="required text-danger">*</span></label>
-        <textarea id="comment" class="textarea form-control OwO-textarea" name="text" rows="5" maxlength="65525" required><?php $this->remember('text'); ?></textarea>
+        <textarea id="comment" class="textarea form-control OwO-textarea" name="text" rows="5" required><?php $this->remember('text'); ?></textarea>
         <div class="OwO"></div>
       </div>
       <!--判断是否登录-->
@@ -306,7 +311,7 @@ if(sbtitle){
     logo: '表情',
     container: document.getElementsByClassName('OwO')[0],
     target: document.getElementsByClassName('OwO-textarea')[0],
-    api: '<?php $this->options->themeUrl('js/OwO.json') ?>',
+    api: '<?= THEME_URL ?>/js/OwO.json',
     position: 'down',
     width: '100%',
     maxHeight: '220px'

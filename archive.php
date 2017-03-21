@@ -25,7 +25,7 @@
         <div class="wrapper-md">
 
        <ol class="breadcrumb bg-white b-a" itemscope="" itemtype="http://schema.org/WebPage">
-        <li><a href="<?php $this->options->siteUrl(); ?>" itemprop="breadcrumb" title="返回首页" data-toggle="tooltip"><i class="iconfont icon-home" aria-hidden="true"></i> 首页</a></li>
+        <li><a href="<?php $this->options->rootUrl(); ?>" itemprop="breadcrumb" title="返回首页" data-toggle="tooltip"><i class="iconfont icon-home" aria-hidden="true"></i> 首页</a></li>
         <li class="active"><?php $this->archiveTitle(array(
             'category'  =>  _t('%s'),
             'search'    =>  _t('%s'),
@@ -39,24 +39,7 @@
       <?php while($this->next()): ?>      
         <div class="panel">
          <!-- 文章页面头图-->
-        <?php if($this->fields->thumb == "no"): ?>
-          <!--自定义字段为no,则不输出头图-->
-        <?php else: ?>
-         <?php if ($this->options->RandomPicChoice !=='0' && !empty($this->options->indexsetup) && in_array('NoRandomPic-index', $this->options->indexsetup)): ?>
-        <?php else: ?>
-          <div id="index-post-img">
-          <a href="<?php $this->permalink() ?>">
-        <?php if (array_key_exists('thumb',unserialize($this->___fields()))): ?>
-          <img src="<?php echo $this->fields->thumb; ?>" class="img-full" />
-        <?php else: ?>
-          <?php $thumb = showThumbnail($this); if(!empty($thumb)): ?>
-          <img src="<?php echo $thumb ?>" class="img-full" />
-        <?php endif; ?>
-        <?php endif; ?>
-          </a>
-      </div>
-      <?php endif; ?>
-      <?php endif; ?>
+         <?php echoPostThumbnail($this); ?>
           <!-- 文章内容-->
           <div class="wrapper-lg">
             <h2 class="m-t-none"><a href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h2>

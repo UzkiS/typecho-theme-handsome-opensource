@@ -1,5 +1,9 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
- <?PHP ob_start();?>
+<?php
+    $options = Typecho_Widget::widget('Widget_Options');
+    define("THEME_URL", rtrim(preg_replace('/^'.preg_quote($options->siteUrl, '/').'/', $options->rootUrl.'/', $options->themeUrl, 1),'/'));
+
+?>
 <!DOCTYPE HTML>
 <html class="no-js" <?php if($this->options->langis == '0'): ?>lang="en"<?php elseif($this->options->langis == '1'): ?>lang="zh-cmn-Hans"<?php elseif($this->options->langis == '2'): ?>lang="zh-cmn-Hant"<?php endif; ?>>
 <head>
@@ -42,8 +46,12 @@
 
 
     <!-- 本地compass版本 -->
-  <link rel="stylesheet" href="<?php $this->options->themeUrl('css/appall.min.css') ?>" type="text/css" />
-  <script src="<?php $this->options->themeUrl('js/OwO.min.js') ?>"></script>
+  <link rel="stylesheet" href="<?= THEME_URL ?>/css/appall.min.css" type="text/css" />
+  <script src="<?= THEME_URL ?>/js/OwO.min.js"></script>
+
+  <link href="http://cdn.bootcss.com/lightgallery/1.3.9/css/lightgallery.min.css" rel="stylesheet">
+
+
 
 <style type="text/css">
 <?php if ( $this->options->ismobilehide =='0' ) : ?>
@@ -197,15 +205,7 @@
 
 </head>
 <body id="body">
-<?php if (!empty($this->options->indexsetup) && in_array('festival', $this->options->indexsetup)): ?>
-<div id="note" class="note" >
- <div><a href="#" onclick="closeclick()" class="guanbi"><img src="<?php $this->options->themeUrl("img/close-note.gif") ?>" class="newyear_img"/></a></div>
-</div>
-<style type="text/css">
-.note{display:none;height:100%;width:100%;background:url(<?php $this->options->themeUrl("img/newyear.png")  ?>) center no-repeat;position:fixed;top:0;z-index:9999;background-color: #fff}
-.guanbi{float:right;font-size:12px;padding:6px}
-</style>
-<?php endif; ?>
+
 <div id="alllayout" class="app">
 <script type="text/javascript">
   <?php if (!empty($this->options->indexsetup) && in_array('aside-fix', $this->options->indexsetup)): ?>

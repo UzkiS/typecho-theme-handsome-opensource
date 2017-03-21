@@ -38,7 +38,7 @@
           <i class="glyphicon glyphicon-align-justify"></i>
         </button>
         <!-- brand -->
-        <a href="<?php $this->options->siteUrl(); ?>" class="navbar-brand text-lt">
+        <a href="<?php $this->options->rootUrl(); ?>" class="navbar-brand text-lt">
           <i class="iconfont icon-shouyeshouye"></i>
           <span class="hidden-folded m-l-xs"><?php $this->options->BlogName(); ?></span>
         </a>
@@ -93,9 +93,9 @@
         <form method="post" class="navbar-form navbar-form-sm navbar-left shift" role="search">
           <div class="form-group">
             <div class="input-group">
-              <input id="keyword" type="search" name="s" class="form-control input-sm bg-light no-border rounded padder" placeholder="<?php if($this->options->langis == '0'): ?>Search projects...<?php elseif($this->options->langis == '1'): ?>来这里搜索吧……<?php elseif($this->options->langis == '2'): ?>來這裡搜索吧……<?php endif; ?>" onkeypress="getKey()"/>
+              <input id="keyword" type="search" name="s" class="form-control input-sm bg-light no-border rounded padder" placeholder="<?php if($this->options->langis == '0'): ?>Search projects...<?php elseif($this->options->langis == '1'): ?>输入关键词搜索…<?php elseif($this->options->langis == '2'): ?>輸入關鍵詞搜索…<?php endif; ?>" onkeypress="getKey()"/>
               <span class="input-group-btn">
-                <a id="soux" href="<?php $this->options->siteUrl(); ?>search/" data-instant type="submit" class="btn btn-sm bg-light rounded"><i class="iconfont icon-search"></i>
+                <a id="soux" href="<?php $this->options->rootUrl(); ?>/search/" data-instant type="submit" class="btn btn-sm bg-light rounded"><i class="iconfont icon-search"></i>
                 </a>
               </span>
             </div>

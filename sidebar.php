@@ -1,6 +1,7 @@
   <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 
      <aside class="col w-md bg-white-only b-l bg-auto no-border-xs" role="complementary">
+     <div id="sidebar">
       <section id="tabs-4" class="widget widget_tabs clear">
        <div class="nav-tabs-alt no-js-hide">
         <ul class="nav nav-tabs nav-justified" role="tablist">
@@ -19,7 +20,8 @@
          <h3 class="widget-title m-t-none text-md"><?php if($this->options->langis == '0'): ?>Popular articles
 <?php elseif($this->options->langis == '1'): ?>热门文章<?php elseif($this->options->langis == '2'): ?>熱門文章<?php endif; ?></h3>
          <ul class="list-group no-bg no-borders pull-in m-b-none">
-          <?php TePostViews_Plugin::outputHotPosts($this) ?>
+          <?php theme_hot_posts($this); ?>
+          <?php //TePostViews_Plugin::outputHotPosts($this) ?>
          </ul>
         </div>
         <!--最新评论-->
@@ -48,7 +50,7 @@
               </a>
               <div class="clear">
                   <div class="text-ellipsis">
-                      <a href="<?php $comments->permalink(); ?>" title="noslepums"> <?php $comments->author(false); ?> </a>
+                      <a href="<?php $comments->permalink(); ?>" title="<?php $comments->author(false); ?>"> <?php $comments->author(false); ?> </a>
                   </div>
                   <span class="sr-only"> 在《<?php $comments->title; ?>》评论道： </span>
                   <small class="text-muted"> <?php $comments->excerpt(34, '...'); ?> </small>
@@ -99,4 +101,5 @@
        </div>
       </section>
     <?php endif; ?>
+    </div>
      </aside>

@@ -317,6 +317,14 @@ input[type=text], textarea {
     padding: 8px 2%;
     width: 94%;
 }
+#typecho-option-item-src_add-38,#typecho-option-item-cdn_add-39{
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    background-color: #fff;
+    margin: 8px 1%;
+    padding: 8px 2%;
+    width: 44%;
+    margin-bottom: 40px;
+}
 </style>
 
     ";
@@ -345,15 +353,13 @@ input[type=text], textarea {
     'aside-dock' => _t('置顶导航'),
     'container-box' => _t('盒子模型'),
     'show-avatar' => _t('折叠左侧边栏头像'),
-    'atargetblank' => _t('文章和评论区链接以新标签页形式打开'),
     'NoRandomPic-post' => _t('文章页面不显示头图'),
     'NoRandomPic-index' => _t('首页不显示头图'),
     'NoSummary-index' => _t('首页文章不显示摘要'),
-    'lazyloadimg' => _t('图片延迟加载(可能会卡顿)'),
-    'festival' => _t('节日祝贺效果（暂只有新年）'),
+    'lazyloadimg' => _t('图片延迟加载(firefox中可能会卡顿)'),
     'musicplayer' => _t('启用音乐播放器')
     ),
-    array('header-fix', 'aside-fix','container-box','atargetblank','festival','musicplayer'), _t('全站设置开关'));
+    array('header-fix', 'aside-fix','container-box','musicplayer'), _t('全站设置开关'));
     
     $form->addInput($indexsetup->multiMode());
 
@@ -389,7 +395,7 @@ input[type=text], textarea {
         ),
 
         //Default choose
-        '0',_t('盒子模型中背景样式选择'),_t("<b>如果你没有选中“盒子模型”，请忽略该项。</b>选择背景方案, 对应填写下方的 '<b>背景颜色 / 图片</b>' 或选择 '<b>渐变样式</b>', 这里默认使用纯色背景.")
+        '2',_t('盒子模型中背景样式选择'),_t("<b>如果你没有选中“盒子模型”，请忽略该项。</b>选择背景方案, 对应填写下方的 '<b>背景颜色 / 图片</b>' 或选择 '<b>渐变样式</b>', 这里默认使用纯色背景.")
     );
     $form->addInput($BGtype);
     //盒子模型种背景颜色/图片填写
@@ -412,7 +418,7 @@ input[type=text], textarea {
             '9' => _t('Virgin <br />'),
         ),
 
-        '0', _t('渐变样式'), _t("<b>如果你没有选中“盒子模型”，请忽略该项。</b><br />如果选择渐变背景, 在这里选择想要的渐变样式.")
+        '3', _t('渐变样式'), _t("<b>如果你没有选中“盒子模型”，请忽略该项。</b><br />如果选择渐变背景, 在这里选择想要的渐变样式.")
     );
     $form->addInput($GradientType);
 
@@ -514,7 +520,7 @@ input[type=text], textarea {
     gravatar由于国内被墙，推荐使用https://secure.gravatar.com 或者https://cdn.v2ex.com/gravatar 镜像源。你可以使用你自己的镜像源(末尾不要加斜杠！！！)"));
     $form->addInput($CDNURL);
     //时光机页面的头图
-    $timepic = new Typecho_Widget_Helper_Form_Element_Text('timepic', NULL, 'https://o9o5ixzu2.qnssl.com/background3.jpg', _t('时光机页面的头图'), _t("填写图片地址，在时光机页面cross.html独立页面的头图，图片大小切勿过大，控制在100K左右为佳。"));
+    $timepic = new Typecho_Widget_Helper_Form_Element_Text('timepic', NULL, 'https://ww4.sinaimg.cn/large/a15b4afegy1fcets6ivogj20p00ho45a', _t('时光机页面的头图'), _t("填写图片地址，在时光机页面cross.html独立页面的头图，图片大小切勿过大，控制在100K左右为佳。"));
     $form->addInput($timepic);
 
     //加载进度条颜色
@@ -571,60 +577,89 @@ input[type=text], textarea {
     );
     $form->addInput($langis);
 
+    //七牛云镜像存储
+    $srcAddress = new Typecho_Widget_Helper_Form_Element_Text('src_add', NULL, NULL, _t('图片CDN替换前地址'), _t('即你的附件存放链接，一般为http://www.yourblog.com/usr/uploads/'));
+    $form->addInput($srcAddress);
+    $cdnAddress = new Typecho_Widget_Helper_Form_Element_Text('cdn_add', NULL, NULL, _t('图片CDN替换后地址'), _t('即你的七牛云存储域名，一般为http://yourblog.qiniudn.com/，可能也支持其他有镜像功能的CDN服务'));
+    $form->addInput($cdnAddress);
+
 }
 // 首页文章缩略图
 
-function showThumbnail($widget)
-{ 
+function showThumbnail($widget){
+
     // 当文章无图片时的默认缩略图
     $rand = rand(1,$widget->widget('Widget_Options')->RandomPicAmnt); // 随机 1-3 张缩略图
 
     $random = $widget->widget('Widget_Options')->themeUrl . '/img/sj/' . $rand . '.jpg'; // 随机缩略图路径
     //正则匹配 主题目录下的/images/sj/的图片（以数字按顺序命名）
 
-$cai = '';
-if (!empty($attachments)){
-    $attach = $widget->attachments(1)->attachment;
-}
-else{
-    $attach='';
-}
+    $cai = '';
+    if (!empty($attachments)){
+        $attach = $widget->attachments(1)->attachment;
+    }else{
+        $attach='';
+    }
     $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i'; 
-  $patternMD = '/\!\[.*?\]\((http(s)?:\/\/.*?(jpg|png))/i';
+    $patternMD = '/\!\[.*?\]\((http(s)?:\/\/.*?(jpg|png))/i';
     $patternMDfoot = '/\[.*?\]:\s*(http(s)?:\/\/.*?(jpg|png))/i';
 
-//调用第一个图片附件
-if ($attach && $attach->isImage) {
-    $ctu = $attach->url.$cai;
-} 
 
-//下面是调用文章第一个图片
-else if (preg_match_all($pattern, $widget->content, $thumbUrl)) {
-    $ctu = $thumbUrl[1][0].$cai;
+    //return输出
+    if ($widget->widget('Widget_Options')->RandomPicChoice =='0'){//只输出随机缩略图
+        return $random;
+    }else{//thumb->第一张图片->(随机缩略图)
+
+        if(isset($widget->fields->fieldName)){//thumb字段已经填写了图片地址
+            $ctu = $widget->fields->thumb;
+        }else{//thumb值中没有图片地址
+
+            if ($attach && $attach->isImage) {//调用第一个图片附件
+                $ctu = $attach->url.$cai;
+            }else if (preg_match_all($pattern, $widget->content, $thumbUrl)) {//下面是调用文章第一个图片
+                $ctu = $thumbUrl[1][0].$cai;
+            }else if (preg_match_all($patternMD, $widget->content, $thumbUrl)) {//如果是内联式markdown格式的图片
+                $ctu = $thumbUrl[1][0].$cai;
+            }else if (preg_match_all($patternMDfoot, $widget->content, $thumbUrl)) {//如果是脚注式markdown格式的图片
+                $ctu = $thumbUrl[1][0].$cai;
+            }else {//如果文章中没有图片
+                    $ctu = '';
+            }
+
+            if($ctu == '' && $widget->widget('Widget_Options')->RandomPicChoice =='2'){//文章中没有图片，选项二此时输出随机图片
+                $ctu = $random;
+            }
+        }
+        return $ctu;
+    }
 }
 
-//如果是内联式markdown格式的图片
-else if (preg_match_all($patternMD, $widget->content, $thumbUrl)) {
-    $ctu = $thumbUrl[1][0].$cai;
-}
-//如果是脚注式markdown格式的图片
-else if (preg_match_all($patternMDfoot, $widget->content, $thumbUrl)) {
-    $ctu = $thumbUrl[1][0].$cai;
-}
-//以上都不符合，即随机输出图片
-else {
-    if($widget->widget('Widget_Options')->RandomPicChoice =='1')
-        $ctu='';
-    else
-        $ctu = $random;
-}
-//return输出
-if ($widget->widget('Widget_Options')->RandomPicChoice =='0' ){
-    return $random;
-}
-else{
-    return $ctu;
-}
+
+//输出文章缩略图
+
+function echoPostThumbnail($obj){
+    $options = Typecho_Widget::widget('Widget_Options');
+    $placeholder = $obj->widget('Widget_Options')->themeUrl.'/img/white.gif';
+    $output = '';
+    if((!empty($options->indexsetup) && in_array('NoRandomPic-post', $options->indexsetup)) || $obj->fields->thumb == "no"){//总开关：不显示头图 或者 thumb字段值为no
+        ;
+    }else{//总开关：显示头图
+        if(!empty($options->indexsetup) && in_array('lazyloadimg', $options->indexsetup)){//开启图片延迟加载
+            if($obj->is('index') || $obj->is('archive')){
+                $output .= '<div id="index-post-img"><a href="'.$obj->permalink.'"><img data-original="'.showThumbnail($obj).'" src="'.$placeholder.'" class="img-full" /></a></div>'; 
+            }else{
+                $output .= '<div class="entry-thumbnail" aria-hidden="true"><img width="900" height="auto" data-original="'.showThumbnail($obj).'" src="'.$placeholder.'" class="img-responsive center-block wp-post-image" /></div>'; 
+            }
+        }else{//不开启图片延迟加载
+            if($obj->is('index') || $obj->is('archive')){
+                $output .= '<div id="index-post-img"><a href="'.$obj->permalink.'"><img src="'.showThumbnail($obj).'" class="img-full" /></a></div>'; 
+            }else{
+                $output .= '<div class="entry-thumbnail" aria-hidden="true"><img width="900" height="auto" src="'.showThumbnail($obj).'" class="img-responsive center-block wp-post-image" /></div>'; 
+            }
+        }
+    }
+
+    echo $output;
 
 }
 
@@ -699,6 +734,43 @@ echo $link;
 }
 }
 
+//热门文章（评论最多）
+function theme_hot_posts($hot){
+$days = 99999999999999;
+$num = 5;
+$defaults = array(
+'before' => '',
+'after' => '',
+'xformat' => '<li><a href="{permalink}">{title}</a></li>'
+);
+$time = time() - (24 * 60 * 60 * $days);
+$db = Typecho_Db::get();
+$sql = $db->select()->from('table.contents')
+->where('created >= ?', $time)
+->where('type = ?', 'post')
+->limit($num)
+->order('commentsNum',Typecho_Db::SORT_DESC);
+$result = $db->fetchAll($sql);
+echo $defaults['before'];
+foreach($result as $val){
+$val = Typecho_Widget::widget('Widget_Abstract_Contents')->filter($val);
+echo '<li class="list-group-item">
+                <a href="' . $val['permalink'] . '" class="pull-left thumb-sm m-r">
+                <img style="height: 40px!important;width: 40px!important;" src="'.showThumbnail2($hot).'" class="img-circle wp-post-image">
+                </a>
+                <div class="clear">
+                    <h4 class="h5 l-h"> <a href="' . $val['permalink'] . '" title="' . $val['title'] . '"> ' . $val['title'] . ' </a></h4>
+                    <small class="text-muted">
+                    <span class="meta-views"> <i class="iconfont icon-comments" aria-hidden="true"></i> <span class="sr-only">评论数：</span> <span class="meta-value">'.$val['commentsNum'].'</span> 
+                    </span>  
+                    <span class="meta-date m-l-sm"> <i class="iconfont icon-eye" aria-hidden="true"></i> <span class="sr-only">浏览次数:</span> <span class="meta-value">'.$val['views'].'</span> 
+                    </span> 
+                    </small>
+                    </div>
+            </li>';
+}
+}
+
 //随机显示文章
 function theme_random_posts($random){
 $defaults = array(
@@ -751,24 +823,47 @@ function get_comment_at($coid)
     }
 
 }
-//输出评论内容(不带p标签)
-/*function get_filtered_comment($coid){
-    $db   = Typecho_Db::get();
-    $rs=$db->fetchRow($db->select('text')->from('table.comments')
-                                 ->where('coid = ? AND status = ?', $coid, 'approved'));
-    $content=$rs['text'];
-    echo $content;
-}*/
+
+//文章阅读次数含cookie
+function get_post_view($archive)
+{
+    $cid    = $archive->cid;
+    $db     = Typecho_Db::get();
+    $prefix = $db->getPrefix();
+    if (!array_key_exists('views', $db->fetchRow($db->select()->from('table.contents')))) {
+        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `views` INT(10) DEFAULT 0;');
+        echo 0;
+        return;
+    }
+    $row = $db->fetchRow($db->select('views')->from('table.contents')->where('cid = ?', $cid));
+    if ($archive->is('single')) {
+ $views = Typecho_Cookie::get('extend_contents_views');
+        if(empty($views)){
+            $views = array();
+        }else{
+            $views = explode(',', $views);
+        }
+if(!in_array($cid,$views)){
+       $db->query($db->update('table.contents')->rows(array('views' => (int) $row['views'] + 1))->where('cid = ?', $cid));
+array_push($views, $cid);
+            $views = implode(',', $views);
+            Typecho_Cookie::set('extend_contents_views', $views); //记录查看cookie
+        }
+    }
+    echo $row['views'];
+}
+
+
 //获得读者墙   
 function getFriendWall()   
-{   
+{   $options = Typecho_Widget::widget('Widget_Options');
     $db = Typecho_Db::get();   
     $sql = $db->select('COUNT(author) AS cnt', 'author', 'url', 'mail')   
               ->from('table.comments')   
               ->where('status = ?', 'approved')   
               ->where('type = ?', 'comment')   
               ->where('authorId = ?', '0')   
-              ->where('mail != ?', 'ihewro@163.com')   //排除自己上墙   
+              ->where('mail != ?', $options->socialemail)   //排除自己上墙   
               ->group('author')   
               ->order('cnt', Typecho_Db::SORT_DESC)   
               ->limit('15');    //读取几位用户的信息   
@@ -782,3 +877,20 @@ function getFriendWall()
         echo $mostactive;   
     }   
 }   
+
+//重新输出文章内容
+function parseContent($obj){
+    //图片延迟加载
+   /* $placeholder = $obj->widget('Widget_Options')->themeUrl.'/img/white.gif'; //占位符图片
+    $preg = "/<img (.*)src(.*) \/>/i"; //匹配图片正则
+    $replaced = '<img \\1src="'.$placeholder.'" data-original\\2 />';//图片延迟加载html
+    $options = Typecho_Widget::widget('Widget_Options');
+    $content = preg_replace($preg, $replaced, $obj->content);*/
+    
+    $options = Typecho_Widget::widget('Widget_Options');
+    if(!empty($options->src_add) && !empty($options->cdn_add)){
+        $obj->content = str_ireplace($options->src_add,$options->cdn_add,$obj->content);
+    }
+    $obj->content = preg_replace("/<a href=\"([^\"]*)\">/i", "<a href=\"\\1\" target=\"_blank\">", $obj->content);//文章中的链接，以新链接方式打开
+    echo trim($obj->content);
+}

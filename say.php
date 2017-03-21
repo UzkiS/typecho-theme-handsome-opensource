@@ -35,7 +35,7 @@ echo $commentClass;
         ?>
 
           <a class="pull-left thumb-sm avatar m-l-n-md">
-            <img src="<?php echo $avatar ?>">
+            <img src="<?php echo $avatar ?>" style="height:40px!important; width: 40px!important;">
           </a>
 
           <div class="m-l-lg m-b-lg">
@@ -113,7 +113,7 @@ $("#comments .comment-list").addClass("list-unstyled m-b-none");
 
           <div class="m-l-lg m-b-lg">
             <div class="m-b-xs">
-              <a href="" class="h4"></a><a href="<?php $this->options->siteUrl(); ?>"><?php $this->user->screenName(); ?></a>
+              <a href="" class="h4"></a><a href="<?php $this->options->rootUrl(); ?>"><?php $this->user->screenName(); ?></a>
               <span class="text-muted m-l-sm pull-right"><?php if($this->options->langis() == '0'): ?><?php echo date("F jS, Y \a\t h:i a",time()+($this->options->timezone - idate("Z"))); ?><?php elseif($this->options->langis == '1'): ?><?php echo date('Y 年 m 月 d 日 h 时 i 分 A',time()+($this->options->timezone - idate("Z"))); ?><?php elseif($this->options->langis == '2'): ?><?php echo date('Y 年 m 月 d 日 h 时 i 分 A',time()+($this->options->timezone - idate("Z"))); ?><?php endif; ?></span>
             </div>
             <div class="m-b">

@@ -29,51 +29,23 @@
       </header>
       <div class="wrapper-md">
        <ol class="breadcrumb bg-white b-a" itemscope="" itemtype="http://schema.org/WebPage">
-        <li><a href="<?php $this->options->siteUrl(); ?>" itemprop="breadcrumb" title="返回首页" data-toggle="tooltip"><i class="fa fa-home" aria-hidden="true"></i> 首页</a></li>
+        <li><a href="<?php $this->options->rootUrl(); ?>" itemprop="breadcrumb" title="返回首页" data-toggle="tooltip"><i class="iconfont icon-home" aria-hidden="true"></i> 首页</a></li>
         <li class="active"><?php $this->title() ?>  </li>
        </ol>
        <!--博客文章样式 begin with .blog-post-->
        <div id="postpage" class="blog-post">
-        <article class="panel post-2529 post type-post status-publish format-standard has-post-thumbnail hentry category-develop tag-javascript-api tag-148">
+        <article class="panel">
         <!--文章页面的头图-->
-        <?php if($this->fields->thumb == "no"): ?>
-          <!--自定义字段为no,则不输出头图-->
-        <?php else: ?>
-         <?php if ($this->options->RandomPicChoice !=='0' && !empty($this->options->indexsetup) && in_array('NoRandomPic-post', $this->options->indexsetup)): ?>
-        <?php else: ?>
-         <div class="entry-thumbnail" aria-hidden="true"> 
-        <?php if (array_key_exists('thumb',unserialize($this->___fields()))): ?>
-          <img width="900" height="300" src="<?php echo $this->fields->thumb; ?>" class="img-responsive center-block wp-post-image" />
-        <?php else: ?>
-          <?php $thumb = showThumbnail($this); if(!empty($thumb)): ?>
-          <img width="900" height="300" src="<?php echo $thumb ?>" class="img-responsive center-block wp-post-image" />
-        <?php endif; ?>
-        <?php endif; ?>
-         </div>
-       <?php endif; ?>
-     <?php endif; ?>
+        <?php echoPostThumbnail($this); ?>
          <!--文章内容-->
          <div id="post-content" class="wrapper-lg">
           <div id="list-post">          
           <ul class='readers-list'>     
           <?php getFriendWall(); ?>     
-          </ul></div>
+          </ul>
+          </div>
           <div class="entry-content l-h-2x">
-          <?php
-          $db = Typecho_Db::get();
-          $sql = $db->select()->from('table.comments')
-          ->where('cid = ?',$this->cid)
-          ->where('mail = ?', $this->remember('mail',true))
-          ->limit(1);
-          $result = $db->fetchAll($sql);
-          if($this->user->hasLogin() || $result) {
-          $content = preg_replace("/\[hide\](.*?)\[\/hide\]/sm",'<div><i></i>$1</div>',$this->content);
-          }
-          else{
-          $content = preg_replace("/\[hide\](.*?)\[\/hide\]/sm",'<div class="reply2view"><i></i>此处内容需要评论回复后方可阅读。</div>',$this->content);
-          }
-          echo $content;
-          ?>
+            <?php parseContent($this); ?>
           </div>
          </div>
         </article>

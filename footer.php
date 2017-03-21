@@ -1,23 +1,9 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php
-if (!empty($this->options->indexsetup) && in_array('lazyloadimg', $this->options->indexsetup)){
-//图片延缓加载相关处理，替换src为data-original，并添加占位符
-  $echo = ob_get_contents(); //获取缓冲区内容
-  ob_clean(); //清除缓冲区内容，不输出到页面
-  $placeholder = $this->options->themeUrl.'/img/white.gif'; //占位符图片
-  $preg = "/<img (.*)src(.*) \/>/i"; //匹配图片正则
-  //$preg2 = "/\<img (.*?)src\=\"(.*?)\" (.*?)>/i"; //匹配图片正则
-  $replaced = '<img \\1src="'.$placeholder.'" data-original\\2 />';
-  //$replaced2 = '<img \\1src="'.$placeholder.'" data-original="\\2" \\3 />';
-  print preg_replace($preg, $replaced, $echo); //重新写入的缓冲区
-  ob_end_flush(); //将缓冲区输入到页面，并关闭缓存区
-}
-?>
   <footer id="footer" class="app-footer" role="footer">
     <div class="wrapper b-t bg-light">
       <span class="pull-right hidden-xs">
       <?php $this->options->BottomInfo(); ?>
-      Power by <a data-no-instant target="blank" href="http://www.typecho.org">Typecho</a> | Theme <a data-no-instant target="blank" href="https://github.com/ihewro/typecho-theme-handsome/">handsome</a> <a onclick="gotoTop()" class="m-l-sm text-muted"><i class="iconfont icon-longarrowup"></i></a>
+      Power by <a data-no-instant target="blank" href="http://www.typecho.org">Typecho</a> | Theme <a data-no-instant target="blank" href="https://github.com/ihewro/typecho-theme-handsome/">handsome</a> <a onclick="gotoTop()" class="m-l-sm text-muted" data-toggle="tooltip" data-placement="auto left" title="返回顶部"><i class="iconfont icon-longarrowup"></i></a>
       </span><?php $this->options->BottomleftInfo(); ?>
       &copy; <?php echo date("Y");?> Copyright.
     </div>
@@ -49,7 +35,17 @@ $("img").lazyload({
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script data-no-instant type="text/javascript">
+if (!window.audios) {
+    audios = [];
+    for (var i = 0; i < APlayers.length; i++) {
+        audios[i] = APlayers[i].audio;
+    }
+}
 InstantClick.on('change', function(isInitialLoad) {
+  for (var i = 0; i < APlayers.length; i++) {
+        audios.push(APlayers[i].audio);
+  }
+  for(var i = 0; i < audios.length; i++) {if(audios[i]){audios[i].pause()}};
   if (isInitialLoad === false) {
      if (typeof MathJax !== 'undefined'){
       MathJax.Hub.Queue(["Typeset",MathJax.Hub]);} // support MathJax
@@ -106,15 +102,20 @@ yaudio.play();
  <?php endif; ?>
 <!--音乐播放器结束-->
 
+<!--lightgallery必备组件-->
+<script src="http://cdn.bootcss.com/lightgallery/1.3.9/js/lightgallery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+<script src="//cdn.bootcss.com/lightgallery/1.2.21/js/lg-zoom.min.js"></script>
+
+
 <!-- 压缩后版本 -->
 <script data-no-instant src="<?php $this->options->themeUrl('js/main.min.js'); ?>"></script>
 <script src="<?php $this->options->themeUrl('js/script.min.js'); ?>"></script>
 
+
 <!--页面布局开关-->
 <script type="text/javascript">
-<?php if (!empty($this->options->indexsetup) && in_array('festival', $this->options->indexsetup)): ?>
-window.onload = clickclose;
-<?php endif; ?>
+
 <?php if (!empty($this->options->indexsetup) && in_array('header-fix', $this->options->indexsetup)): ?>
 $(document).ready(function(){
     $('#alllayout').addClass("app-header-fixed");
@@ -136,21 +137,6 @@ $(document).ready(function(){
 });
 <?php endif; ?>
 </script>
-
-<?php if( !empty($this->options->indexsetup) && in_array('atargetblank',$this->options->indexsetup) ): ?>
-<script type="text/javascript">
-    //Add target="_blank" to a tags
-    $(document).bind('DOMNodeInserted', function(event) {
-        $('.comment-author a,#postpage a[href^="http"]').each(
-            function() {
-                if (!$(this).attr('target')) {
-                    $(this).attr('target', '_blank')
-                }
-            }
-        );
-    });
-</script>
-<?php endif; ?>
 
 
 </body><!--#body end-->

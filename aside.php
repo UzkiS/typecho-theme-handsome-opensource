@@ -38,7 +38,11 @@
           <div class="clearfix hidden-xs text-center hide show" id="aside-user">
         <?php endif; ?>
             <div class="dropdown wrapper">
-              <a href="<?php Helper::options()->siteUrl()?>cross.html">
+            <?php if($this->options->rewrite == 1): ?>
+              <a href="<?php $this->options->rootUrl(); ?>/cross.html">
+            <?php else: ?>
+              <a href="<?php $this->options->rootUrl(); ?>/index.php/cross.html">
+            <?php endif; ?>
                 <span class="thumb-lg w-auto-folded avatar m-t-sm">
                   <img src="<?php $this->options->BlogPic() ?>" class="img-full">
                 </span>
@@ -113,7 +117,7 @@
               </li>
               <!--主页-->
               <li>
-                <a href="<?php $this->options->siteUrl(); ?>" class="auto">      
+                <a href="<?php $this->options->rootUrl(); ?>" class="auto">      
                   <i class="iconfont icon-home icon text-md"></i>
                   <span><?php if($this->options->langis == '0'): ?>Home
 <?php elseif($this->options->langis == '1'): ?>首页<?php elseif($this->options->langis == '2'): ?>首頁<?php endif; ?></span>

@@ -50,12 +50,6 @@ $this->need('header.php');
 	  <div class="col">
 	    
 	    <div class="tab-content">
-	      <!-- header -->
-			<!--<div class="links-intro wrapper bg-light lter b-b">
-					<span>小伙伴们！</span>
-				      </div>-->
-	      <!-- / header -->
-
 	      <!-- list -->
 	      <div id="my-info" role="tabpane1" class="tab-pane active">
 			<div class="wrapper b-b">
@@ -73,7 +67,7 @@ $this->need('header.php');
 	      $x=0;
 	      $mypattern = '<li class="list-group-item clearfix">
 	          <a class="avatar thumb pull-left m-r" href="{url}">
-	            <img  src="{image}">
+	            <img  src="{user}">
 	          </a>
 	          <div class="clear">
 	            <div><a data-no-instant target="blank" class="text-md " href="{url}">{name}</a></div>

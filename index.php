@@ -4,7 +4,7 @@
  * 
  * @package handsome 
  * @author 友人C
- * @version 2.0.4
+ * @version 2.2.0
  * @link https://github.com/ihewro/typecho-theme-handsome/
  */
 
@@ -35,27 +35,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
       <?php while($this->next()): ?>      
         <div class="panel">
          <!--首页文章页面头图-->
-        <?php if($this->fields->thumb == "no"): ?>
-          <!--自定义字段为no,则不输出头图-->
-        <?php else: ?>
-         <?php if (!empty($this->options->indexsetup) && in_array('NoRandomPic-index', $this->options->indexsetup)): ?>
-        <?php else: ?>
-          <div id="index-post-img">
-          <a href="<?php $this->permalink() ?>">
-        <?php if ($this->options->RandomPicChoice !=='0' && array_key_exists('thumb',unserialize($this->___fields()))): ?>
-          <img src="<?php echo $this->fields->thumb; ?>" class="img-full" />
-        <?php else: ?>
-          <?php $thumb = showThumbnail($this); if(!empty($thumb)): ?>
-          <img src="<?php echo $thumb ?>" class="img-full" />
-        <?php endif; ?>
-        <?php endif; ?>
-        </a>
-      </div>
-      <?php endif; ?>
-       <?php endif; ?>
+         <?php echoPostThumbnail($this); ?>
           <!--首页文章内容-->
           <div class="wrapper-lg">
-          
 
             <h2 class="m-t-none"><a href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h2>
          <?php if (!empty($this->options->indexsetup) && in_array('NoSummary-index', $this->options->indexsetup)): ?>
