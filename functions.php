@@ -325,6 +325,14 @@ input[type=text], textarea {
     width: 44%;
     margin-bottom: 40px;
 }
+#typecho-option-item-customCss-40,#typecho-option-item-customJs-41{
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    background-color: #fff;
+    margin: 8px 1%;
+    padding: 8px 2%;
+    width: 44%;
+    margin-bottom: 40px;
+}
 </style>
 
     ";
@@ -576,13 +584,17 @@ input[type=text], textarea {
         '1', _t('界面语言设置'), _t("默认使用简体中文语言")
     );
     $form->addInput($langis);
-
     //七牛云镜像存储
     $srcAddress = new Typecho_Widget_Helper_Form_Element_Text('src_add', NULL, NULL, _t('图片CDN替换前地址'), _t('即你的附件存放链接，一般为http://www.yourblog.com/usr/uploads/'));
     $form->addInput($srcAddress);
     $cdnAddress = new Typecho_Widget_Helper_Form_Element_Text('cdn_add', NULL, NULL, _t('图片CDN替换后地址'), _t('即你的七牛云存储域名，一般为http://yourblog.qiniudn.com/，可能也支持其他有镜像功能的CDN服务'));
     $form->addInput($cdnAddress);
-
+    //自定义css
+    $customCss = new Typecho_Widget_Helper_Form_Element_Textarea('customCss', NULL, NULL, _t('自定义 CSS'), _t('在这里，你可以填写一些css代码来进行自定义样式，会自动输出到<code></head></code>标签之前'));
+    $form->addInput($customCss);
+    //自定义js
+    $customJs = new Typecho_Widget_Helper_Form_Element_Textarea('customJs', NULL, NULL, _t('自定义 JS'), _t('在这里，你可以填写一些js代码，会自动输出到<code></body></code>标签之前'));
+    $form->addInput($customJs);
 }
 // 首页文章缩略图
 
@@ -636,7 +648,6 @@ function showThumbnail($widget){
 
 
 //输出文章缩略图
-
 function echoPostThumbnail($obj){
     $options = Typecho_Widget::widget('Widget_Options');
     $placeholder = $obj->widget('Widget_Options')->themeUrl.'/img/white.gif';
@@ -880,17 +891,12 @@ function getFriendWall()
 
 //重新输出文章内容
 function parseContent($obj){
-    //图片延迟加载
-   /* $placeholder = $obj->widget('Widget_Options')->themeUrl.'/img/white.gif'; //占位符图片
-    $preg = "/<img (.*)src(.*) \/>/i"; //匹配图片正则
-    $replaced = '<img \\1src="'.$placeholder.'" data-original\\2 />';//图片延迟加载html
-    $options = Typecho_Widget::widget('Widget_Options');
-    $content = preg_replace($preg, $replaced, $obj->content);*/
     
     $options = Typecho_Widget::widget('Widget_Options');
     if(!empty($options->src_add) && !empty($options->cdn_add)){
         $obj->content = str_ireplace($options->src_add,$options->cdn_add,$obj->content);
-    }
+    }//七牛镜像加速
     $obj->content = preg_replace("/<a href=\"([^\"]*)\">/i", "<a href=\"\\1\" target=\"_blank\">", $obj->content);//文章中的链接，以新链接方式打开
     echo trim($obj->content);
 }
+

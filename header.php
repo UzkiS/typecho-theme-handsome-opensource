@@ -196,6 +196,7 @@
        <?php endif; ?>
                 <?php endif; ?>
   }
+  <?php $this->options->customCss() ?>/*自定义css代码输出位置*/
 </style>
     
   <!--网站统计代码-->
@@ -220,6 +221,9 @@
 <?php if (!empty($this->options->indexsetup) && in_array('container-box', $this->options->indexsetup)): ?>
   $('html').addClass("bg");
   $('#alllayout').addClass("container");
+<?php endif; ?>
+<?php if (!empty($this->options->indexsetup) && in_array('header-fix', $this->options->indexsetup)): ?>
+  $('#alllayout').addClass("app-header-fixed");
 <?php endif; ?>
 </script>
     <!-- header -->
