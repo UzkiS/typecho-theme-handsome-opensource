@@ -4,7 +4,7 @@
  * 
  * @package handsome 
  * @author 友人C
- * @version 2.1.1
+ * @version 2.1.2
  * @link https://github.com/ihewro/typecho-theme-handsome/
  */
 
