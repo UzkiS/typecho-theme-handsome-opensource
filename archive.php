@@ -39,7 +39,10 @@
       <?php while($this->next()): ?>      
         <div class="panel">
          <!-- 文章页面头图-->
+         <?php if((!empty($this->options->indexsetup) && in_array('NoRandomPic-index', $this->options->indexsetup)) || $this->fields->thumb == "no"): ?>
+        <?php else: ?>
          <?php echoPostThumbnail($this); ?>
+         <?php endif; ?>
           <!-- 文章内容-->
           <div class="wrapper-lg">
             <h2 class="m-t-none"><a href="<?php $this->permalink() ?>"><?php $this->title() ?></a></h2>

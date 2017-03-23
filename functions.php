@@ -652,21 +652,18 @@ function echoPostThumbnail($obj){
     $options = Typecho_Widget::widget('Widget_Options');
     $placeholder = $obj->widget('Widget_Options')->themeUrl.'/img/white.gif';
     $output = '';
-    if((!empty($options->indexsetup) && in_array('NoRandomPic-post', $options->indexsetup)) || $obj->fields->thumb == "no"){//总开关：不显示头图 或者 thumb字段值为no
-        ;
-    }else{//总开关：显示头图
-        if(!empty($options->indexsetup) && in_array('lazyloadimg', $options->indexsetup)){//开启图片延迟加载
-            if($obj->is('index') || $obj->is('archive')){
-                $output .= '<div id="index-post-img"><a href="'.$obj->permalink.'"><img data-original="'.showThumbnail($obj).'" src="'.$placeholder.'" class="img-full" /></a></div>'; 
-            }else{
-                $output .= '<div class="entry-thumbnail" aria-hidden="true"><img width="900" height="auto" data-original="'.showThumbnail($obj).'" src="'.$placeholder.'" class="img-responsive center-block wp-post-image" /></div>'; 
-            }
-        }else{//不开启图片延迟加载
-            if($obj->is('index') || $obj->is('archive')){
-                $output .= '<div id="index-post-img"><a href="'.$obj->permalink.'"><img src="'.showThumbnail($obj).'" class="img-full" /></a></div>'; 
-            }else{
-                $output .= '<div class="entry-thumbnail" aria-hidden="true"><img width="900" height="auto" src="'.showThumbnail($obj).'" class="img-responsive center-block wp-post-image" /></div>'; 
-            }
+
+    if(!empty($options->indexsetup) && in_array('lazyloadimg', $options->indexsetup)){//开启图片延迟加载
+        if($obj->is('index') || $obj->is('archive')){
+            $output .= '<div id="index-post-img"><a href="'.$obj->permalink.'"><img data-original="'.showThumbnail($obj).'" src="'.$placeholder.'" class="img-full" /></a></div>'; 
+        }else{
+            $output .= '<div class="entry-thumbnail" aria-hidden="true"><img width="900" height="auto" data-original="'.showThumbnail($obj).'" src="'.$placeholder.'" class="img-responsive center-block wp-post-image" /></div>'; 
+        }
+    }else{//不开启图片延迟加载
+        if($obj->is('index') || $obj->is('archive')){
+            $output .= '<div id="index-post-img"><a href="'.$obj->permalink.'"><img src="'.showThumbnail($obj).'" class="img-full" /></a></div>'; 
+        }else{
+            $output .= '<div class="entry-thumbnail" aria-hidden="true"><img width="900" height="auto" src="'.showThumbnail($obj).'" class="img-responsive center-block wp-post-image" /></div>'; 
         }
     }
 

@@ -43,7 +43,10 @@
        <div id="postpage" class="blog-post">
         <article class="panel">
         <!--文章页面的头图-->
+        <?php if((!empty($this->options->indexsetup) && in_array('NoRandomPic-post', $this->options->indexsetup)) || $this->fields->thumb == "no"): ?>
+        <?php else: ?>
         <?php echoPostThumbnail($this); ?>
+        <?php endif; ?>
          <!--文章内容-->
          <div id="post-content" class="wrapper-lg">
           <div class="entry-content l-h-2x">

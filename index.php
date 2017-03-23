@@ -35,7 +35,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
       <?php while($this->next()): ?>      
         <div class="panel">
          <!--首页文章页面头图-->
+         <?php if((!empty($this->options->indexsetup) && in_array('NoRandomPic-index', $this->options->indexsetup)) || $this->fields->thumb == "no"): ?>
+        <?php else: ?>
          <?php echoPostThumbnail($this); ?>
+         <?php endif; ?>
           <!--首页文章内容-->
           <div class="wrapper-lg">
 
