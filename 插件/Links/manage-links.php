@@ -62,6 +62,13 @@ include 'menu.php';
 									<td><?php echo $link['url']; ?></td>
 									<td><?php echo $link['sort']; ?></td>
 									<td><?php
+                                            $host = 'https://secure.gravatar.com';//自定义头像CDN服务器
+                                            $url = '/avatar/';//自定义头像目录,一般保持默认即可
+                                            $size = '80';//自定义头像大小
+                                            $hash = md5(strtolower($link['user']));
+                                            $link['user'] = $host . $url . $hash . '?s=' . $size . '&d=';
+                                            $link['image'] = $link['user'];
+                                            
 										if ($link['image']) {
 											echo '<a href="'.$link['image'].'" title="点击放大" target="_blank"><img class="avatar" src="'.$link['image'].'" alt="'.$link['name'].'" width="32" height="32"/></a>';
 										} else {

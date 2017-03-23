@@ -184,6 +184,7 @@ class Links_Plugin implements Typecho_Plugin_Interface
 		
 		/** 自定义数据 */
 		$user = new Typecho_Widget_Helper_Form_Element_Text('user', NULL, NULL, _t('自定义数据'), _t('该项用于用户自定义数据扩展'));
+
 		$form->addInput($user);
 		
 		/** 链接动作 */
@@ -219,6 +220,8 @@ class Links_Plugin implements Typecho_Plugin_Interface
             $lid->value($link['lid']);
             $submit->value(_t('编辑链接'));
             $_action = 'update';
+
+
         } else {
             $do->value('insert');
             $submit->value(_t('增加链接'));
@@ -285,15 +288,24 @@ class Links_Plugin implements Typecho_Plugin_Interface
 		}
 		$links = $db->fetchAll($sql);
 		$str = "";
+
+		
+		$host = 'https://secure.gravatar.com';//自定义头像CDN服务器
+        $url = '/avatar/';//自定义头像目录,一般保持默认即可
+        $size = '80';//自定义头像大小
 		foreach ($links as $link) {
+			$hash = md5(strtolower($link['user']));
+        	$link['user'] = $host . $url . $hash . '?s=' . $size . '&d=';
 			if ($link['image'] == NULL) {
-				$link['image'] = $nopic_url;
+					$link['image'] = $nopic_url;
 			}
+
 			$str .= str_replace(
 				array('{lid}', '{name}', '{url}', '{sort}', '{title}', '{description}', '{image}', '{user}'),
 				array($link['lid'], $link['name'], $link['url'], $link['sort'], $link['description'], $link['description'], $link['image'], $link['user']),
 				$pattern
 			);
+
 		}
 		return $str;
 	}
