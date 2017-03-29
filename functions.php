@@ -622,7 +622,7 @@ function showThumbnail($widget){
         return $random;
     }else{//thumb->第一张图片->(随机缩略图)
 
-        if(isset($widget->fields->thumb)){//thumb字段已经填写了图片地址
+        if(!empty($widget->fields->thumb)){//thumb字段已经填写了图片地址
             $ctu = $widget->fields->thumb;
         }else{//thumb值中没有图片地址
 

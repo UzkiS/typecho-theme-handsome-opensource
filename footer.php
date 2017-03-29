@@ -83,7 +83,7 @@ $(document).ready(function(){
 <!--页页面布局header-fix结束-->
 
 <!--comments.php 页面必需js-->
-<?php if($this->is('single')): ?>
+<?php if($this->is('single') & !($this->is('page','cross'))): ?>
 <?php if($this->allow('comment')): ?>
 <script type="text/javascript">
 (function() {
