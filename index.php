@@ -2,10 +2,10 @@
 /**
  * 扁平化设计。如同少年，迎风而立。
  * 
- * @package handsome 
- * @author 友人C
- * @version 2.1.2
- * @link https://github.com/ihewro/typecho-theme-handsome/
+ * @package handsome-opensource
+ * @author LemoFire
+ * @version 2.1.3
+ * @link https://github.com/LemoFire/typecho-theme-handsome-opensource
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;

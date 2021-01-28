@@ -432,18 +432,18 @@ input[type=text], textarea {
 
 
     //首页名称
-    $IndexName = new Typecho_Widget_Helper_Form_Element_Text('IndexName', NULL, '友人C', _t('首页的名称'), _t('输入你的首页显示的名称'));
+    $IndexName = new Typecho_Widget_Helper_Form_Element_Text('IndexName', NULL, 'Handsome', _t('首页的名称'), _t('输入你的首页显示的名称'));
     $form->addInput($IndexName);
     //博主名称：aside.php中会调用
-    $BlogName = new Typecho_Widget_Helper_Form_Element_Text('BlogName', NULL, 'ihewro', _t('博主的名称'), _t('输入你的名称建议为英文，中文也可'));
+    $BlogName = new Typecho_Widget_Helper_Form_Element_Text('BlogName', NULL, 'handsome', _t('博主的名称'), _t('输入你的名称建议为英文，中文也可'));
     $form->addInput($BlogName);
 
     //博主头像：在本主题中首页index.php 和 aboutme.php中将会调用此头像
-    $BlogPic = new Typecho_Widget_Helper_Form_Element_Text('BlogPic', NULL, 'https://ww4.sinaimg.cn/large/a15b4afegy1fcgr86xdu6j2064064mxd', _t('头像图片地址'), _t('logo头像地址，尺寸在200X200左右即可'));
+    $BlogPic = new Typecho_Widget_Helper_Form_Element_Text('BlogPic', NULL, 'https://github.com/LemoFire/typecho-theme-handsome-opensource/raw/master/img/avatar.jpg', _t('头像图片地址'), _t('logo头像地址，尺寸在200X200左右即可'));
     $form->addInput($BlogPic);
 
     //博主职业
-    $BlogJob = new Typecho_Widget_Helper_Form_Element_Text('BlogJob', NULL, 'A student', _t('博主的介绍'), _t('输入你的简介，在侧边栏的名称下面和时光机页面显示'));
+    $BlogJob = new Typecho_Widget_Helper_Form_Element_Text('BlogJob', NULL, 'A typecho theme', _t('博主的介绍'), _t('输入你的简介，在侧边栏的名称下面和时光机页面显示'));
     $form->addInput($BlogJob);
     //首页文字：将会在首页博客名称下面和404.php页面调用此字段
     $Indexwords = new Typecho_Widget_Helper_Form_Element_Text('Indexwords', NULL, '迷失的人迷失了，相逢的人会再相逢', _t('首页一行文字介绍'), _t('输入你喜欢的一行文字吧，在首页博客名称下面显示'));
@@ -460,11 +460,11 @@ input[type=text], textarea {
     $form->addInput($socialgooglepluse);
 
     //github
-    $socialgithub = new Typecho_Widget_Helper_Form_Element_Text('socialgithub', NULL,'https://github.com/ihewro', _t('输入github链接'), _t('在这里输入github链接,带http://，在时光机页面显示,为空则不显示按钮'));
+    $socialgithub = new Typecho_Widget_Helper_Form_Element_Text('socialgithub', NULL,'', _t('输入github链接'), _t('在这里输入github链接,带http://，在时光机页面显示,为空则不显示按钮'));
     $form->addInput($socialgithub);
 
     //email
-    $socialemail = new Typecho_Widget_Helper_Form_Element_Text('socialemail', NULL,'ihewro@163.com', _t('输入email地址'), _t('在这里输入email地址，在时光机页面显示'));
+    $socialemail = new Typecho_Widget_Helper_Form_Element_Text('socialemail', NULL,'', _t('输入email地址'), _t('在这里输入email地址，在时光机页面显示'));
     $form->addInput($socialemail);
     //QQ
     $socialqq = new Typecho_Widget_Helper_Form_Element_Text('socialqq', NULL,'#', _t('输入QQ号码'), _t('在这里输入QQ号码，在时光机页面显示'));
@@ -476,7 +476,7 @@ input[type=text], textarea {
     $socialmusic = new Typecho_Widget_Helper_Form_Element_Text('socialmusic', NULL,'#', _t('输入网易云音乐ID'), _t('在这里输入网易云音乐ID，在时光机页面显示'));
     $form->addInput($socialmusic);
     //时光机中关于我的内容
-    $about = new Typecho_Widget_Helper_Form_Element_Textarea('about', NULL, '来自南部的一个小城市，个性不张扬，讨厌随波逐流。', _t('输入关于我的内容'), _t('输入关于我的内容，将会在时光机的关于我栏目中显示'));
+    $about = new Typecho_Widget_Helper_Form_Element_Textarea('about', NULL, '', _t('输入关于我的内容'), _t('输入关于我的内容，将会在时光机的关于我栏目中显示'));
     $form->addInput($about);
 
     //网站统计代码
@@ -486,7 +486,7 @@ input[type=text], textarea {
     $favicon = new Typecho_Widget_Helper_Form_Element_Text('favicon', NULL, NULL, _t('favicon 地址'), _t('填入博客 favicon 的地址, 不填则显示主机根目录下的favicon.ico文件'));
     $form->addInput($favicon);
     //首页标题后缀
-    $titleintro = new Typecho_Widget_Helper_Form_Element_Text('titleintro', NULL, '首页标题后缀', _t('首页标题后缀'), _t('你的博客标题栏博客名称后面的副标题'));
+    $titleintro = new Typecho_Widget_Helper_Form_Element_Text('titleintro', NULL, 'Open Source', _t('首页标题后缀'), _t('你的博客标题栏博客名称后面的副标题'));
     $form->addInput($titleintro);
     //instantclick预加载模式
    $preload = new Typecho_Widget_Helper_Form_Element_Radio('preload',
@@ -505,7 +505,7 @@ input[type=text], textarea {
     $form->addInput($delaytime);
 
     // 文章缩略图数目设置
-    $RandomPicAmnt = new Typecho_Widget_Helper_Form_Element_Text('RandomPicAmnt', NULL, _t('2'), _t('文章头图随机缩略图数量'), _t('对应于主题目录下的img/sj 文件夹中的图片的数量。说明：文章头图显示方式：<b>thumb（自定义字段）--> 文章第一张图片 --> 随机图片输出</b>。图片必须以从1开始的数字命名，而且必须是.jpg文件'));
+    $RandomPicAmnt = new Typecho_Widget_Helper_Form_Element_Text('RandomPicAmnt', NULL, _t('4'), _t('文章头图随机缩略图数量'), _t('对应于主题目录下的img/sj 文件夹中的图片的数量。说明：文章头图显示方式：<b>thumb（自定义字段）--> 文章第一张图片 --> 随机图片输出</b>。图片必须以从1开始的数字命名，而且必须是.jpg文件'));
     $form->addInput($RandomPicAmnt);
 
     // 右侧边栏缩略图数目设置
@@ -550,7 +550,7 @@ input[type=text], textarea {
     $form->addInput($ChromeThemeColor);
     
     //播放器音乐
-    $musiclist = new Typecho_Widget_Helper_Form_Element_Textarea('musiclist', NULL,'{title:"晚安；）",artist:"性人盒",mp3:"xxxx.mp3"}', _t('音乐播放器的音乐列表'), _t('格式: {title:"xxx", artist:"xxx", mp3:"http:xxxx"} ，每个歌曲之间用英文逗号隔开。请保证歌曲列表里至少有一首歌！（在全站设置项启用播放器后才有效）'));
+    $musiclist = new Typecho_Widget_Helper_Form_Element_Textarea('musiclist', NULL,'{title:"ヨスガノソラ メインテーマ -記憶-",artist:"Bruno Wen-li",mp3:"https://music.163.com/song/media/outer/url?id=477931.mp3"}', _t('音乐播放器的音乐列表'), _t('格式: {title:"xxx", artist:"xxx", mp3:"http:xxxx"} ，每个歌曲之间用英文逗号隔开。请保证歌曲列表里至少有一首歌！（在全站设置项启用播放器后才有效）'));
     $form->addInput($musiclist);
 
     //音乐播放器是否自动播放

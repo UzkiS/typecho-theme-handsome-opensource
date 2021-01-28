@@ -3,12 +3,15 @@
     <div class="wrapper b-t bg-light">
       <span class="pull-right hidden-xs">
       <?php $this->options->BottomInfo(); ?>
-      Power by <a data-no-instant target="blank" href="http://www.typecho.org">Typecho</a> | Theme <a data-no-instant target="blank" href="https://github.com/ihewro/typecho-theme-handsome/">handsome</a> <a onclick="gotoTop()" class="m-l-sm text-muted" data-toggle="tooltip" data-placement="auto left" title="返回顶部"><i class="iconfont icon-longarrowup"></i></a>
+      Power by <a data-no-instant target="blank" href="http://www.typecho.org">Typecho</a> | <a data-no-instant target="blank" href="https://github.com/LemoFire/typecho-theme-handsome-opensource">handsome-opensource</a> <a onclick="gotoTop()" class="m-l-sm text-muted" data-toggle="tooltip" data-placement="auto left" title="返回顶部"><i class="iconfont icon-longarrowup"></i></a>
       </span><?php $this->options->BottomleftInfo(); ?>
       &copy; <?php echo date("Y");?> Copyright.
     </div>
   </footer>
   </div><!--end of .app app-header-fixed-->
+  <script>
+    var thome="<?php $this->options->themeUrl('') ?>";
+  </script>
 
 <?php $this->footer(); ?>
 
