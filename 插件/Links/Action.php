@@ -11,7 +11,7 @@ class Links_Action extends Typecho_Widget implements Widget_Interface_Do
 			$this->response->goBack();
 		}
 		/** 取出数据 */
-		$link = $this->request->from('name', 'url', 'sort', 'image', 'description', 'user');
+		$link = $this->request->from('name', 'url', 'sort', 'email', 'image', 'description', 'user', 'state');
 		$link['order'] = $this->db->fetchObject($this->db->select(array('MAX(order)' => 'maxOrder'))->from($this->prefix.'links'))->maxOrder + 1;
 
 		/** 插入数据 */
@@ -21,20 +21,22 @@ class Links_Action extends Typecho_Widget implements Widget_Interface_Do
 		$this->widget('Widget_Notice')->highlight('link-'.$link['lid']);
 
 		/** 提示信息 */
-		$this->widget('Widget_Notice')->set(_t('链接 <a href="%s">%s</a> 已经被增加',
-		$link['url'], $link['name']), NULL, 'success');
+		$this->widget('Widget_Notice')->set(_t('友链 <a href="%s">%s</a> 已经被增加',
+		$link['url'], $link['name']), null, 'success');
 
 		/** 转向原页 */
 		$this->response->redirect(Typecho_Common::url('extending.php?panel=Links%2Fmanage-links.php', $this->options->adminUrl));
 	}
 
-	public function addHannysBlog()
+	public function addMejituu()
 	{
 		/** 取出数据 */
 		$link = array(
-			'name' => "Hanny's Blog",
-			'url' => "http://www.imhan.com", 
-			'description' => "寒泥 - Typecho插件开发者", 
+			'name' => "懵仙兔兔",
+			'url' => "https://2dph.com", 
+			'email' => "acgm@qq.com",
+			'image' => "https://2dph.com/logo.png", 
+			'description' => "永远相信，美好的事情即将发生——懵仙兔兔", 
 		);
 		$link['order'] = $this->db->fetchObject($this->db->select(array('MAX(order)' => 'maxOrder'))->from($this->prefix.'links'))->maxOrder + 1;
 
@@ -45,8 +47,8 @@ class Links_Action extends Typecho_Widget implements Widget_Interface_Do
 		$this->widget('Widget_Notice')->highlight('link-'.$link['lid']);
 
 		/** 提示信息 */
-		$this->widget('Widget_Notice')->set(_t('链接 <a href="%s">%s</a> 已经被增加',
-		$link['url'], $link['name']), NULL, 'success');
+		$this->widget('Widget_Notice')->set(_t('友链 <a href="%s">%s</a> 已经被增加',
+		$link['url'], $link['name']), null, 'success');
 
 		/** 转向原页 */
 		$this->response->redirect(Typecho_Common::url('extending.php?panel=Links%2Fmanage-links.php', $this->options->adminUrl));
@@ -59,7 +61,7 @@ class Links_Action extends Typecho_Widget implements Widget_Interface_Do
 		}
 
 		/** 取出数据 */
-		$link = $this->request->from('lid', 'name', 'sort', 'image', 'url', 'description', 'user');
+		$link = $this->request->from('lid', 'name', 'sort', 'email', 'image', 'url', 'description', 'user', 'state');
 
 		/** 更新数据 */
 		$this->db->query($this->db->update($this->prefix.'links')->rows($link)->where('lid = ?', $link['lid']));
@@ -68,8 +70,8 @@ class Links_Action extends Typecho_Widget implements Widget_Interface_Do
 		$this->widget('Widget_Notice')->highlight('link-'.$link['lid']);
 
 		/** 提示信息 */
-		$this->widget('Widget_Notice')->set(_t('链接 <a href="%s">%s</a> 已经被更新',
-		$link['url'], $link['name']), NULL, 'success');
+		$this->widget('Widget_Notice')->set(_t('友链 <a href="%s">%s</a> 已经被更新',
+		$link['url'], $link['name']), null, 'success');
 
 		/** 转向原页 */
 		$this->response->redirect(Typecho_Common::url('extending.php?panel=Links%2Fmanage-links.php', $this->options->adminUrl));
@@ -87,8 +89,46 @@ class Links_Action extends Typecho_Widget implements Widget_Interface_Do
             }
         }
         /** 提示信息 */
-        $this->widget('Widget_Notice')->set($deleteCount > 0 ? _t('链接已经删除') : _t('没有链接被删除'), NULL,
+        $this->widget('Widget_Notice')->set($deleteCount > 0 ? _t('友链已经删除') : _t('没有友链被删除'), null,
         $deleteCount > 0 ? 'success' : 'notice');
+        
+        /** 转向原页 */
+        $this->response->redirect(Typecho_Common::url('extending.php?panel=Links%2Fmanage-links.php', $this->options->adminUrl));
+    }
+
+    public function enableLink()
+    {
+        $lids = $this->request->filter('int')->getArray('lid');
+        $enableCount = 0;
+        if ($lids && is_array($lids)) {
+            foreach ($lids as $lid) {
+                if ($this->db->query($this->db->update($this->prefix.'links')->rows(array('state' => '1'))->where('lid = ?', $lid))) {
+                    $enableCount ++;
+                }
+            }
+        }
+        /** 提示信息 */
+        $this->widget('Widget_Notice')->set($enableCount > 0 ? _t('友链已经启用') : _t('没有友链被启用'), null,
+        $enableCount > 0 ? 'success' : 'notice');
+        
+        /** 转向原页 */
+        $this->response->redirect(Typecho_Common::url('extending.php?panel=Links%2Fmanage-links.php', $this->options->adminUrl));
+    }
+
+    public function prohibitLink()
+    {
+        $lids = $this->request->filter('int')->getArray('lid');
+        $prohibitCount = 0;
+        if ($lids && is_array($lids)) {
+            foreach ($lids as $lid) {
+                if ($this->db->query($this->db->update($this->prefix.'links')->rows(array('state' => '0'))->where('lid = ?', $lid))) {
+                    $prohibitCount ++;
+                }
+            }
+        }
+        /** 提示信息 */
+        $this->widget('Widget_Notice')->set($prohibitCount > 0 ? _t('友链已经禁用') : _t('没有友链被禁用'), null,
+        $prohibitCount > 0 ? 'success' : 'notice');
         
         /** 转向原页 */
         $this->response->redirect(Typecho_Common::url('extending.php?panel=Links%2Fmanage-links.php', $this->options->adminUrl));
@@ -106,14 +146,19 @@ class Links_Action extends Typecho_Widget implements Widget_Interface_Do
 
 	public function action()
 	{
+		$user = Typecho_Widget::widget('Widget_User');
+		$user->pass('administrator');
 		$this->db = Typecho_Db::get();
 		$this->prefix = $this->db->getPrefix();
 		$this->options = Typecho_Widget::widget('Widget_Options');
 		$this->on($this->request->is('do=insert'))->insertLink();
-		$this->on($this->request->is('do=addhanny'))->addHannysBlog();
+		$this->on($this->request->is('do=addMejituu'))->addMejituu();
 		$this->on($this->request->is('do=update'))->updateLink();
 		$this->on($this->request->is('do=delete'))->deleteLink();
+		$this->on($this->request->is('do=enable'))->enableLink();
+		$this->on($this->request->is('do=prohibit'))->prohibitLink();
 		$this->on($this->request->is('do=sort'))->sortLink();
 		$this->response->redirect($this->options->adminUrl);
 	}
 }
+/** Links by 懵仙兔兔 */
