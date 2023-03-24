@@ -1,12 +1,14 @@
 <?php
-if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+if (!defined('__TYPECHO_ROOT_DIR__'))
+    exit;
 
 function themeInit($archive)
 {
     Helper::options()->commentsMaxNestingLevels = 999;
 }
 
-function themeConfig($form) {
+function themeConfig($form)
+{
     echo "
     
 <style>
@@ -353,26 +355,30 @@ input[type=text], textarea {
     </p>';
 
     //设置开关
-    $indexsetup = new Typecho_Widget_Helper_Form_Element_Checkbox('indexsetup', 
-    array(
-    'header-fix' => _t('固定头部'),
-    'aside-fix' => _t('固定导航'),
-    'aside-folded' => _t('折叠导航'),
-    'aside-dock' => _t('置顶导航'),
-    'container-box' => _t('盒子模型'),
-    'show-avatar' => _t('折叠左侧边栏头像'),
-    'NoRandomPic-post' => _t('文章页面不显示头图'),
-    'NoRandomPic-index' => _t('首页不显示头图'),
-    'NoSummary-index' => _t('首页文章不显示摘要'),
-    'lazyloadimg' => _t('图片延迟加载(firefox中可能会卡顿)'),
-    'musicplayer' => _t('启用音乐播放器')
-    ),
-    array('header-fix', 'aside-fix','container-box','musicplayer'), _t('全站设置开关'));
-    
+    $indexsetup = new Typecho_Widget_Helper_Form_Element_Checkbox(
+        'indexsetup',
+        array(
+            'header-fix' => _t('固定头部'),
+            'aside-fix' => _t('固定导航'),
+            'aside-folded' => _t('折叠导航'),
+            'aside-dock' => _t('置顶导航'),
+            'container-box' => _t('盒子模型'),
+            'show-avatar' => _t('折叠左侧边栏头像'),
+            'NoRandomPic-post' => _t('文章页面不显示头图'),
+            'NoRandomPic-index' => _t('首页不显示头图'),
+            'NoSummary-index' => _t('首页文章不显示摘要'),
+            'lazyloadimg' => _t('图片延迟加载(firefox中可能会卡顿)'),
+            'musicplayer' => _t('启用音乐播放器')
+        ),
+        array('header-fix', 'aside-fix', 'musicplayer'),
+        _t('全站设置开关')
+    );
+
     $form->addInput($indexsetup->multiMode());
 
     //主题色调选择
-    $themetype = new Typecho_Widget_Helper_Form_Element_Radio('themetype',
+    $themetype = new Typecho_Widget_Helper_Form_Element_Radio(
+        'themetype',
         array(
             '0' => _t('black-white-black &emsp;&emsp;'),
             '1' => _t('dark-white-dark &emsp;&emsp;</br>'),
@@ -382,7 +388,7 @@ input[type=text], textarea {
             '5' => _t('success-white-dark &emsp;&emsp;</br>'),
             '6' => _t('danger-white-dark &emsp;&emsp;</br>'),
             '7' => _t('black-black-white &emsp;&emsp;</br>'),
-            '8' => _t('dark-dark-light &emsp;&emsp;'),                        
+            '8' => _t('dark-dark-light &emsp;&emsp;'),
             '9' => _t('info-info-light &emsp;&emsp;</br>'),
             '10' => _t('primary-primary-dark &emsp;&emsp;'),
             '11' => _t('info-info-black &emsp;&emsp;</br>'),
@@ -391,11 +397,14 @@ input[type=text], textarea {
         ),
 
         //Default choose
-        '1',_t('主题色调选择'),_t("</br>选择背景方案.如默认的<b>dark-white-dark</b> 分别代表：左侧边栏和上导航栏的交集部分、上导航栏、左侧边栏的颜色。")
+        '1',
+        _t('主题色调选择'),
+        _t("</br>选择背景方案.如默认的<b>dark-white-dark</b> 分别代表：左侧边栏和上导航栏的交集部分、上导航栏、左侧边栏的颜色。")
     );
     $form->addInput($themetype);
     //盒子模型中背景样式选择
-   $BGtype = new Typecho_Widget_Helper_Form_Element_Radio('BGtype',
+    $BGtype = new Typecho_Widget_Helper_Form_Element_Radio(
+        'BGtype',
         array(
             '0' => _t('纯色背景 &emsp;'),
             '1' => _t('图片背景 &emsp;'),
@@ -403,7 +412,9 @@ input[type=text], textarea {
         ),
 
         //Default choose
-        '2',_t('盒子模型中背景样式选择'),_t("<b>如果你没有选中“盒子模型”，请忽略该项。</b>选择背景方案, 对应填写下方的 '<b>背景颜色 / 图片</b>' 或选择 '<b>渐变样式</b>', 这里默认使用纯色背景.")
+        '2',
+        _t('盒子模型中背景样式选择'),
+        _t("<b>如果你没有选中“盒子模型”，请忽略该项。</b>选择背景方案, 对应填写下方的 '<b>背景颜色 / 图片</b>' 或选择 '<b>渐变样式</b>', 这里默认使用纯色背景.")
     );
     $form->addInput($BGtype);
     //盒子模型种背景颜色/图片填写
@@ -412,7 +423,8 @@ input[type=text], textarea {
     $form->addInput($bgcolor);
 
     //盒子模型中渐变样式选择
-    $GradientType = new Typecho_Widget_Helper_Form_Element_Radio('GradientType',
+    $GradientType = new Typecho_Widget_Helper_Form_Element_Radio(
+        'GradientType',
         array(
             '0' => _t('Aerinite &emsp;'),
             '1' => _t('Ethereal &emsp;'),
@@ -426,57 +438,59 @@ input[type=text], textarea {
             '9' => _t('Virgin <br />'),
         ),
 
-        '3', _t('渐变样式'), _t("<b>如果你没有选中“盒子模型”，请忽略该项。</b><br />如果选择渐变背景, 在这里选择想要的渐变样式.")
+        '3',
+        _t('渐变样式'),
+        _t("<b>如果你没有选中“盒子模型”，请忽略该项。</b><br />如果选择渐变背景, 在这里选择想要的渐变样式.")
     );
     $form->addInput($GradientType);
 
 
     //首页名称
-    $IndexName = new Typecho_Widget_Helper_Form_Element_Text('IndexName', NULL, '友人C', _t('首页的名称'), _t('输入你的首页显示的名称'));
+    $IndexName = new Typecho_Widget_Helper_Form_Element_Text('IndexName', NULL, '', _t('首页的名称'), _t('输入你的首页显示的名称'));
     $form->addInput($IndexName);
     //博主名称：aside.php中会调用
-    $BlogName = new Typecho_Widget_Helper_Form_Element_Text('BlogName', NULL, 'ihewro', _t('博主的名称'), _t('输入你的名称建议为英文，中文也可'));
+    $BlogName = new Typecho_Widget_Helper_Form_Element_Text('BlogName', NULL, '', _t('博主的名称'), _t('输入你的名称建议为英文，中文也可'));
     $form->addInput($BlogName);
 
     //博主头像：在本主题中首页index.php 和 aboutme.php中将会调用此头像
-    $BlogPic = new Typecho_Widget_Helper_Form_Element_Text('BlogPic', NULL, 'https://ww4.sinaimg.cn/large/a15b4afegy1fcgr86xdu6j2064064mxd', _t('头像图片地址'), _t('logo头像地址，尺寸在200X200左右即可'));
+    $BlogPic = new Typecho_Widget_Helper_Form_Element_Text('BlogPic', NULL, Typecho_Widget::widget('Widget_Options')->themeUrl . '/img/avatar.jpeg', _t('头像图片地址'), _t('logo头像地址，尺寸在200X200左右即可'));
     $form->addInput($BlogPic);
 
     //博主职业
-    $BlogJob = new Typecho_Widget_Helper_Form_Element_Text('BlogJob', NULL, 'A student', _t('博主的介绍'), _t('输入你的简介，在侧边栏的名称下面和时光机页面显示'));
+    $BlogJob = new Typecho_Widget_Helper_Form_Element_Text('BlogJob', NULL, '没有名字的简介', _t('博主的介绍'), _t('输入你的简介，在侧边栏的名称下面和时光机页面显示'));
     $form->addInput($BlogJob);
     //首页文字：将会在首页博客名称下面和404.php页面调用此字段
     $Indexwords = new Typecho_Widget_Helper_Form_Element_Text('Indexwords', NULL, '迷失的人迷失了，相逢的人会再相逢', _t('首页一行文字介绍'), _t('输入你喜欢的一行文字吧，在首页博客名称下面显示'));
     $form->addInput($Indexwords);
 
     //twitter
-    $socialtwitter = new Typecho_Widget_Helper_Form_Element_Text('socialtwitter', NULL,'#', _t('输入twitter链接'), _t('在这里输入twitter链接,带http://，在时光机页面显示,为空则不显示按钮'));
+    $socialtwitter = new Typecho_Widget_Helper_Form_Element_Text('socialtwitter', NULL, '#', _t('输入twitter链接'), _t('在这里输入twitter链接,带http://，在时光机页面显示,为空则不显示按钮'));
     $form->addInput($socialtwitter);
     //facebook
-    $socialfacebook = new Typecho_Widget_Helper_Form_Element_Text('socialfacebook', NULL,'#', _t('输入facebook链接'), _t('在这里输入facebook链接,带http://，在时光机页面显示,为空则不显示按钮'));
+    $socialfacebook = new Typecho_Widget_Helper_Form_Element_Text('socialfacebook', NULL, '#', _t('输入facebook链接'), _t('在这里输入facebook链接,带http://，在时光机页面显示,为空则不显示按钮'));
     $form->addInput($socialfacebook);
     //google+
-    $socialgooglepluse = new Typecho_Widget_Helper_Form_Element_Text('socialgooglepluse', NULL,'#', _t('输入google+链接'), _t('在这里输入google+链接,带http://，在时光机页面显示,为空则不显示按钮'));
+    $socialgooglepluse = new Typecho_Widget_Helper_Form_Element_Text('socialgooglepluse', NULL, '#', _t('输入google+链接'), _t('在这里输入google+链接,带http://，在时光机页面显示,为空则不显示按钮'));
     $form->addInput($socialgooglepluse);
 
     //github
-    $socialgithub = new Typecho_Widget_Helper_Form_Element_Text('socialgithub', NULL,'https://github.com/ihewro', _t('输入github链接'), _t('在这里输入github链接,带http://，在时光机页面显示,为空则不显示按钮'));
+    $socialgithub = new Typecho_Widget_Helper_Form_Element_Text('socialgithub', NULL, '#', _t('输入github链接'), _t('在这里输入github链接,带http://，在时光机页面显示,为空则不显示按钮'));
     $form->addInput($socialgithub);
 
     //email
-    $socialemail = new Typecho_Widget_Helper_Form_Element_Text('socialemail', NULL,'ihewro@163.com', _t('输入email地址'), _t('在这里输入email地址，在时光机页面显示'));
+    $socialemail = new Typecho_Widget_Helper_Form_Element_Text('socialemail', NULL, '#', _t('输入email地址'), _t('在这里输入email地址，在时光机页面显示'));
     $form->addInput($socialemail);
     //QQ
-    $socialqq = new Typecho_Widget_Helper_Form_Element_Text('socialqq', NULL,'#', _t('输入QQ号码'), _t('在这里输入QQ号码，在时光机页面显示'));
+    $socialqq = new Typecho_Widget_Helper_Form_Element_Text('socialqq', NULL, '#', _t('输入QQ号码'), _t('在这里输入QQ号码，在时光机页面显示'));
     $form->addInput($socialqq);
     //weibo
-    $socialweibo = new Typecho_Widget_Helper_Form_Element_Text('socialweibo', NULL,'#', _t('输入微博ID'), _t('在这里输入微博名称，在时光机页面显示'));
+    $socialweibo = new Typecho_Widget_Helper_Form_Element_Text('socialweibo', NULL, '#', _t('输入微博ID'), _t('在这里输入微博名称，在时光机页面显示'));
     $form->addInput($socialweibo);
     //网易云音乐
-    $socialmusic = new Typecho_Widget_Helper_Form_Element_Text('socialmusic', NULL,'#', _t('输入网易云音乐ID'), _t('在这里输入网易云音乐ID，在时光机页面显示'));
+    $socialmusic = new Typecho_Widget_Helper_Form_Element_Text('socialmusic', NULL, '#', _t('输入网易云音乐ID'), _t('在这里输入网易云音乐ID，在时光机页面显示'));
     $form->addInput($socialmusic);
     //时光机中关于我的内容
-    $about = new Typecho_Widget_Helper_Form_Element_Textarea('about', NULL, '来自南部的一个小城市，个性不张扬，讨厌随波逐流。', _t('输入关于我的内容'), _t('输入关于我的内容，将会在时光机的关于我栏目中显示'));
+    $about = new Typecho_Widget_Helper_Form_Element_Textarea('about', NULL, '我是什么，你能告诉我吗？', _t('输入关于我的内容'), _t('输入关于我的内容，将会在时光机的关于我栏目中显示'));
     $form->addInput($about);
 
     //网站统计代码
@@ -489,7 +503,8 @@ input[type=text], textarea {
     $titleintro = new Typecho_Widget_Helper_Form_Element_Text('titleintro', NULL, '首页标题后缀', _t('首页标题后缀'), _t('你的博客标题栏博客名称后面的副标题'));
     $form->addInput($titleintro);
     //instantclick预加载模式
-   $preload = new Typecho_Widget_Helper_Form_Element_Radio('preload',
+    $preload = new Typecho_Widget_Helper_Form_Element_Radio(
+        'preload',
         array(
             '0' => _t('mouseover &emsp;'),
             '1' => _t('mousedown &emsp;'),
@@ -497,7 +512,9 @@ input[type=text], textarea {
         ),
 
         //Default choose
-        '1',_t('instantclick预加载模式选择'),_t("<b>mouseover</b>:鼠标悬停在链接上，就开始预加载。<b>mousedown</b>:鼠标点击链接的同时才开始预加载。 <b>on-mouseover-with-a-delay</b>:鼠标悬停在链接上并有一定延迟时间才开始预加载，选中此项，必须设置下面的延迟时间项。")
+        '1',
+        _t('instantclick预加载模式选择'),
+        _t("<b>mouseover</b>:鼠标悬停在链接上，就开始预加载。<b>mousedown</b>:鼠标点击链接的同时才开始预加载。 <b>on-mouseover-with-a-delay</b>:鼠标悬停在链接上并有一定延迟时间才开始预加载，选中此项，必须设置下面的延迟时间项。")
     );
     $form->addInput($preload);
     //instantclick延迟时间设置
@@ -512,14 +529,17 @@ input[type=text], textarea {
     $RandomPicAmnt2 = new Typecho_Widget_Helper_Form_Element_Text('RandomPicAmnt2', NULL, _t('15'), _t('右侧边栏随机缩略图数量'), _t('对应于主题目录下的img/sj2文件夹中的图片的数量。这里指的缩略图是<b>右侧边栏热门文章、随机文章的缩略图</b>'));
     $form->addInput($RandomPicAmnt2);
     //文章缩略图设置
-   $RandomPicChoice = new Typecho_Widget_Helper_Form_Element_Radio('RandomPicChoice',
+    $RandomPicChoice = new Typecho_Widget_Helper_Form_Element_Radio(
+        'RandomPicChoice',
         array(
             '0' => _t('只显示随机图片'),
             '1' => _t('显示顺序：thumb自定义字段——文章第一张图片'),
             '2' => _t('显示顺序：thumb自定义字段——文章第一张图片——随机图片(推荐)')
         ),
         //Default choose
-        '2',_t('博客头图设置'),_t('该头图设置对首页和文章页面同时生效。推荐选择第三个。<br><span style="color: #f00">注意</span>：此项设置仅在全局设置开启头图后才生效')
+        '2',
+        _t('博客头图设置'),
+        _t('该头图设置对首页和文章页面同时生效。推荐选择第三个。<br><span style="color: #f00">注意</span>：此项设置仅在全局设置开启头图后才生效')
     );
     $form->addInput($RandomPicChoice);
 
@@ -528,7 +548,7 @@ input[type=text], textarea {
     gravatar由于国内被墙，推荐使用https://secure.gravatar.com 或者https://cdn.v2ex.com/gravatar 镜像源。你可以使用你自己的镜像源(末尾不要加斜杠！！！)"));
     $form->addInput($CDNURL);
     //时光机页面的头图
-    $timepic = new Typecho_Widget_Helper_Form_Element_Text('timepic', NULL, 'https://ww4.sinaimg.cn/large/a15b4afegy1fcets6ivogj20p00ho45a', _t('时光机页面的头图'), _t("填写图片地址，在时光机页面cross.html独立页面的头图，图片大小切勿过大，控制在100K左右为佳。"));
+    $timepic = new Typecho_Widget_Helper_Form_Element_Text('timepic', NULL, Typecho_Widget::widget('Widget_Options')->themeUrl . '/img/avatar.jpeg', _t('时光机页面的头图'), _t("填写图片地址，在时光机页面cross.html独立页面的头图，图片大小切勿过大，控制在100K左右为佳。"));
     $form->addInput($timepic);
 
     //加载进度条颜色
@@ -548,40 +568,49 @@ input[type=text], textarea {
     //chrome 安卓选项卡颜色
     $ChromeThemeColor = new Typecho_Widget_Helper_Form_Element_Text('ChromeThemeColor', NULL, _t('#3a3f51'), _t('Android Chrome 地址栏颜色'), _t('安卓系统下的chrome浏览器顶部的地址栏颜色，请填写正确的颜色代码。'));
     $form->addInput($ChromeThemeColor);
-    
+
     //播放器音乐
-    $musiclist = new Typecho_Widget_Helper_Form_Element_Textarea('musiclist', NULL,'{title:"晚安；）",artist:"性人盒",mp3:"xxxx.mp3"}', _t('音乐播放器的音乐列表'), _t('格式: {title:"xxx", artist:"xxx", mp3:"http:xxxx"} ，每个歌曲之间用英文逗号隔开。请保证歌曲列表里至少有一首歌！（在全站设置项启用播放器后才有效）'));
+    $musiclist = new Typecho_Widget_Helper_Form_Element_Textarea('musiclist', NULL, '{title:"晚安；）",artist:"性人盒",mp3:"xxxx.mp3"}', _t('音乐播放器的音乐列表'), _t('格式: {title:"xxx", artist:"xxx", mp3:"http:xxxx"} ，每个歌曲之间用英文逗号隔开。请保证歌曲列表里至少有一首歌！（在全站设置项启用播放器后才有效）'));
     $form->addInput($musiclist);
 
     //音乐播放器是否自动播放
-   $isautoplay = new Typecho_Widget_Helper_Form_Element_Radio('isautoplay',
+    $isautoplay = new Typecho_Widget_Helper_Form_Element_Radio(
+        'isautoplay',
         array(
             '0' => _t(' 不自动播放'),
             '1' => _t('自动播放')
         ),
         //Default choose
-        '0',_t('音乐播放器播放设置'),_t("自动播放指打开页面会自动播放音乐（在全站设置项启用播放器后才有效）")
+        '0',
+        _t('音乐播放器播放设置'),
+        _t("自动播放指打开页面会自动播放音乐（在全站设置项启用播放器后才有效）")
     );
     $form->addInput($isautoplay);
     //音乐播放器手机端是否隐藏
-   $ismobilehide = new Typecho_Widget_Helper_Form_Element_Radio('ismobilehide',
+    $ismobilehide = new Typecho_Widget_Helper_Form_Element_Radio(
+        'ismobilehide',
         array(
             '0' => _t(' 隐藏'),
             '1' => _t('不隐藏')
         ),
         //Default choose
-        '1',_t('音乐播放器手机端是否隐藏'),_t("默认不隐藏（在全站设置项启用播放器后才有效）")
+        '1',
+        _t('音乐播放器手机端是否隐藏'),
+        _t("默认不隐藏（在全站设置项启用播放器后才有效）")
     );
     $form->addInput($ismobilehide);
     //语言设置
-    $langis = new Typecho_Widget_Helper_Form_Element_Radio('langis',
+    $langis = new Typecho_Widget_Helper_Form_Element_Radio(
+        'langis',
         array(
             '0' => _t('English <br />'),
             '1' => _t('简体中文 <br />'),
             '2' => _t('繁体中文 <br />')
         ),
 
-        '1', _t('界面语言设置'), _t("默认使用简体中文语言")
+        '1',
+        _t('界面语言设置'),
+        _t("默认使用简体中文语言")
     );
     $form->addInput($langis);
     //七牛云镜像存储
@@ -598,47 +627,48 @@ input[type=text], textarea {
 }
 // 首页文章缩略图
 
-function showThumbnail($widget){
+function showThumbnail($widget)
+{
 
     // 当文章无图片时的默认缩略图
-    $rand = rand(1,$widget->widget('Widget_Options')->RandomPicAmnt); // 随机 1-3 张缩略图
+    $rand = rand(1, $widget->widget('Widget_Options')->RandomPicAmnt); // 随机 1-3 张缩略图
 
     $random = $widget->widget('Widget_Options')->themeUrl . '/img/sj/' . $rand . '.jpg'; // 随机缩略图路径
     //正则匹配 主题目录下的/images/sj/的图片（以数字按顺序命名）
 
     $cai = '';
-    if (!empty($attachments)){
+    if (!empty($attachments)) {
         $attach = $widget->attachments(1)->attachment;
-    }else{
-        $attach='';
+    } else {
+        $attach = '';
     }
-    $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i'; 
+    $pattern = '/\<img.*?src\=\"(.*?)\"[^>]*>/i';
     $patternMD = '/\!\[.*?\]\((http(s)?:\/\/.*?(jpg|png))/i';
     $patternMDfoot = '/\[.*?\]:\s*(http(s)?:\/\/.*?(jpg|png))/i';
 
 
     //return输出
-    if ($widget->widget('Widget_Options')->RandomPicChoice =='0'){//只输出随机缩略图
+    if ($widget->widget('Widget_Options')->RandomPicChoice == '0') { //只输出随机缩略图
         return $random;
-    }else{//thumb->第一张图片->(随机缩略图)
+    } else { //thumb->第一张图片->(随机缩略图)
 
-        if(!empty($widget->fields->thumb)){//thumb字段已经填写了图片地址
+        if (!empty($widget->fields->thumb)) { //thumb字段已经填写了图片地址
             $ctu = $widget->fields->thumb;
-        }else{//thumb值中没有图片地址
+        } else { //thumb值中没有图片地址
 
-            if ($attach && $attach->isImage) {//调用第一个图片附件
-                $ctu = $attach->url.$cai;
-            }else if (preg_match_all($pattern, $widget->content, $thumbUrl)) {//下面是调用文章第一个图片
-                $ctu = $thumbUrl[1][0].$cai;
-            }else if (preg_match_all($patternMD, $widget->content, $thumbUrl)) {//如果是内联式markdown格式的图片
-                $ctu = $thumbUrl[1][0].$cai;
-            }else if (preg_match_all($patternMDfoot, $widget->content, $thumbUrl)) {//如果是脚注式markdown格式的图片
-                $ctu = $thumbUrl[1][0].$cai;
-            }else {//如果文章中没有图片
-                    $ctu = '';
+            if ($attach && $attach->isImage) { //调用第一个图片附件
+                $ctu = $attach->url . $cai;
+            } else if (preg_match_all($pattern, $widget->content, $thumbUrl)) { //下面是调用文章第一个图片
+                $ctu = $thumbUrl[1][0] . $cai;
+            } else if (preg_match_all($patternMD, $widget->content, $thumbUrl)) { //如果是内联式markdown格式的图片
+                $ctu = $thumbUrl[1][0] . $cai;
+            } else if (preg_match_all($patternMDfoot, $widget->content, $thumbUrl)) { //如果是脚注式markdown格式的图片
+                $ctu = $thumbUrl[1][0] . $cai;
+            } else { //如果文章中没有图片
+                $ctu = '';
             }
 
-            if($ctu == '' && $widget->widget('Widget_Options')->RandomPicChoice =='2'){//文章中没有图片，选项二此时输出随机图片
+            if ($ctu == '' && $widget->widget('Widget_Options')->RandomPicChoice == '2') { //文章中没有图片，选项二此时输出随机图片
                 $ctu = $random;
             }
         }
@@ -648,22 +678,23 @@ function showThumbnail($widget){
 
 
 //输出文章缩略图
-function echoPostThumbnail($obj){
+function echoPostThumbnail($obj)
+{
     $options = Typecho_Widget::widget('Widget_Options');
-    $placeholder = $obj->widget('Widget_Options')->themeUrl.'/img/white.gif';
+    $placeholder = $obj->widget('Widget_Options')->themeUrl . '/img/white.gif';
     $output = '';
 
-    if(!empty($options->indexsetup) && in_array('lazyloadimg', $options->indexsetup)){//开启图片延迟加载
-        if($obj->is('index') || $obj->is('archive')){
-            $output .= '<div id="index-post-img"><a href="'.$obj->permalink.'"><img data-original="'.showThumbnail($obj).'" src="'.$placeholder.'" class="img-full" /></a></div>'; 
-        }else{
-            $output .= '<div class="entry-thumbnail" aria-hidden="true"><img width="900" height="auto" data-original="'.showThumbnail($obj).'" src="'.$placeholder.'" class="img-responsive center-block wp-post-image" /></div>'; 
+    if (!empty($options->indexsetup) && in_array('lazyloadimg', $options->indexsetup)) { //开启图片延迟加载
+        if ($obj->is('index') || $obj->is('archive')) {
+            $output .= '<div id="index-post-img"><a href="' . $obj->permalink . '"><img data-original="' . showThumbnail($obj) . '" src="' . $placeholder . '" class="img-full" /></a></div>';
+        } else {
+            $output .= '<div class="entry-thumbnail" aria-hidden="true"><img width="900" height="auto" data-original="' . showThumbnail($obj) . '" src="' . $placeholder . '" class="img-responsive center-block wp-post-image" /></div>';
         }
-    }else{//不开启图片延迟加载
-        if($obj->is('index') || $obj->is('archive')){
-            $output .= '<div id="index-post-img"><a href="'.$obj->permalink.'"><img src="'.showThumbnail($obj).'" class="img-full" /></a></div>'; 
-        }else{
-            $output .= '<div class="entry-thumbnail" aria-hidden="true"><img width="900" height="auto" src="'.showThumbnail($obj).'" class="img-responsive center-block wp-post-image" /></div>'; 
+    } else { //不开启图片延迟加载
+        if ($obj->is('index') || $obj->is('archive')) {
+            $output .= '<div id="index-post-img"><a href="' . $obj->permalink . '"><img src="' . showThumbnail($obj) . '" class="img-full" /></a></div>';
+        } else {
+            $output .= '<div class="entry-thumbnail" aria-hidden="true"><img width="900" height="auto" src="' . showThumbnail($obj) . '" class="img-responsive center-block wp-post-image" /></div>';
         }
     }
 
@@ -673,158 +704,161 @@ function echoPostThumbnail($obj){
 
 //文章页面侧边栏缩略图
 function showThumbnail2($widget)
-{ 
+{
     // 当文章无图片时的默认缩略图
-    $rand = rand(1,$widget->widget('Widget_Options')->RandomPicAmnt2); // 随机 1-15 张缩略图
+    $rand = rand(1, $widget->widget('Widget_Options')->RandomPicAmnt2); // 随机 1-15 张缩略图
 
     $random = $widget->widget('Widget_Options')->themeUrl . '/img/sj2/' . $rand . '.jpg'; // 随机缩略图路径
     //正则匹配 主题目录下的/images/sj/的图片（以数字按顺序命名）
 
-return $random;
+    return $random;
 }
 
 /**
-* 显示上一篇
-*
-* @access public
-* @param string $default 如果没有上一篇,显示的默认文字
-* @return void
-*/
+ * 显示上一篇
+ *
+ * @access public
+ * @param string $default 如果没有上一篇,显示的默认文字
+ * @return void
+ */
 function theNext($widget, $default = NULL)
 {
-$db = Typecho_Db::get();
-$sql = $db->select()->from('table.contents')
-->where('table.contents.created > ?', $widget->created)
-->where('table.contents.status = ?', 'publish')
-->where('table.contents.type = ?', $widget->type)
-->where('table.contents.password IS NULL')
-->order('table.contents.created', Typecho_Db::SORT_ASC)
-->limit(1);
-$content = $db->fetchRow($sql);
+    $db = Typecho_Db::get();
+    $sql = $db->select()->from('table.contents')
+        ->where('table.contents.created > ?', $widget->created)
+        ->where('table.contents.status = ?', 'publish')
+        ->where('table.contents.type = ?', $widget->type)
+        ->where('table.contents.password IS NULL')
+        ->order('table.contents.created', Typecho_Db::SORT_ASC)
+        ->limit(1);
+    $content = $db->fetchRow($sql);
 
-if ($content) {
-$content = $widget->filter($content);
-$link = '<li class="previous"> <a href="' . $content['permalink'] . '" title="' . $content['title'] . '" data-toggle="tooltip"> 上一篇 </a></li>
+    if ($content) {
+        $content = $widget->filter($content);
+        $link = '<li class="previous"> <a href="' . $content['permalink'] . '" title="' . $content['title'] . '" data-toggle="tooltip"> 上一篇 </a></li>
 ';
-echo $link;
-} else {
-$link = '';
-echo $link;
+        echo $link;
+    } else {
+        $link = '';
+        echo $link;
+    }
 }
-}
- 
+
 /**
-* 显示下一篇
-*
-* @access public
-* @param string $default 如果没有下一篇,显示的默认文字
-* @return void
-*/
+ * 显示下一篇
+ *
+ * @access public
+ * @param string $default 如果没有下一篇,显示的默认文字
+ * @return void
+ */
 function thePrev($widget, $default = NULL)
 {
-$db = Typecho_Db::get();
-$sql = $db->select()->from('table.contents')
-->where('table.contents.created < ?', $widget->created)
-->where('table.contents.status = ?', 'publish')
-->where('table.contents.type = ?', $widget->type)
-->where('table.contents.password IS NULL')
-->order('table.contents.created', Typecho_Db::SORT_DESC)
-->limit(1);
-$content = $db->fetchRow($sql);
- 
-if ($content) {
-$content = $widget->filter($content);
-$link = '<li class="next"> <a href="' . $content['permalink'] . '" title="' . $content['title'] . '" data-toggle="tooltip"> 下一篇 </a></li>';
-echo $link;
-} else {
-$link = '';
-echo $link;
-}
+    $db = Typecho_Db::get();
+    $sql = $db->select()->from('table.contents')
+        ->where('table.contents.created < ?', $widget->created)
+        ->where('table.contents.status = ?', 'publish')
+        ->where('table.contents.type = ?', $widget->type)
+        ->where('table.contents.password IS NULL')
+        ->order('table.contents.created', Typecho_Db::SORT_DESC)
+        ->limit(1);
+    $content = $db->fetchRow($sql);
+
+    if ($content) {
+        $content = $widget->filter($content);
+        $link = '<li class="next"> <a href="' . $content['permalink'] . '" title="' . $content['title'] . '" data-toggle="tooltip"> 下一篇 </a></li>';
+        echo $link;
+    } else {
+        $link = '';
+        echo $link;
+    }
 }
 
 //热门文章（评论最多）
-function theme_hot_posts($hot){
-$days = 99999999999999;
-$num = 5;
-$defaults = array(
-'before' => '',
-'after' => '',
-'xformat' => '<li><a href="{permalink}">{title}</a></li>'
-);
-$time = time() - (24 * 60 * 60 * $days);
-$db = Typecho_Db::get();
-$sql = $db->select()->from('table.contents')
-->where('created >= ?', $time)
-->where('type = ?', 'post')
-->limit($num)
-->order('commentsNum',Typecho_Db::SORT_DESC);
-$result = $db->fetchAll($sql);
-echo $defaults['before'];
-foreach($result as $val){
-$val = Typecho_Widget::widget('Widget_Abstract_Contents')->filter($val);
-echo '<li class="list-group-item">
+function theme_hot_posts($hot)
+{
+    $days = 99999999999999;
+    $num = 5;
+    $defaults = array(
+        'before' => '',
+        'after' => '',
+        'xformat' => '<li><a href="{permalink}">{title}</a></li>'
+    );
+    $time = time() - (24 * 60 * 60 * $days);
+    $db = Typecho_Db::get();
+    $sql = $db->select()->from('table.contents')
+        ->where('created >= ?', $time)
+        ->where('type = ?', 'post')
+        ->limit($num)
+        ->order('commentsNum', Typecho_Db::SORT_DESC);
+    $result = $db->fetchAll($sql);
+    echo $defaults['before'];
+    foreach ($result as $val) {
+        $val = Typecho_Widget::widget('Widget_Abstract_Contents')->filter($val);
+        echo '<li class="list-group-item">
                 <a href="' . $val['permalink'] . '" class="pull-left thumb-sm m-r">
-                <img style="height: 40px!important;width: 40px!important;" src="'.showThumbnail2($hot).'" class="img-circle wp-post-image">
+                <img style="height: 40px!important;width: 40px!important;" src="' . showThumbnail2($hot) . '" class="img-circle wp-post-image">
                 </a>
                 <div class="clear">
                     <h4 class="h5 l-h"> <a href="' . $val['permalink'] . '" title="' . $val['title'] . '"> ' . $val['title'] . ' </a></h4>
                     <small class="text-muted">
-                    <span class="meta-views"> <i class="iconfont icon-comments" aria-hidden="true"></i> <span class="sr-only">评论数：</span> <span class="meta-value">'.$val['commentsNum'].'</span> 
+                    <span class="meta-views"> <i class="iconfont icon-comments" aria-hidden="true"></i> <span class="sr-only">评论数：</span> <span class="meta-value">' . $val['commentsNum'] . '</span> 
                     </span>  
-                    <span class="meta-date m-l-sm"> <i class="iconfont icon-eye" aria-hidden="true"></i> <span class="sr-only">浏览次数:</span> <span class="meta-value">'.$val['views'].'</span> 
+                    <span class="meta-date m-l-sm"> <i class="iconfont icon-eye" aria-hidden="true"></i> <span class="sr-only">浏览次数:</span> <span class="meta-value">' . $val['views'] . '</span> 
                     </span> 
                     </small>
                     </div>
             </li>';
-}
+    }
 }
 
 //随机显示文章
-function theme_random_posts($random){
-$defaults = array(
-'number' => 5, //输出文章条数
-'xformat' => '<li><a href="{permalink}">{title}</a></li>'
-);
-$db = Typecho_Db::get();
- 
-$sql = $db->select()->from('table.contents')
-->where('status = ?','publish')
-->where('type = ?', 'post')
-->limit($defaults['number'])
-->order('RAND()');
- 
-$result = $db->fetchAll($sql);
-foreach($result as $val){
-$val = Typecho_Widget::widget('Widget_Abstract_Contents')->filter($val);
-echo '<li class="list-group-item">
+function theme_random_posts($random)
+{
+    $defaults = array(
+        'number' => 5,
+        //输出文章条数
+        'xformat' => '<li><a href="{permalink}">{title}</a></li>'
+    );
+    $db = Typecho_Db::get();
+
+    $sql = $db->select()->from('table.contents')
+        ->where('status = ?', 'publish')
+        ->where('type = ?', 'post')
+        ->limit($defaults['number'])
+        ->order('RAND()');
+
+    $result = $db->fetchAll($sql);
+    foreach ($result as $val) {
+        $val = Typecho_Widget::widget('Widget_Abstract_Contents')->filter($val);
+        echo '<li class="list-group-item">
                 <a href="' . $val['permalink'] . '" class="pull-left thumb-sm m-r">
-                <img style="height: 40px!important;width: 40px!important;" src="'.showThumbnail2($random).'" class="img-circle wp-post-image">
+                <img style="height: 40px!important;width: 40px!important;" src="' . showThumbnail2($random) . '" class="img-circle wp-post-image">
                 </a>
                 <div class="clear">
                     <h4 class="h5 l-h"> <a href="' . $val['permalink'] . '" title="' . $val['title'] . '"> ' . $val['title'] . ' </a></h4>
                     <small class="text-muted">
-                    <span class="meta-views"> <i class="iconfont icon-comments" aria-hidden="true"></i> <span class="sr-only">评论数：</span> <span class="meta-value">'.$val['commentsNum'].'</span> 
+                    <span class="meta-views"> <i class="iconfont icon-comments" aria-hidden="true"></i> <span class="sr-only">评论数：</span> <span class="meta-value">' . $val['commentsNum'] . '</span> 
                     </span>  
-                    <span class="meta-date m-l-sm"> <i class="iconfont icon-eye" aria-hidden="true"></i> <span class="sr-only">浏览次数:</span> <span class="meta-value">'.$val['views'].'</span> 
+                    <span class="meta-date m-l-sm"> <i class="iconfont icon-eye" aria-hidden="true"></i> <span class="sr-only">浏览次数:</span> <span class="meta-value">' . $val['views'] . '</span> 
                     </span> 
                     </small>
                     </div>
             </li>';
-}
+    }
 }
 
 //获取评论的锚点链接
 function get_comment_at($coid)
 {
-    $db   = Typecho_Db::get();
+    $db = Typecho_Db::get();
     $prow = $db->fetchRow($db->select('parent')->from('table.comments')
-                                 ->where('coid = ? AND status = ?', $coid, 'approved'));
+        ->where('coid = ? AND status = ?', $coid, 'approved'));
     $parent = $prow['parent'];
     if ($parent != "0") {
         $arow = $db->fetchRow($db->select('author')->from('table.comments')
-                                     ->where('coid = ? AND status = ?', $parent, 'approved'));
+            ->where('coid = ? AND status = ?', $parent, 'approved'));
         $author = $arow['author'];
-        $href   = '<a href="#comment-' . $parent . '">@' . $author . '</a>';
+        $href = '<a href="#comment-' . $parent . '">@' . $author . '</a>';
         echo $href;
     } else {
         echo '';
@@ -835,8 +869,8 @@ function get_comment_at($coid)
 //文章阅读次数含cookie
 function get_post_view($archive)
 {
-    $cid    = $archive->cid;
-    $db     = Typecho_Db::get();
+    $cid = $archive->cid;
+    $db = Typecho_Db::get();
     $prefix = $db->getPrefix();
     if (!array_key_exists('views', $db->fetchRow($db->select()->from('table.contents')))) {
         $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `views` INT(10) DEFAULT 0;');
@@ -845,15 +879,15 @@ function get_post_view($archive)
     }
     $row = $db->fetchRow($db->select('views')->from('table.contents')->where('cid = ?', $cid));
     if ($archive->is('single')) {
- $views = Typecho_Cookie::get('extend_contents_views');
-        if(empty($views)){
+        $views = Typecho_Cookie::get('extend_contents_views');
+        if (empty($views)) {
             $views = array();
-        }else{
+        } else {
             $views = explode(',', $views);
         }
-if(!in_array($cid,$views)){
-       $db->query($db->update('table.contents')->rows(array('views' => (int) $row['views'] + 1))->where('cid = ?', $cid));
-array_push($views, $cid);
+        if (!in_array($cid, $views)) {
+            $db->query($db->update('table.contents')->rows(array('views' => (int) $row['views'] + 1))->where('cid = ?', $cid));
+            array_push($views, $cid);
             $views = implode(',', $views);
             Typecho_Cookie::set('extend_contents_views', $views); //记录查看cookie
         }
@@ -863,37 +897,38 @@ array_push($views, $cid);
 
 
 //获得读者墙   
-function getFriendWall()   
-{   $options = Typecho_Widget::widget('Widget_Options');
-    $db = Typecho_Db::get();   
-    $sql = $db->select('COUNT(author) AS cnt', 'author', 'url', 'mail')   
-              ->from('table.comments')   
-              ->where('status = ?', 'approved')   
-              ->where('type = ?', 'comment')   
-              ->where('authorId = ?', '0')   
-              ->where('mail != ?', $options->socialemail)   //排除自己上墙   
-              ->group('author')   
-              ->order('cnt', Typecho_Db::SORT_DESC)   
-              ->limit('15');    //读取几位用户的信息   
-    $result = $db->fetchAll($sql);   
-    $mostactive = "";
-    if (count($result) > 0) {   
-        $maxNum = $result[0]['cnt'];   
-        foreach ($result as $value) {   
-            $mostactive .= '<li><a target="_blank" rel="nofollow" href="' . $value['url'] . '"><span class="pic" style="background: url(https://secure.gravatar.com/avatar/'.md5(strtolower($value['mail'])).'?s=36&d=&r=G) no-repeat;background-size: 36px;"></span><em>' . $value['author'] . '</em><strong>+' . $value['cnt'] . '</strong><br />' . $value['url'] . '</a></li>';       
-        }   
-        echo $mostactive;   
-    }   
-}   
-
-//重新输出文章内容
-function parseContent($obj){
-    
+function getFriendWall()
+{
     $options = Typecho_Widget::widget('Widget_Options');
-    if(!empty($options->src_add) && !empty($options->cdn_add)){
-        $obj->content = str_ireplace($options->src_add,$options->cdn_add,$obj->content);
-    }//七牛镜像加速
-    $obj->content = preg_replace("/<a href=\"([^\"]*)\">/i", "<a href=\"\\1\" target=\"_blank\">", $obj->content);//文章中的链接，以新链接方式打开
-    echo trim($obj->content);
+    $db = Typecho_Db::get();
+    $sql = $db->select('COUNT(author) AS cnt', 'author', 'url', 'mail')
+        ->from('table.comments')
+        ->where('status = ?', 'approved')
+        ->where('type = ?', 'comment')
+        ->where('authorId = ?', '0')
+        ->where('mail != ?', $options->socialemail) //排除自己上墙   
+        ->group('author')
+        ->order('cnt', Typecho_Db::SORT_DESC)
+        ->limit('15'); //读取几位用户的信息   
+    $result = $db->fetchAll($sql);
+    $mostactive = "";
+    if (count($result) > 0) {
+        $maxNum = $result[0]['cnt'];
+        foreach ($result as $value) {
+            $mostactive .= '<li><a target="_blank" rel="nofollow" href="' . $value['url'] . '"><span class="pic" style="background: url(https://secure.gravatar.com/avatar/' . md5(strtolower($value['mail'])) . '?s=36&d=&r=G) no-repeat;background-size: 36px;"></span><em>' . $value['author'] . '</em><strong>+' . $value['cnt'] . '</strong><br />' . $value['url'] . '</a></li>';
+        }
+        echo $mostactive;
+    }
 }
 
+//重新输出文章内容
+function parseContent($obj)
+{
+
+    $options = Typecho_Widget::widget('Widget_Options');
+    if (!empty($options->src_add) && !empty($options->cdn_add)) {
+        $obj->content = str_ireplace($options->src_add, $options->cdn_add, $obj->content);
+    } //七牛镜像加速
+    $obj->content = preg_replace("/<a href=\"([^\"]*)\">/i", "<a href=\"\\1\" target=\"_blank\">", $obj->content); //文章中的链接，以新链接方式打开
+    echo trim($obj->content);
+}
