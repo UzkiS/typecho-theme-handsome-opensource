@@ -45,7 +45,7 @@ define("THEME_URL", rtrim(preg_replace('/^' . preg_quote($options->siteUrl, '/')
 
     <!-- 第三方CDN加载CSS -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js" data-no-instant></script>
+    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js" data-no-instant></script>
     <!-- 本地develope版本 -->
     <!--
 <link rel="stylesheet" href="<?php $this->options->themeUrl('css/animate.css') ?>" type="text/css" />
@@ -193,7 +193,7 @@ define("THEME_URL", rtrim(preg_replace('/^' . preg_quote($options->siteUrl, '/')
                     /* Chrome 10-25, Safari 5.1-6 */
                     background: linear-gradient(to left, #F1F2B5, #135058);
                     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *
-                                   <?php elseif ($this->options->GradientType == '8'): ?>
+                                           <?php elseif ($this->options->GradientType == '8'): ?>
                     background: #02AAB0;
                     /* fallback for old browsers */
                     background: -webkit-linear-gradient(to left, #02AAB0, #00CDAC);

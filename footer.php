@@ -69,7 +69,7 @@
 <script type="text/javascript">
     <?php if (!empty($this->options->indexsetup) && in_array('header-fix', $this->options->indexsetup)): ?>
         $(document).ready(function () {
-            $('#comments a[href^=#][href!=#]').click(function () {
+            $('#comments a[href^="#"][href!="#"]').click(function () {
                 var target = document.getElementById(this.hash.slice(1));
                 if (!target) return;
                 var targetOffset = $(target).offset().top - 50;
