@@ -218,19 +218,31 @@
         </a>
     </bgm>
     <script data-no-instant>
-        var yaudio = new Audio();
-        yaudio.controls = true;
-        var musicArr = [<?php $this->options->musiclist(); ?>];//后台填写播放列表
-        /*首次随机播放*/
-        var a = parseInt(Math.random() * musicArr.length);
-        var sj = musicArr[a];
-        yaudio.src = sj.mp3;
-        yaudio.ti = sj.title;
-        yaudio.art = sj.artist;
-        <?php if ($this->options->isautoplay == '0'): ?>
-        <?php else: ?>
-            yaudio.play();
-        <?php endif; ?>
+        if (!window.yaudio) {
+            window.yaudio = new Audio();
+            window.yaudio.controls = true;
+            window.musicArr = [<?php $this->options->musiclist(); ?>];//后台填写播放列表
+            /*首次随机播放*/
+            window.musicIndex = parseInt(Math.random() * musicArr.length);
+            window.currentMusic = musicArr[window.musicIndex];
+            window.yaudio.src = window.currentMusic.mp3;
+            window.yaudio.ti = window.currentMusic.title;
+            window.yaudio.art = window.currentMusic.artist;
+            <?php if ($this->options->isautoplay == '0'): ?>
+            <?php else: ?>
+                if (!window.disableautoplay) {
+                    window.yaudio.play();
+                }
+                window.disableautoplay = true;
+            <?php endif; ?>
+        } else {
+            if (!window.yaudio.paused) {
+                var oyd = document.getElementById("ydmc");
+                oyd.className = "iconfont icon-music icon-spin-music";
+            }
+        }
+
+
     </script>
     <script data-no-instant src="<?php $this->options->themeUrl('js/player.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('js/prbug.min.js'); ?>"></script>
