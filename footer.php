@@ -5,7 +5,8 @@
         <span class="pull-right hidden-xs">
             <?php $this->options->BottomInfo(); ?>
             Power by <a data-no-instant target="blank" href="http://www.typecho.org">Typecho</a> | Theme <a
-                data-no-instant target="blank" href="https://github.com/ihewro/typecho-theme-handsome/">handsome</a> <a
+                data-no-instant target="blank"
+                href="https://github.com/LemoFire/typecho-theme-handsome-opensource">handsome-opensource</a> <a
                 onclick="gotoTop()" class="m-l-sm text-muted" data-toggle="tooltip" data-placement="auto left"
                 title="返回顶部"><i class="iconfont icon-longarrowup"></i></a>
         </span>
@@ -26,7 +27,8 @@
 
 <!--CDN加载-->
 <script src="//cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js" data-no-instant></script>
-<script data-no-instant src="//cdn.bootcss.com/instantclick/3.0.1/instantclick.min.js"></script>
+<!-- <script data-no-instant src="//cdn.bootcss.com/instantclick/3.0.1/instantclick.min.js"></script> -->
+<script data-no-instant src="<?= THEME_URL ?>/packages/instantclick.js"></script>
 <script src="//cdn.bootcss.com/highlight.js/9.5.0/highlight.min.js"></script>
 
 

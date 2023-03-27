@@ -342,16 +342,12 @@ input[type=text], textarea {
     <span style="display: block;
     margin-bottom: 10px;
     margin-top: 10px;
-    font-size: 16px;">感谢您使用 handsome主题&emsp; </span>
-    <span style="margin-bottom:10px;display:block"> 如果您喜欢handsome主题，<a href="https://github.com/ihewro/typecho-theme-handsome/stargazers" style="color: rgb(255, 255, 255); background: rgb(63, 63, 63);">给该项目star一下吧</a>，是我不断更新的动力哦！</span>
-    <span style="margin-bottom:10px;display:block">点击这里 <a href="https://github.com/ihewro/typecho-theme-handsome" target="_blank" style="color:#3384da;font-weight:bold;text-decoration:underline">typecho-theme-handsome</a> 以获得
-    <span style="color:#df3827;font-weight:bold;">最新版本支持</span>
-    </span>
+    font-size: 16px;">感谢您使用 handsome-opensource 主题&emsp; </span>
     <span style="margin-bottom:10px;display:block">
-    <a href="//www.ihewro.com/archives/489/" >帮助&支持</a> &nbsp;
-    <a href="https://github.com/ihewro/typecho-theme-handsome/issues" target="_blank">建议&反馈</a>
+    <a href="https://github.com/LemoFire/typecho-theme-handsome-opensource" target="_blank">仓库地址</a>｜
+    <a href="https://github.com/LemoFire/typecho-theme-handsome-opensource/stargazers" target="_blank">Star一下</a>｜
+    <a href="https://github.com/LemoFire/typecho-theme-handsome-opensource/issues" target="_blank">建议&反馈</a>
     </span>
-    <span style="margin-bottom:10px;display:block"> 后台设置主题风格来自 material 主题</span>
     </p>';
 
     //设置开关
